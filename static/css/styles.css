@@ -1,4 +1,12 @@
 
+/* BUTTONS */
+/* Remove outline from buttons */
+button:focus,
+.navbar-toggler:focus,
+.btn:focus {
+    box-shadow: none;
+}
+
 /* LOGO */
 .logo i{
     vertical-align: middle;
