@@ -1,3 +1,7 @@
+/* LOGO */
+.logo i{
+    vertical-align: middle;
+}
 
 /* NAVBAR */
 .navbar i{
@@ -5,10 +9,7 @@
 }
 
 
-
-
-
-
+/* MEDIA QUERIES - MOBILE VERSION */
 @media (max-width: 575px) {
     /* 
     Navbar to slide from right on top of content
@@ -35,18 +36,30 @@
     .navbar-collapse.show {
         left: 0;
     }
+    /* Mobile navigation menu styling */
+    .mobile-nav-menu {
+        margin-top: 0.5rem;
+        position: relative;
+        height: 80%;
 
-    .navbar ul li{
-        margin: 0.5rem 0;
     }
 
     .mobile-nav-menu ul li{
-        font-size: 1.3rem;
+        font-size: 1.75rem;
+        font-weight: bold;
+        margin: 0.5rem 0;
+        text-align: center;
     }
 
     .mobile-menu-soc-med-icons i{
         font-size: 2.5rem;
         color: #000;
         margin: 0 1rem;
+    }
+
+    .nav-link-list{
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%,-50%);
     }
 }
