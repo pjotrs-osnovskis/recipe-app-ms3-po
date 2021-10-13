@@ -8,6 +8,7 @@
 
 
 
+
 @media (max-width: 575px) {
     /* 
     Navbar to slide from right on top of content
@@ -37,5 +38,15 @@
 
     .navbar ul li{
         margin: 0.5rem 0;
+    }
+
+    .mobile-nav-menu ul li{
+        font-size: 1.3rem;
+    }
+
+    .mobile-menu-soc-med-icons i{
+        font-size: 2.5rem;
+        color: #000;
+        margin: 0 1rem;
     }
 }
