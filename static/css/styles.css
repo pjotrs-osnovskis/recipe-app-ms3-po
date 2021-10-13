@@ -1,21 +1,59 @@
 
 /* BUTTONS */
-/* Remove outline from buttons */
+/* Remove outline from buttons amd forms */
 button:focus,
+.form-control:focus,
 .navbar-toggler:focus,
 .btn:focus {
     box-shadow: none;
 }
 
-/* LOGO */
-.logo i{
-    vertical-align: middle;
+button i:hover{
+    text-shadow: 0 0 4px #2F4F4F;
 }
 
 /* NAVBAR */
-.navbar i{
-    font-size: 1.5rem;
+.navbar i,
+.navbar a{
+    color: #2F4F4F;
 }
+.navbar i{
+    font-size: 1.75rem;
+}
+
+/* LOGO */
+.logo i{
+    vertical-align: middle;
+    font-size: 2rem;
+}
+
+.home-link{
+    margin-right: .75rem;
+    font-size: 1.25rem;
+}
+
+.home-link:hover{
+    text-shadow: 0 0 4px #2F4F4F;
+}
+
+/* User icon dropdown */
+.dropdown-menu.show{
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    right: 0;
+    left: auto;
+}
+
+.dropdown-item{
+    padding: 0.5rem 0;
+}
+
+.dropdown-item i{
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+}
+
 
 /* MEDIA QUERIES - MOBILE VERSION */
 @media (max-width: 575px) {
