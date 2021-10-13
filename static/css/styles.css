@@ -1,3 +1,4 @@
+
 /* LOGO */
 .logo i{
     vertical-align: middle;
@@ -7,7 +8,6 @@
 .navbar i{
     font-size: 1.5rem;
 }
-
 
 /* MEDIA QUERIES - MOBILE VERSION */
 @media (max-width: 575px) {
@@ -40,8 +40,7 @@
     .mobile-nav-menu {
         margin-top: 0.5rem;
         position: relative;
-        height: 80%;
-
+        height: 77.5%;
     }
 
     .mobile-nav-menu ul li{
@@ -53,7 +52,6 @@
 
     .mobile-menu-soc-med-icons i{
         font-size: 2.5rem;
-        color: #000;
         margin: 0 1rem;
     }
 
@@ -61,5 +59,15 @@
         position: absolute;
         top: 50%; left: 50%;
         transform: translate(-50%,-50%);
+        margin: 0;
+        padding: 0;
     }
+    .mobile-nav-menu a,
+    .mobile-nav-menu i{
+        color: 	#2F4F4F;
+    }
+    .mobile-nav-menu ul li{
+        list-style: none;
+    }
+
 }

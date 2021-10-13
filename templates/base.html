@@ -17,6 +17,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+
     {% block styles %}
     {% endblock %}
 
@@ -24,70 +25,82 @@
 </head>
 
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-sm navbar-light">
-        <div class="container-fluid">
-            <div class="logo">
-                <a class="navbar-brand" href="#"><i class="fas fa-utensils"></i> | recipehere</a>
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-end" id="navbarSupportedContent">
-
-                <!-- Menu for desktop -->
-                <div class="desktop-nav-menu d-none d-sm-block ms-auto">
-                    <ul class="navbar-nav ">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <form class="d-flex">
-                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn" href="#"><i class="far fa-user-circle"></i></a>
-                        </li>
-                    </ul>
+    <header>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-sm navbar-light">
+            <div class="container-fluid">
+                <div class="logo">
+                    <a class="navbar-brand" href="#"><i class="fas fa-utensils"></i> | recipehere</a>
                 </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-end" id="navbarSupportedContent">
 
-                <!-- Menu for mobile -->
-                <div class="mobile-nav-menu d-sm-none">
-                    <!-- Search Field -->
-                    <form class="d-flex">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-                    </form>
-                    <!-- Link List -->
-                    <ul class="nav-link-list navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item" href="#">
-                            <a class="nav-link" href="#">Login</a>
-                        </li>
-                        <li class="nav-item" href="#">
-                            <a class="nav-link" href="#">Register</i></a>
-                        </li>
-                    </ul>
-                    <!-- Social Media Icons -->
-                    <div class="fixed-bottom mb-5 d-flex justify-content-center">
-                        <div class="inline-list mobile-menu-soc-med-icons">
-                            <a class="list-inline-item"><i class="fab fa-facebook-square"></i></a>
-                            <a class="list-inline-item"><i class="fab fa-instagram-square"></i></a>
-                            <a class="list-inline-item"><i class="fab fa-pinterest-square"></i></a>
+                    <!-- Menu for desktop -->
+                    <div class="desktop-nav-menu d-none d-sm-block ms-auto">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <form class="d-flex">
+                                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                                </form>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn" href="#"><i class="far fa-user-circle"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Menu for mobile -->
+                    <div class="mobile-nav-menu d-sm-none">
+                        <!-- Search Field -->
+                        <form class="d-flex">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                        <!-- Link List -->
+                        <ul class="nav-link-list">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Home</a>
+                            </li>
+                            <li class="nav-item" href="#">
+                                <a class="nav-link" href="#">Login</a>
+                            </li>
+                            <li class="nav-item" href="#">
+                                <a class="nav-link" href="#">Register</i></a>
+                            </li>
+                        </ul>
+                        <!-- Social Media Icons -->
+                        <div class="fixed-bottom mb-5 d-flex justify-content-center">
+                            <div class="mobile-menu-soc-med-icons inline-list">
+                                <a class="list-inline-item"><i class="fab fa-facebook-square"></i></a>
+                                <a class="list-inline-item"><i class="fab fa-instagram-square"></i></a>
+                                <a class="list-inline-item"><i class="fab fa-pinterest-square"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <h1>Welcome to recipehere</h1>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        footer here
+    </footer>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -98,7 +111,8 @@
     </script>
 
     <!-- Custom JS -->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
     {% block scripts %}
     {% endblock %}
 
