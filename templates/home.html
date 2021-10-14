@@ -3,8 +3,16 @@
 
 <h1>this is home page</h1>
 
-{% for category in categories %}
-    <li value="{{ category.category_name }}"> {{ category.category_name }}</li>
-{% endfor %}
+<div class="categories-list scrolling-wrapper-flexbox">
+    <!-- Looping through categories in MongoDB and showing all. Plus fetching 
+        images from static\img folder and combining them together in a block -->
+    {% for category in categories %}
+        <a class="categories-card d-block" value="{{ category.category_name }}">
+            <img src="static\img\{{ category.category_name }}.png" alt="">
+            <div>{{ category.category_name }}</div>
+        </a>
+    {% endfor %}
+
+</div>
 
 {% endblock %}
