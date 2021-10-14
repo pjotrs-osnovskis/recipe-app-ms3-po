@@ -7,10 +7,12 @@
     <!-- Looping through categories in MongoDB and showing all. Plus fetching 
         images from static\img folder and combining them together in a block -->
     {% for category in categories %}
-        <a class="categories-card d-block" value="{{ category.category_name }}">
-            <img src="static\img\{{ category.category_name }}.png" alt="">
-            <div>{{ category.category_name }}</div>
-        </a>
+        <div class="categories-card d-block" value="{{ category.category_name }}">
+            <a href="">
+                <img src="static\img\{{ category.category_name }}.png" alt="">
+                <div>{{ category.category_name }}</div>
+            </a>
+        </div>
     {% endfor %}
 
 </div>
