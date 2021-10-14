@@ -44,7 +44,7 @@
                     <div class="desktop-nav-menu d-none d-sm-block ms-auto">
                         <ul class="navbar-nav ">
                             <li class="home-link nav-item">
-                                <a class="nav-link" href="#">Home</a>
+                                <a class="nav-link" href="{{ url_for('home_page') }}">Home</a>
                             </li>
                             <li class="nav-item">
                                 <form class="d-flex">
@@ -76,7 +76,7 @@
                         <!-- Link List -->
                         <ul class="nav-link-list">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Home</a>
+                                <a class="nav-link" href="{{ url_for('home_page') }}">Home</a>
                             </li>
                             <li class="nav-item" href="#">
                                 <a class="nav-link" href="#">Login</a>
@@ -99,16 +99,10 @@
         </nav>
     </header>
 
-    <h1>Welcome to recipehere</h1>
-
-    <main class="container">
+    <main>
         {% block content %}
         {% endblock %}
     </main>
-
-    <footer>
-        footer here
-    </footer>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"

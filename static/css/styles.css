@@ -29,11 +29,11 @@ button i:hover{
 
 .home-link{
     margin-right: .75rem;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
 }
 
 .home-link:hover{
-    text-shadow: 0 0 4px #2F4F4F;
+    text-shadow: 0 0 1px #2F4F4F;
 }
 
 /* User icon dropdown */
@@ -57,6 +57,10 @@ button i:hover{
 
 /* MEDIA QUERIES - MOBILE VERSION */
 @media (max-width: 575px) {
+    .container{
+        margin: 0;
+        padding: 0;
+    }
     /* 
     Navbar to slide from right on top of content
     CSS Code was taken from:

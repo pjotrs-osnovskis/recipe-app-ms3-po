@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>this is home page</h1>
+
+{% for category in categories %}
+    <li value="{{ category.category_name }}"> {{ category.category_name }}</li>
+{% endfor %}
+
+{% endblock %}
