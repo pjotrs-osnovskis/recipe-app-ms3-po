@@ -1,20 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-
-<h1>this is home page</h1>
-
-<div class="categories-list scrolling-wrapper-flexbox">
+<div class="categories-list scrolling-wrapper-flexbox" id="categoriesList">
     <!-- Looping through categories in MongoDB and showing all. Plus fetching 
         images from static\img folder and combining them together in a block -->
     {% for category in categories %}
-        <div class="categories-card d-block" value="{{ category.category_name }}">
-            <a href="">
-                <img src="static\img\{{ category.category_name }}.png" alt="">
+        <div class="categories-card" value="{{ category.category_name }}">
+            <a href="#">
+                <img src="static\img\{{ category.category_name }}.png" alt="category">
                 <div>{{ category.category_name }}</div>
             </a>
         </div>
     {% endfor %}
-
 </div>
-
 {% endblock %}

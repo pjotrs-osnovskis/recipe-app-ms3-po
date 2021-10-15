@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Admin Access</h1>
+
+<h3>Edit Ingredient</h3>
+
+<form method="POST" action="{{ url_for('edit_ingredient', ingredient_id=ingredient._id) }}">
+    <!-- category name field -->
+    <label for="ingredient_name">Ingredient Name:</label>
+    <input id="ingredient_name" name="ingredient_name" minlength="3" maxlength="25" 
+        type="text" value="{{ ingredient.ingredient_name }}">
+    <!-- submit button -->
+    <button type="submit" class="">
+        Edit
+    </button>
+</form>
+
+
+{% endblock %}

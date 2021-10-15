@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Admin Access</h1>
+
+<h3>Add Ingredient</h3>
+<form method="POST" action="{{ url_for('add_ingredient') }}">
+    <label for="ingredient_name">Ingredient Name:</label>
+    <input id="ingredient_name" name="ingredient_name" minlength="3" maxlength="25" type="text" class="validate" required>
+    <button type="submit" class="">
+        Add Ingredient</i>
+    </button>
+</form>
+
+
+
+
+
+
+<div class="">
+    {% for ingredient in ingredients %}
+            <div class="">
+                    <span>{{ ingredient.ingredient_name }}</span>
+                    <a href="{{ url_for('edit_ingredient', ingredient_id=ingredient._id) }}" >Edit</a>
+                    <a href="{{ url_for('delete_ingredient', ingredient_id=ingredient._id) }}" >Delete</a>
+            </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}
