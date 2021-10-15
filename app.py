@@ -1,4 +1,5 @@
 import os
+import re
 from flask import (
     Flask, render_template, 
     redirect, request, session, url_for)
@@ -23,19 +24,30 @@ def home_page():
     return render_template("home.html", categories=categories)
 
 
+@app.route("/get_ingredients")
+def get_ingredients():
+    ingredients = list(mongo.db.ingredients.find().sort("ingredient_name", 1))
+    return render_template("admin.html", ingredients=ingredients)
+
+
+# Search - NOT WORKING YET!
+@app.route("/search", methods=("GET", "POST"))
+def search():
+    query = request.form.get("query")
+    ingredients = list(mongo.db.ingredients.find({"$text": {"$search": query}}))
+    return render_template("admin.html", ingredients=ingredients)
+
+
 # Admin - Show list of ingredients and add ingredient
 @app.route("/add_ingredient", methods=("GET", "POST"))
 def add_ingredient():
-    ingredients_list = list(mongo.db.ingredients.find().sort("ingredient_name", 1))
-
     if request.method == "POST":
         ingredient = {
             "ingredient_name": request.form.get("ingredient_name")
             }
         mongo.db.ingredients.insert_one(ingredient)
         return redirect(url_for("add_ingredient"))
-
-    return render_template("admin.html", ingredients=ingredients_list)
+    return render_template("admin.html")
 
 
 # Admin - Edit Ingredient
