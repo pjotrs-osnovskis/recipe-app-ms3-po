@@ -2,7 +2,7 @@ import os
 import re
 from flask import (
     Flask, flash, render_template, 
-    redirect, request, session, url_for)
+    redirect, request, session, url_for, Markup)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -44,7 +44,14 @@ def register():
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
         if existing_user:
-            flash("Username already exists")
+            message = Markup(
+                            """
+                            <div class='message-button alert alert-danger alert-dismissible fade show' role='alert'>
+                                <p>Username already exists</p>
+                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'><span aria-hidden='true'></span></button>
+                            </div>
+                            """)
+            flash(message)
             return redirect( url_for("register") )
 
         # Get new user creds
@@ -56,7 +63,14 @@ def register():
         mongo.db.users.insert_one(register)
 
         session["user"] = request.form.get("username").lower()
-        flash("Registration Successfull")
+        message = Markup(
+                """
+                <div class='message-button alert alert-success alert-dismissible fade show' role='alert'>
+                    <p>Registration Successfull</p>
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'><span aria-hidden='true'></span></button>
+                </div>
+                """)
+        flash(message)
         return redirect( url_for("register", username=session["user"]))
     return render_template("register.html")
 
