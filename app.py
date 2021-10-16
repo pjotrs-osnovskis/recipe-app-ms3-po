@@ -44,6 +44,8 @@ def register():
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
         if existing_user:
+            # Found this solution here:
+            # https://stackoverflow.com/questions/58940246/flask-flashing-with-html-class
             message = Markup(
                             """
                             <div class='message-button alert alert-danger alert-dismissible fade show' role='alert'>
