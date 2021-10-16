@@ -13,6 +13,7 @@
     </button>
 </form>
 
+<h3>Search Ingredients</h3>
 <div>
     <form action="{{ url_for('search') }}" method="post" class="">
         <div>
@@ -23,6 +24,8 @@
         </div>
     </form>
 </div>
+
+<h3>Ingredients List</h3>
 
 {% if ingredients|length > 0 %}
     <div class="">

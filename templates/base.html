@@ -59,7 +59,7 @@
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                       <li><a class="dropdown-item" href="#">Login<i class="fas fa-user"></i></a></li>
-                                      <li><a class="dropdown-item" href="#">Register<i class="fas fa-user-plus"></i></a></li>
+                                      <li><a class="dropdown-item" href="{{ url_for('register') }}">Register<i class="fas fa-user-plus"></i></a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -82,7 +82,7 @@
                                 <a class="nav-link" href="#">Login</a>
                             </li>
                             <li class="nav-item" href="#">
-                                <a class="nav-link" href="#">Register</i></a>
+                                <a class="nav-link" href="{{ url_for('register') }}">Register</i></a>
                             </li>
                         </ul>
                         <!-- Social Media Icons -->
@@ -98,6 +98,22 @@
             </div>
         </nav>
     </header>
+
+    <section>
+        <!-- flash messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-primary" role="alert">
+                    <h1> {{ message }}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+
+
 
     <main>
         {% block content %}

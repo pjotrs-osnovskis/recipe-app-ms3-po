@@ -1,10 +1,11 @@
 import os
 import re
 from flask import (
-    Flask, render_template, 
+    Flask, flash, render_template, 
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
@@ -24,11 +25,6 @@ def home_page():
     return render_template("home.html", categories=categories)
 
 
-@app.route("/get_ingredients")
-def get_ingredients():
-    ingredients = list(mongo.db.ingredients.find().sort("ingredient_name", 1))
-    return render_template("admin.html", ingredients=ingredients)
-
 
 # Search - NOT WORKING YET!
 @app.route("/search", methods=("GET", "POST"))
@@ -38,7 +34,42 @@ def search():
     return render_template("admin.html", ingredients=ingredients)
 
 
-# Admin - Show list of ingredients and add ingredient
+# Register user
+@app.route("/register", methods=["GET", "POST"])
+def register():
+
+    if request.method == "POST":
+
+        # Check if user already exists
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+        if existing_user:
+            flash("Username already exists")
+            return redirect( url_for("register") )
+
+        # Get new user creds
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        # Insert new user creds into DB
+        mongo.db.users.insert_one(register)
+
+        session["user"] = request.form.get("username").lower()
+        flash("Registration Successfull")
+        return redirect( url_for("register", username=session["user"]))
+    return render_template("register.html")
+
+
+
+# Admin - List ingredients
+@app.route("/get_ingredients")
+def get_ingredients():
+    ingredients = list(mongo.db.ingredients.find().sort("ingredient_name", 1))
+    return render_template("admin.html", ingredients=ingredients)
+
+
+# Admin -  add ingredient
 @app.route("/add_ingredient", methods=("GET", "POST"))
 def add_ingredient():
     if request.method == "POST":
