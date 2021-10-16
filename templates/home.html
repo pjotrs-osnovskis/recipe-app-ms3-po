@@ -6,7 +6,7 @@
     {% for category in categories %}
         <div class="categories-card" value="{{ category.category_name }}">
             <a href="#">
-                <img src="static\img\{{ category.category_name }}.png" alt="category">
+                <img src="static\img\{{ category.category_name.lower() }}.png" alt="category">
                 <div>{{ category.category_name }}</div>
             </a>
         </div>
