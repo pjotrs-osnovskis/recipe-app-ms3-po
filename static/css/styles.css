@@ -6,6 +6,10 @@
     transform: translate(-50%, -50%);
 }
 
+.message-button{
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
 
 
 /* ------------------ BASE ------------------ */
