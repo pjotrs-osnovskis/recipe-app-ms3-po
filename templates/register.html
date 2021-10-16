@@ -1,34 +1,59 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="row justify-content-center">
+    <div class=" col-md-4 col-sm-12 d-block align-self-center register-form">
+        <div class="text-center">
+            <h3>Register</h3>
+        </div>
 
-<div class="">
-    <form class="" method="POST" action="{{ url_for('register') }}">
-        <div class="">
-            <!-- username field -->
-            <div class="">
-                <div class="">
-                    <input id="username" name="username" type="text" minlength="5"
-                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
-                    <label for="username">Username</label>
+        <div class="card">
+            <section class="ms-3 me-3 mt-3">
+                <!-- flash messages -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <h5> {{ message }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button>
+                          </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </section>
+        
+            <form class="" method="POST" action="{{ url_for('register') }}">
+                <!-- username field -->
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input class="form-control" id="username" name="username" type="text" minlength="5" maxlength="15"
+                            pattern="^[a-zA-Z0-9]{5,15}$" required>
+                    </div>
+                    <!-- password field -->
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input class="form-control" id="password" name="password" type="password" minlength="5" maxlength="15"
+                            pattern="^[a-zA-Z0-9]{5,15}$" required>
+                    </div>
                 </div>
-            </div>
-            <!-- password field -->
-            <div class="">
-                <div class="">
-                    <input id="password" name="password" type="password" minlength="5"
-                        maxlength="15"  pattern="^[a-zA-Z0-9]{5,15}$" required>
-                    <label for="password">Password</label>
+                <!-- register button -->
+                <div class="card-footer text-center">
+                    <button class="btn btn-success" type="submit">
+                        Register</i>
+                    </button>
                 </div>
-            </div>
-            <!-- register button -->
-            <div class="">
-                <button type="submit" >
-                    Register</i>
-                </button>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col mt-2">
+                <p class="text-center">
+                    Already Registered?
+                    <a href="#" class="">Log In</a>
+                </p>
             </div>
         </div>
-    </form>
+        
+    </div>
 </div>
-
 
 {% endblock %}
