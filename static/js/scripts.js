@@ -5,10 +5,10 @@
     https://newbedev.com/how-to-check-confirm-password-field-in-form-without-reloading-page
     Then optimized to project needs.
 */
-$('#password, #confirm_password').on('keyup', function () {
-    if ($('#password').val() != $('#confirm_password').val() || document.forms["regForm"]["password"].value == "" && document.forms["regForm"]["confirm_password"].value == "")  {
+$('#reg-password, #confirm_password').on('keyup', function () {
+    if ($('#reg-password').val() != $('#confirm_password').val() || document.forms["regForm"]["password"].value == "" && document.forms["regForm"]["confirm_password"].value == "")  {
         document.getElementById("regBtn").setAttribute("disabled", "");
-    }else if ($('#password').val() != $('#confirm_password').val() || document.getElementById("regBtn").value == "")
+    }else if ($('#reg-password').val() != $('#confirm_password').val() || document.getElementById("regBtn").value == "")
         document.getElementById("regBtn").removeAttribute("disabled");
 
 });

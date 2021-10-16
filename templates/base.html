@@ -47,7 +47,7 @@
                                 <a class="nav-link" href="{{ url_for('home_page') }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <form class="d-flex">
+                                <form class="d-flex form-input">
                                     <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                                     <button class="btn" type="submit"><i class="fas fa-search"></i></button>
                                 </form>
@@ -58,7 +58,7 @@
                                         <i class="far fa-user-circle"></i>
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                      <li><a class="dropdown-item" href="#">Login<i class="fas fa-user"></i></a></li>
+                                      <li><a class="dropdown-item" href="{{ url_for('login') }}">Login<i class="fas fa-user"></i></a></li>
                                       <li><a class="dropdown-item" href="{{ url_for('register') }}">Register<i class="fas fa-user-plus"></i></a></li>
                                     </ul>
                                 </div>
@@ -70,7 +70,7 @@
                     <div class="mobile-nav-menu d-sm-none">
                         <!-- Search Field -->
                         <form class="d-flex">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control form-input" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
                         </form>
                         <!-- Link List -->
@@ -79,7 +79,7 @@
                                 <a class="nav-link" href="{{ url_for('home_page') }}">Home</a>
                             </li>
                             <li class="nav-item" href="#">
-                                <a class="nav-link" href="#">Login</a>
+                                <a class="nav-link" href="{{ url_for('login') }}">Login</a>
                             </li>
                             <li class="nav-item" href="#">
                                 <a class="nav-link" href="{{ url_for('register') }}">Register</i></a>
