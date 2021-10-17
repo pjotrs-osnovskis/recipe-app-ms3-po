@@ -54,14 +54,26 @@ def register():
             flash(message)
             return redirect( url_for("register") )
 
-        # Get new user creds
+        # password1 = request.values.get("reg_password")
+        # password2 = request.values.get("confrim_password")
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("reg_password"))
         }
-        # Insert new user creds into DB
+
+        # if password1 != password2:
+        #     message = Markup(
+        #                     """
+        #                     <div class='message-button alert alert-danger alert-dismissible fade show' role='alert'>
+        #                         <p>Passwords don't match</p>
+        #                         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'><span aria-hidden='true'></span></button>
+        #                     </div>
+        #                     """)
+        #     flash(message)
+        #     return redirect( url_for("register"))
+        # else:
+        #     # Insert new user creds into DB
         mongo.db.users.insert_one(register)
-        
         session["user"] = request.form.get("username").lower()
         message = Markup(
                 """
@@ -71,7 +83,8 @@ def register():
                 </div>
                 """)
         flash(message)
-        return redirect( url_for("register", username=session["user"]))
+        return redirect( url_for("profile", username=session["user"]))
+
     return render_template("register.html")
 
 
@@ -88,8 +101,6 @@ def login():
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(
-                        request.form.get("username")))
                     return redirect(url_for(
                         "profile", username=session["user"]))
 
@@ -130,6 +141,21 @@ def profile(username):
         return render_template("profile.html", username=username)
     else:
         return redirect(url_for("login"))
+
+@app.route("/logout")
+def logout():
+    # remove user from session cookies
+    message = Markup(
+            """
+            <div class='message-button alert alert-success alert-dismissible fade show' role='alert'>
+                <p>You have been logged out</p>
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'><span aria-hidden='true'></span></button>
+            </div>
+            """)
+    flash(message)
+    session.pop("user")
+    
+    return redirect(url_for("login"))
 
 
 

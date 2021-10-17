@@ -58,8 +58,13 @@
                                         <i class="far fa-user-circle"></i>
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                      <li><a class="dropdown-item" href="{{ url_for('login') }}">Login<i class="fas fa-user"></i></a></li>
-                                      <li><a class="dropdown-item" href="{{ url_for('register') }}">Register<i class="fas fa-user-plus"></i></a></li>
+                                        {% if session.user %}
+                                        <li><a class="dropdown-item" href="{{ url_for('profile', username=session.user) }}"> {{ session.user.capitalize() }}</i></a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout<i class="fas fa-user"></i></a></li>
+                                        {% else %}
+                                        <li><a class="dropdown-item" href="{{ url_for('login') }}">Login<i class="fas fa-user"></i></a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('register') }}">Register<i class="fas fa-user-plus"></i></a></li>
+                                        {% endif %}
                                     </ul>
                                 </div>
                             </li>
