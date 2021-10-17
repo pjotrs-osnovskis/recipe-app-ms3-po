@@ -20,8 +20,8 @@ $('#reg-password, #confirm_password').on('keyup', function () {
         Same as function above, but adds exclamation mark to confirm password
     */
     if ($('#reg-password').val() != $('#confirm_password').val())  {
-        $("#exclIcon").css("visibility", "visible")
+        jQuery("[id=exclIcon").css("visibility", "visible")
 
     } else if ($('#reg-password').val() == $('#confirm_password').val() || $("#regBtn").val() != "")
-        $("#exclIcon").css("visibility", "hidden")
+        jQuery("[id=exclIcon").css("visibility", "hidden")
 });

@@ -61,7 +61,7 @@ def register():
         }
         # Insert new user creds into DB
         mongo.db.users.insert_one(register)
-
+        
         session["user"] = request.form.get("username").lower()
         message = Markup(
                 """

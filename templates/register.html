@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="row justify-content-center">
-    <div class=" col-md-6 col-sm-8 col-xs-12 register-form">
+    <div class=" col-md-4 col-sm-8 col-xs-12 register-form">
         <div class="text-center mb-3">
             <h3>Register</h3>
         </div>
@@ -30,17 +30,19 @@
                     </div>
                     <!-- password field -->
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <div class="form-input">
+                        <label for="password" class="form-label">Password </label>
+                        <div class="form-input d-flex">
                             <input class="form-control" id="reg-password" name="password" type="password" minlength="5" maxlength="15"
                                 pattern="^[a-zA-Z0-9]{5,15}$" required>
+                                <span id="exclIcon" class="exclamation"><i class="fas fa-exclamation-circle"></i></span>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Confirm Password <span id="exclIcon" class="exclamation"><i class="fas fa-exclamation-circle"></i></span></label>
-                        <div class= "form-input">
+                        <label for="password" class="form-label">Confirm Password </label>
+                        <div class= "form-input d-flex">
                             <input class="form-control" id="confirm_password" name="confirm_password" type="password" minlength="5" maxlength="15"
                                 pattern="^[a-zA-Z0-9]{5,15}$" required>
+                                <span id="exclIcon" class="exclamation"><i class="fas fa-exclamation-circle"></i></span>
                         </div>
                     </div>
                 </div>
