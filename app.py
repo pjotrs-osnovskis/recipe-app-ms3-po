@@ -58,7 +58,7 @@ def register():
         # password2 = request.values.get("confrim_password")
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("reg_password"))
+            "password": generate_password_hash(request.form.get("password"))
         }
 
         # if password1 != password2:
