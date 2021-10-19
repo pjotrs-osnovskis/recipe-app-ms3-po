@@ -6,6 +6,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 if os.path.exists("env.py"):
     import env
 
@@ -31,7 +32,7 @@ def home_page():
 def search():
     query = request.form.get("query")
     ingredients = list(mongo.db.ingredients.find({"$text": {"$search": query}}))
-    return render_template("admin.html", ingredients=ingredients)
+    return render_template("add_recipe.html", ingredients=ingredients)
 
 
 # Register user
@@ -133,7 +134,7 @@ def profile(username):
     if session["user"]:
         return render_template("profile.html", username=username)
     else:
-        return redirect(url_for("login"))
+        print("Username: " + session["user"])
 
 @app.route("/logout")
 def logout():
@@ -142,13 +143,38 @@ def logout():
             """
             <div class='message-button alert alert-success alert-dismissible fade show' role='alert'>
                 <p>You have been logged out</p>
-                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'><span aria-hidden='true'></span></button>
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'></span>
+                </button>
             </div>
             """)
     flash(message)
     session.pop("user")
     
     return redirect(url_for("login"))
+
+
+# Add recipe
+@app.route("/add_recipe", methods=["GET", "POST"])
+def add_recipe():
+    if request.method == "POST":
+        recipe = {
+            "category_name": request.form.get("category_name"),
+            "recipe_name": request.form.get("recipe_name"),
+            "recipe_description": request.form.get("recipe_description"),
+            "ingredient": request.form.get("ingredient"),
+            "creation_date": datetime.now(),
+            "created_by": session["user"]
+        }
+        
+        mongo.db.recipes.insert_one(recipe)
+        return redirect( url_for("add_recipe") )
+    
+    ingredients = mongo.db.ingredients.find()
+    categories = mongo.db.categories.find()
+    creation_date = mongo.db.recipes.find().sort("creation_date", 1)
+    return render_template("add_recipe.html", creation_date=creation_date, categories=categories, ingredients=ingredients)
+
 
 
 # Admin - List ingredients

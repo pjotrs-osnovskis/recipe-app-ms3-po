@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="mx-auto">
+        <h3 class="">
+            Create New Recipe
+        </h3>
+    </div>
+
+    <div class="card">
+        <section class="ms-3 me-3 mt-3">
+            <!-- flash messages -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </section>
+    
+        <form class="" name="add_recipe" method="POST" action="{{ url_for('add_recipe') }}">
+            <!-- recipe name -->
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="recipe_name" class="form-label">Recipe name: </label>
+                    <div class="form-input">
+                        <input class="form-control" id="recipe_name" name="recipe_name" type="text" minlength="5" maxlength="50">
+                    </div>
+                </div>
+
+                <!-- choose category -->
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Choose Category
+                    </button>
+                    <ul class="dropdown-menu dropdown-add-recipe overflow-auto" aria-labelledby="dropdownMenuButton1">
+                        {% for category in categories %}
+                        <li class="category-in-dlist" value="{{ category.category_name.lower() }}">
+                            <a href="#"><div>{{ category.category_name }}</div></a>
+                        </li>    
+                        {% endfor %}            
+                    </ul>
+                </div>
+                <!-- choose ingredients -->
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Choose Ingredients
+                    </button>
+                    <div class="dropdown-menu dropdown-add-recipe overflow-auto">
+                        <!-- Search ingredients in real time functionality idea was taken from:
+                        https://www.w3schools.com/howto/howto_js_filter_lists.asp -->
+                        <input class="" type="text" id="myInput" onkeyup="search()" placeholder="Search">
+                        <ul id="myUL" aria-labelledby="dropdownMenuButton1">
+                            {% for ingredient in ingredients %}
+                            <li class="dropdown-item" value="{{ ingredient.ingredient_name.lower() }}">
+                                <a href="#"><div>{{ ingredient.ingredient_name }}</div></a>
+                            </li>    
+                            {% endfor %}            
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- enter description -->
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description: </label>
+                    <div class="form-input">
+                        <input class="form-control" id="description" name="description" type="text" minlength="5" maxlength="50">
+                    </div>
+                </div>
+
+            <!-- add recipe button -->
+            <div class="card-footer text-center">
+                <button class="btn btn-success" type="submit" >
+                    Add Recipe
+                </button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+{% endblock %}

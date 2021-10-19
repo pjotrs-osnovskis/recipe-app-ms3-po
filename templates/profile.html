@@ -1,16 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-    <div class="">
-        <div class="">
-            <div class="">
-                <h3 class="">
-                    {{ username }}'s Profile
-                </h3>
-            </div>
-        </div>
+    <div class="mx-auto">
+        <h3 class="">
+            {{ username }}'s Profile
+        </h3>
     </div>
+
+    <div class="card">
+        <section class="ms-3 me-3 mt-3">
+            <!-- flash messages -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </section>
+    </div>
+
+    <a href="{{ url_for('add_recipe') }}" class="btn">
+        Add Recipe
+    </a>
+
+
 
 
 {% endblock %}
