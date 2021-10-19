@@ -42,7 +42,7 @@ def register():
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
         if existing_user:
-            # Found this solution here:
+            # Found this Markup solution here:
             # https://stackoverflow.com/questions/58940246/flask-flashing-with-html-class
             message = Markup(
                             """
@@ -54,36 +54,29 @@ def register():
             flash(message)
             return redirect( url_for("register") )
 
-        # password1 = request.values.get("reg_password")
-        # password2 = request.values.get("confrim_password")
-        register = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
-        }
-
-        # if password1 != password2:
-        #     message = Markup(
-        #                     """
-        #                     <div class='message-button alert alert-danger alert-dismissible fade show' role='alert'>
-        #                         <p>Passwords don't match</p>
-        #                         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'><span aria-hidden='true'></span></button>
-        #                     </div>
-        #                     """)
-        #     flash(message)
-        #     return redirect( url_for("register"))
-        # else:
-        #     # Insert new user creds into DB
-        mongo.db.users.insert_one(register)
-        session["user"] = request.form.get("username").lower()
-        message = Markup(
-                """
-                <div class='message-button alert alert-success alert-dismissible fade show' role='alert'>
-                    <p>Registration Successfull</p>
-                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'><span aria-hidden='true'></span></button>
-                </div>
-                """)
-        flash(message)
-        return redirect( url_for("profile", username=session["user"]))
+        # Variables to check both passwords
+        password1 = request.form.get("reg_password")
+        password2 = request.form.get("confirm_password")
+        if password1 != password2:
+            message = Markup(
+                            """
+                            <div class='message-button alert alert-danger alert-dismissible fade show' role='alert'>
+                                <p>Passwords don't match</p>
+                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'><span aria-hidden='true'></span></button>
+                            </div>
+                            """)
+            flash(message)
+            return redirect( url_for("register"))
+        else:
+            # Getting username and password to send over to Mongo DB
+            register = {
+                "username": request.form.get("username").lower(),
+                "password": generate_password_hash(request.form.get("reg_password"))
+            }
+            # Insert new user creds into DB
+            mongo.db.users.insert_one(register)
+            session["user"] = request.form.get("username").lower()
+            return redirect( url_for("profile", username=session["user"]) )
 
     return render_template("register.html")
 
@@ -117,7 +110,7 @@ def login():
                 return redirect(url_for("login"))
 
         else:
-            # username does not exist
+            # If username does not exist show message
             message = Markup(
                     """
                     <div class='message-button alert alert-success alert-dismissible fade show' role='alert'>
@@ -156,7 +149,6 @@ def logout():
     session.pop("user")
     
     return redirect(url_for("login"))
-
 
 
 # Admin - List ingredients
