@@ -43,23 +43,22 @@
                     </ul>
                 </div>
                 <!-- choose ingredients -->
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Choose Ingredients
-                    </button>
-                    <div class="dropdown-menu dropdown-add-recipe overflow-auto">
-                        <!-- Search ingredients in real time functionality idea was taken from:
-                        https://www.w3schools.com/howto/howto_js_filter_lists.asp -->
-                        <input class="" type="text" id="myInput" onkeyup="search()" placeholder="Search">
-                        <ul id="myUL" aria-labelledby="dropdownMenuButton1">
+                
+                    <div class="choose-ingredients overflow-auto">
+                        <!-- Search ingredients in real time -->
+                        <form action="">
+                            <input class="" type="text" id="searchInput" onkeyup="searchIngredients()" placeholder="Search">
+
+                        </form>
+                        <ul id="ingredientsUL" >
                             {% for ingredient in ingredients %}
-                            <li class="dropdown-item" value="{{ ingredient.ingredient_name.lower() }}">
-                                <a href="#"><div>{{ ingredient.ingredient_name }}</div></a>
+                            <li class="" value="{{ ingredient.ingredient_name.lower() }}">
+                                <a href="#">{{ ingredient.ingredient_name }}</a>
                             </li>    
                             {% endfor %}            
                         </ul>
                     </div>
-                </div>
+                
 
                 <!-- enter description -->
                 <div class="mb-3">
