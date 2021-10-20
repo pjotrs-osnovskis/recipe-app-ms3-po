@@ -14,55 +14,60 @@ $('#reg-password, #confirm_password').on('keyup', function () {
 });
 
 
-// function search() {
-//     // Declare variables
-//     var input, filter, ul, li, a, i, txtValue;
-//     input = document.getElementById('myInput');
-//     filter = input.value.toUpperCase();
-//     ul = document.getElementById("myUL");
-//     li = ul.getElementsByTagName('li');
-  
-//     // Loop through all list items, and hide those who don't match the search query
-//     for (i = 0; i < li.length; i++) {
-//       a = li[i].getElementsByTagName("a")[0];
-//       txtValue = a.textContent || a.innerText;
-//       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//         li[i].style.display = "";
-//       } else {
-//         li[i].style.display = "none";
-//       }
-//     }
-//   }
+function searchIngredients() {
+    /*
+    This function searches for ingredients, solution was found here:
+    https://stackoverflow.com/questions/45055107/how-to-hide-the-list-items-from-search-filter-when-search-input-field-is-cleare
+    */
+    // const ingrList = document.getElementById('ingredientsUL');
+    // const listItem = document.getElementById('ingrItem');
+    // listItem.innerHTML = `
+    // <a id="${ingredient.ingredient_name}"> {{ ingredient.ingredient_name }} </a>
+    // `
+    // ingrList.appendChild(listItem);
 
-function search() {
     // Declare variables
     var input, filter, ul, li, a, i;
     input = document.getElementById('searchInput');
-        if (input.value==''){
-            document.getElementById("myUL").style.display='none';
-            }
-        else{
-            filter = input.value.toUpperCase();
-            ul = document.getElementById("myUL");
-            li = ul.getElementsByTagName('li');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("ingredientsUL");
+        li = ul.getElementsByTagName('li');
 
-            if(input.value.length == 0){
-                ul.style.display = "none";
-                return;
-            }else{
-                ul.style.display = "block";
-                ul.style.height = "10rem";
-                ul.style.width = "15rem";
-                ul.style.overflow = "auto";
-            }
-            // Loop through all list items, and hide those who don't match the search query
-            for (i = 0; i < li.length; i++) {
-                a = li[i].getElementsByTagName("a")[0];
-                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                    li[i].style.display = "block";
-                } else {
-                    li[i].style.display = "none";
-                }
+        if(input.value.length == 0){
+            ul.style.display = "none";
+            return;
+        }else{
+            ul.style.display = "block";
+            ul.style.height = "10rem";
+            ul.style.width = "15rem";
+            ul.style.overflow = "auto";
+        }
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "block";
+            } else {
+                li[i].style.display = "none";
             }
         }
-}
+
+
+        let inputText = document.querySelector("#ingr");
+        let myButton = document.querySelector('#myButton');
+        let list = document.querySelector("#ingredientsUL");
+        myButton.addEventListener('click', (e)=>{
+            if(inputText.value == ""){
+                e.preventDefault();
+                    //create li
+                    const myLi = document.createElement('li');
+                    myLi.innerHTML = inputText.value;
+                    list.appendChild(myLi);}
+            else{
+                console.log (inputText.value)
+            }
+            })
+        
+    }
+
+

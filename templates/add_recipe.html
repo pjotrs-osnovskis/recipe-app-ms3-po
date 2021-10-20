@@ -30,34 +30,40 @@
                 </div>
 
                 <!-- choose category -->
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Choose Category
-                    </button>
-                    <ul class="dropdown-menu dropdown-add-recipe overflow-auto" aria-labelledby="dropdownMenuButton1">
+                <form class="">
+                    <label for="categList">
+                        Choose Category: 
+                    </label>
+                    <select id="categList">
                         {% for category in categories %}
-                        <li class="category-in-dlist" value="{{ category.category_name.lower() }}">
-                            <a href="#"><div>{{ category.category_name }}</div></a>
-                        </li>    
-                        {% endfor %}            
-                    </ul>
-                </div>
+                        <option class="category-in-dlist" value="{{ category.category_name }}">
+                            {{ category.category_name }}
+                        </option>    
+                        {% endfor %}
+                    </select>
+                </form>
                 <!-- choose ingredients -->
                 
                     <div class="choose-ingredients overflow-auto">
                         <!-- Search ingredients in real time -->
                         <form action="">
                             <input class="" type="text" id="searchInput" onkeyup="searchIngredients()" placeholder="Search">
-
+                            <div id="ingredientsUL" >
+                                {% for ingredient in ingredients %}
+                                    <li id="ingrItem">
+                                        <a href="#" id="ingr" value="{{ ingredient.ingredient_name }}">{{ ingredient.ingredient_name }}</a>
+                                        <span class="btn" id="myButton">+</span>
+                                    </li>
+                                {% endfor %}
+                            </div>
                         </form>
-                        <ul id="ingredientsUL" >
-                            {% for ingredient in ingredients %}
-                            <li class="" value="{{ ingredient.ingredient_name.lower() }}">
-                                <a href="#">{{ ingredient.ingredient_name }}</a>
-                            </li>    
-                            {% endfor %}            
+                    </div>
+                    <div class="newList">
+                        <ul id="">
+
                         </ul>
                     </div>
+
                 
 
                 <!-- enter description -->
