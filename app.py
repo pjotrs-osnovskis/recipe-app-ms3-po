@@ -170,7 +170,7 @@ def add_recipe():
         mongo.db.recipes.insert_one(recipe)
         return redirect( url_for("add_recipe") )
     
-    ingredients = mongo.db.ingredients.find()
+    ingredients = list(mongo.db.ingredients.find())
     categories = mongo.db.categories.find()
     creation_date = mongo.db.recipes.find().sort("creation_date", 1)
     return render_template("add_recipe.html", creation_date=creation_date, categories=categories, ingredients=ingredients)

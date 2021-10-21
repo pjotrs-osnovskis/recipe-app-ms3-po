@@ -34,7 +34,7 @@
                     <label for="categList">
                         Choose Category: 
                     </label>
-                    <select id="categList">
+                    <select id="category_name" name="category_name">
                         {% for category in categories %}
                         <option class="category-in-dlist" value="{{ category.category_name }}">
                             {{ category.category_name }}
@@ -47,19 +47,20 @@
                     <div class="choose-ingredients overflow-auto">
                         <!-- Search ingredients in real time -->
                         <form action="">
-                            <input class="" type="text" id="searchInput" onkeyup="searchIngredients()" placeholder="Search">
-                            <div id="ingredientsUL" >
+                            <input class="" type="text" list="ingredientsList" id="ingredientInput"   placeholder="Enter ingredient...">
+                        
+                            <datalist id="ingredientsList" >
                                 {% for ingredient in ingredients %}
-                                    <li id="ingrItem">
-                                        <a href="#" id="ingr" value="{{ ingredient.ingredient_name }}">{{ ingredient.ingredient_name }}</a>
-                                        <span class="btn" id="myButton">+</span>
-                                    </li>
+                                    <option name="ingredient" value="{{ ingredient.ingredient_name }}">
+                                        {{ ingredient.ingredient_name }}
+                                    </option>
                                 {% endfor %}
-                            </div>
+                                </datalist>
+                            <a href="#" id="myButton" >+</a>
                         </form>
                     </div>
                     <div class="newList">
-                        <ul id="">
+                        <ul name="ingredient" id="ingredient">
 
                         </ul>
                     </div>
@@ -70,7 +71,7 @@
                 <div class="mb-3">
                     <label for="description" class="form-label">Description: </label>
                     <div class="form-input">
-                        <input class="form-control" id="description" name="description" type="text" minlength="5" maxlength="50">
+                        <input class="form-control" id="recipe_description" name="recipe_description" type="text" minlength="5" maxlength="50">
                     </div>
                 </div>
 
