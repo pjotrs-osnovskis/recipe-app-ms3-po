@@ -7,6 +7,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
+import json
 if os.path.exists("env.py"):
     import env
 
@@ -136,6 +137,8 @@ def profile(username):
     else:
         print("Username: " + session["user"])
 
+
+# Logout
 @app.route("/logout")
 def logout():
     # remove user from session cookies
@@ -162,7 +165,12 @@ def add_recipe():
             "category_name": request.form.get("category_name"),
             "recipe_name": request.form.get("recipe_name"),
             "recipe_description": request.form.get("recipe_description"),
-            "ingredient": request.form.get("ingredient"),
+            "ingredients": [
+                {
+                "ingredient": request.form.get("ingredient_name"),
+                "amount": request.form.get("ingredient_amount")
+                }
+            ],
             "creation_date": datetime.now(),
             "created_by": session["user"]
         }
@@ -170,7 +178,7 @@ def add_recipe():
         mongo.db.recipes.insert_one(recipe)
         return redirect( url_for("add_recipe") )
     
-    ingredients = list(mongo.db.ingredients.find())
+    ingredients = mongo.db.ingredients.find()
     categories = mongo.db.categories.find()
     creation_date = mongo.db.recipes.find().sort("creation_date", 1)
     return render_template("add_recipe.html", creation_date=creation_date, categories=categories, ingredients=ingredients)

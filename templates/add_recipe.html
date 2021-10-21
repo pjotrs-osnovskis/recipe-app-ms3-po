@@ -48,21 +48,19 @@
                         <!-- Search ingredients in real time -->
                         <form action="">
                             <input class="" type="text" list="ingredientsList" id="ingredientInput"   placeholder="Enter ingredient...">
-                        
                             <datalist id="ingredientsList" >
                                 {% for ingredient in ingredients %}
                                     <option name="ingredient" value="{{ ingredient.ingredient_name }}">
                                         {{ ingredient.ingredient_name }}
                                     </option>
                                 {% endfor %}
-                                </datalist>
+                            </datalist>
+                            <label for="ingredientAmount">How Much: </label>
+                            <input class="" type="text" id="ingredientAmount" name="ingredientAmount">
                             <a href="#" id="myButton" >+</a>
                         </form>
                     </div>
                     <div class="newList">
-                        <ul name="ingredient" id="ingredient">
-
-                        </ul>
                     </div>
 
                 

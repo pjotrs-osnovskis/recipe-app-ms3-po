@@ -15,8 +15,9 @@ $('#reg-password, #confirm_password').on('keyup', function () {
 
 
 let inputText = document.querySelector("#ingredientInput");
+let ingrAmount = document.querySelector("#ingredientAmount")
 let myButton = document.querySelector('#myButton');
-let list = document.querySelector(".newList ul");
+let newList = document.querySelector(".newList")
 
 myButton.addEventListener('click', (e)=>{
     /*
@@ -25,8 +26,25 @@ myButton.addEventListener('click', (e)=>{
     if(inputText.value != ""){
         e.preventDefault();
             //create li
+
+            let list = document.createElement("ul");
+            list.setAttribute("name", "ingredients")
+            list.setAttribute("id", "ingredients")
+
             var myLi = document.createElement('li');
+            myLi.setAttribute("name", "ingredient_name")
+            myLi.setAttribute("id", "ingredient_name")
             myLi.innerHTML = inputText.value;
-            list.appendChild(myLi);}
+
+            var amount = document.createElement('li');
+            amount.setAttribute("name", "ingredient_amount")
+            amount.setAttribute("id", "ingredient_amount")
+            amount.innerHTML = ingrAmount.value;
+
+            newList.appendChild(list)
+            list.appendChild(myLi);
+            list.appendChild(amount);
+        
+        }
     });
 
