@@ -13,6 +13,9 @@ $('#reg-password, #confirm_password').on('keyup', function () {
         $("[id=exclIcon").css("visibility", "hidden")
 });
 
+function remove(ingredient){
+    ingredient.parentNode.parentNode.removeChild(ingredient.parentNode);
+}
 
 let inputText = document.querySelector("#ingredientInput");
 let ingrAmount = document.querySelector("#ingredientAmount")
@@ -34,16 +37,21 @@ myButton.addEventListener('click', (e)=>{
             var myLi = document.createElement('li');
             myLi.setAttribute("name", "ingredient_name")
             myLi.setAttribute("id", "ingredient_name")
-            myLi.innerHTML = inputText.value;
+            myLi.innerHTML = inputText.value + " x ";
 
             var amount = document.createElement('li');
             amount.setAttribute("name", "ingredient_amount")
             amount.setAttribute("id", "ingredient_amount")
             amount.innerHTML = ingrAmount.value;
 
+            var remove = document.createElement("button");
+            remove.setAttribute("onclick", "remove(this)")
+            remove.innerHTML = " x "
+
             newList.appendChild(list)
             list.appendChild(myLi);
             list.appendChild(amount);
+            list.appendChild(remove);
         
         }
     });
