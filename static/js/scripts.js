@@ -18,8 +18,6 @@ function remove(ingredient){
     ingredient.parentNode.parentNode.removeChild(ingredient.parentNode);
 }
 
-
-
 let inputText = document.querySelector("#ingredientInput");
 let ingrAmount = document.querySelector("#ingredientAmount")
 let myButton = document.querySelector('#myButton');
@@ -39,12 +37,12 @@ myButton.addEventListener('click', (e)=>{
 
             var myLi = document.createElement('li');
             myLi.setAttribute("name", "ingredient_name")
-            myLi.setAttribute("id", "ingredient_name")
+            myLi.setAttribute("value", inputText.value.toLowerCase())
             myLi.innerHTML = inputText.value + " x ";
 
             var amount = document.createElement('li');
             amount.setAttribute("name", "ingredient_amount")
-            amount.setAttribute("id", "ingredient_amount")
+            amount.setAttribute("value", parseInt(ingrAmount.value))
             amount.innerHTML = ingrAmount.value;
 
             var remove = document.createElement("button");

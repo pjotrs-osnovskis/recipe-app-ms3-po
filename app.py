@@ -161,20 +161,28 @@ def logout():
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     if request.method == "POST":
+
+
+        meal_ingredients = []
+        ingredient_name = request.form.getlist("ingredient_name")
+        ingredient_amount = request.form.getlist("ingredient_amount")
+
+        for i in range(len(ingredient_name)):
+            ingredient1 = {
+                "ingredient_name": ingredient_name[i],
+                "ingredient_amount": ingredient_amount[i]
+            }
+
+        meal_ingredients.append(ingredient1)
+
         recipe = {
             "category_name": request.form.get("category_name"),
             "recipe_name": request.form.get("recipe_name"),
             "recipe_description": request.form.get("recipe_description"),
-            "ingredients": [
-                {
-                "ingredient": request.form.get("ingredient_name"),
-                "amount": request.form.get("ingredient_amount")
-                }
-            ],
+            "ingredients": meal_ingredients,
             "creation_date": datetime.now(),
             "created_by": session["user"]
         }
-        
         mongo.db.recipes.insert_one(recipe)
         return redirect( url_for("add_recipe") )
     
