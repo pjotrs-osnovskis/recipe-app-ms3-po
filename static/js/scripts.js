@@ -14,8 +14,11 @@ $('#reg-password, #confirm_password').on('keyup', function () {
 });
 
 function remove(ingredient){
+    /* Function to remove individual ingredient options that were added */
     ingredient.parentNode.parentNode.removeChild(ingredient.parentNode);
 }
+
+
 
 let inputText = document.querySelector("#ingredientInput");
 let ingrAmount = document.querySelector("#ingredientAmount")
@@ -28,7 +31,7 @@ myButton.addEventListener('click', (e)=>{
     */
     if(inputText.value != ""){
         e.preventDefault();
-            //create li
+            //create an ingredient with amount
 
             let list = document.createElement("ul");
             list.setAttribute("name", "ingredients")
@@ -45,14 +48,19 @@ myButton.addEventListener('click', (e)=>{
             amount.innerHTML = ingrAmount.value;
 
             var remove = document.createElement("button");
-            remove.setAttribute("onclick", "remove(this)")
-            remove.innerHTML = " x "
+            remove.setAttribute("onclick", "remove(this);");
+            remove.setAttribute("class", "btn btn-sm btn-outline-danger");
+            remove.innerHTML = "x"
 
             newList.appendChild(list)
             list.appendChild(myLi);
             list.appendChild(amount);
             list.appendChild(remove);
         
+            document.getElementById("ingredientInput").value = "";
+            document.getElementById("ingredientAmount").value = "";
+        
         }
-    });
+    
+});
 
