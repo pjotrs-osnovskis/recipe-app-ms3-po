@@ -161,26 +161,24 @@ def logout():
 def add_recipe():
     if request.method == "POST":
 
-        recipe_ingredients = []
-
         name = request.form.getlist("ingredient_name")
         qty = request.form.getlist("ingredient_qty")
         unit = request.form.getlist("ingredient_unit")
+        item = list(zip(name, qty, unit))
+        item_list = []
 
-        for i in range(len(name)):
-            ingredient_item = {
-                "ingredient_name": name[i],
-                "ingredient_qty": qty[i],
-                "ingredient_unit": unit[i]
-            }
-
-        recipe_ingredients.append(ingredient_item)
+        for i in item:
+            item_list.append({
+                "ingredient_name": i[0],
+                "ingredient_qty": i[1],
+                "ingredient_unit": i[2]
+            })
 
         recipe = {
             "category_name": request.form.get("category_name"),
             "recipe_name": request.form.get("recipe_name"),
             "recipe_description": request.form.get("recipe_description"),
-            "ingredients": recipe_ingredients,
+            "ingredients": item_list,
             "creation_date": datetime.now(),
             "created_by": session["user"]
         }
@@ -188,6 +186,7 @@ def add_recipe():
         mongo.db.recipes.insert_one(recipe)
         return redirect( url_for("add_recipe") )
     
+
     ingredients = mongo.db.ingredients.find()
     categories = mongo.db.categories.find()
     creation_date = mongo.db.recipes.find().sort("creation_date", 1)
