@@ -7,7 +7,6 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
-import json
 if os.path.exists("env.py"):
     import env
 
@@ -162,27 +161,30 @@ def logout():
 def add_recipe():
     if request.method == "POST":
 
+        recipe_ingredients = []
 
-        meal_ingredients = []
-        ingredient_name = request.form.getlist("ingredient_name")
-        ingredient_amount = request.form.getlist("ingredient_amount")
+        name = request.form.getlist("ingredient_name")
+        qty = request.form.getlist("ingredient_qty")
+        unit = request.form.getlist("ingredient_unit")
 
-        for i in range(len(ingredient_name)):
-            ingredient1 = {
-                "ingredient_name": ingredient_name[i],
-                "ingredient_amount": ingredient_amount[i]
+        for i in range(len(name)):
+            ingredient_item = {
+                "ingredient_name": name[i],
+                "ingredient_qty": qty[i],
+                "ingredient_unit": unit[i]
             }
 
-        meal_ingredients.append(ingredient1)
+        recipe_ingredients.append(ingredient_item)
 
         recipe = {
             "category_name": request.form.get("category_name"),
             "recipe_name": request.form.get("recipe_name"),
             "recipe_description": request.form.get("recipe_description"),
-            "ingredients": meal_ingredients,
+            "ingredients": recipe_ingredients,
             "creation_date": datetime.now(),
             "created_by": session["user"]
         }
+
         mongo.db.recipes.insert_one(recipe)
         return redirect( url_for("add_recipe") )
     

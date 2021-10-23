@@ -7,7 +7,7 @@
     </h3>
 </div>
 
-<div class="card">
+<div class=" col-8 mx-auto mt-5">
     <section class="ms-3 me-3 mt-3">
         <!-- flash messages -->
         {% with messages = get_flashed_messages() %}
@@ -20,74 +20,84 @@
     </section>
 
     <form class="" name="add_recipe" method="POST" action="{{ url_for('add_recipe') }}">
-        <!-- recipe name -->
-        <div class="card-body">
+        <div class="">
             <div class="row">
-                <div class="col-6">
-                    <div class="mb-3">
-                        <label for="recipe_name" class="form-label">Recipe name: </label>
-                        <div class="form-input">
-                            <input class="form-control" id="recipe_name" name="recipe_name" type="text" minlength="5"
-                                maxlength="50">
-                        </div>
-                    </div>
+
+                <!-- recipe name -->
+                <div class="col-8">
+                    <label class="form-label" for="recipe_name">Recipe name: </label>
+                    <input class="form-control" name="recipe_name" id="recipe_name" type="text" minlength="5" maxlength="50">
                 </div>
 
-                <div class="col-6">
-                    <!-- choose category -->
-                    <label for="categList">
-                        Choose Category:
-                    </label>
-                    <select id="category_name" name="category_name" class="form-input">
+                <!-- choose category -->
+                <div class="col-4">
+                    <label class="form-label" for="category_name" >Choose Category:</label>
+                    <select class="form-control" name="category_name" id="category_name" type="text"> 
                         {% for category in categories %}
-                        <option class="category-in-dlist" value="{{ category.category_name }}">
+                        <option value="{{ category.category_name }}">
                             {{ category.category_name }}
                         </option>
                         {% endfor %}
                     </select>
                 </div>
             </div>
-            <!-- choose ingredients -->
-            <!-- Search ingredients in real time -->
-            <div class="row">
-                <div class="col-6">
-                    <label for="ingredientInput">Ingredient: </label>
-                    <input class="form-input" type="text" list="ingredientsList" id="ingredientInput"
-                        placeholder="Enter ingredient...">
-                    <datalist id="ingredientsList">
+
+            <!-- Add ingredient item -->
+            <div class="row mt-3" id="ingredient_item" name="">
+
+                <!-- Add Ingredient name -->
+                <div class="col-7">
+                    <label class="form-label" for="ingredient_name">Ingredient:</label>
+                    <input class="form-control" name="ingredient_name" id="ingredient_name" list="ingredients_list" type="text">
+
+                    <datalist id="ingredients_list">
                         {% for ingredient in ingredients %}
                         <option value="{{ ingredient.ingredient_name }}">
                             {{ ingredient.ingredient_name }}
                         </option>
                         {% endfor %}
                     </datalist>
-                </div>
-                <div class="col-6">
-                    <label for="ingredientAmount">Quantity: </label>
-                    <input class="" type="text" id="ingredientAmount">
-                    <button class="btn btn-success" id="myButton">+</button>
 
+                </div>
+
+                <!-- Add ingredient quantity -->
+                <div class="col-2">
+                    <label class="form-label" for="ingredient_qty" >Quantity:</label>
+                    <input class="form-control" name="ingredient_qty" id="ingredient_qty" type="number">
+                </div>
+
+                <!-- Add ingredient unit -->
+                <div class="col-3">
+                    <label class="form-label" for="ingredient_unit" >Unit:</label>
+                    <div class="d-flex">
+                        <input class="form-control" name="ingredient_unit" id="ingredient_unit" type="text">
+                        <button class="btn btn-danger ms-4" id="ing_button">X</button>
+                    </div>
+                </div>
+
+            </div>
+                <div class="text-center mt-3">
+                    <button class="btn btn-success" id="ing_button">Add Line</button>
                 </div>
             </div>
 
+        
             <!-- Space where new ingredients will be added -->
-        </div>
-        <div class="newList" name="newList"></div>
+            <div class="newList" name="newList"></div>
 
-        <!-- enter description -->
-        <div class="mb-3">
-            <label for="description" class="form-label">Description: </label>
-            <div class="form-input">
-                <input class="form-control" id="recipe_description" name="recipe_description" type="text" minlength="5"
-                    maxlength="255">
+            <!-- Add description -->
+            <div class="col-12 mt-3">
+                <label class="form-label" for="description" >Description: </label>
+                <textarea class="form-control" id="recipe_description" name="recipe_description" type="text" minlength="5"
+                    maxlength="255" rows="3"></textarea>
             </div>
-        </div>
 
-        <!-- add recipe button -->
-        <div class="card-footer text-center">
-            <button class="btn btn-success" type="submit">
-                Add Recipe
-            </button>
+            <!-- add recipe button -->
+            <div class="text-center mt-3">
+                <button class="btn btn-success" type="submit">
+                    Add Recipe
+                </button>
+            </div>
         </div>
     </form>
 </div>
