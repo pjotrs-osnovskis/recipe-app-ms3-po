@@ -10,6 +10,30 @@
                 <div>{{ category.category_name }}</div>
             </a>
         </div>
+
+    
     {% endfor %}
 </div>
+
+<h3>Recipes</h3>
+
+<div class="row">
+    <!-- {% if recipes|length > 0 %} -->
+        <ul>
+            {% for recipe in recipes %}
+                <h5> {{ recipe.recipe_name }}</h5>
+                <p> {{ recipe.recipe_description }}</p>
+                <ul>
+                    {% for i in recipe.ingredients %}
+                        <li>{{ i.ingredient_name }}</li>
+                        <li>{{ i.ingredient_qty }}</li>
+                        <li>{{ i.ingredient_unit }}</li>
+                    {% endfor %}
+                </ul>
+                <span>Created on {{ recipe.creation_date.strftime('%B %d %Y') }} by {{ recipe.created_by }}</span>
+            {% endfor %}
+        </ul>
+    <!-- {% endif %} -->
+</div>
+
 {% endblock %}

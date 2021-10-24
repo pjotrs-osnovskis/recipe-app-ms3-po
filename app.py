@@ -22,9 +22,10 @@ mongo = PyMongo(app)
 # Home Page Route
 @app.route("/")
 def home_page():
+    ingredients = mongo.db.recipes.ingredients.find()
     categories = mongo.db.categories.find()
-    return render_template("home.html", categories=categories)
-
+    recipes = list(mongo.db.recipes.find())
+    return render_template("home.html", ingredients=ingredients, recipes=recipes, categories=categories)
 
 
 # Search - NOT WORKING YET!
@@ -134,7 +135,7 @@ def profile(username):
     if session["user"]:
         return render_template("profile.html", username=username)
     else:
-        print("Username: " + session["user"])
+        return redirect(url_for("login"))
 
 
 # Logout
@@ -154,6 +155,7 @@ def logout():
     session.pop("user")
     
     return redirect(url_for("login"))
+
 
 
 # Add recipe
@@ -191,6 +193,43 @@ def add_recipe():
     categories = mongo.db.categories.find()
     creation_date = mongo.db.recipes.find().sort("creation_date", 1)
     return render_template("add_recipe.html", creation_date=creation_date, categories=categories, ingredients=ingredients)
+
+
+# Edit recipe
+@app.route("/edit_recipe", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    if request.method == "POST":
+
+        name = request.form.getlist("ingredient_name")
+        qty = request.form.getlist("ingredient_qty")
+        unit = request.form.getlist("ingredient_unit")
+        item = list(zip(name, qty, unit))
+        item_list = []
+
+        for i in item:
+            item_list.append({
+                "ingredient_name": i[0],
+                "ingredient_qty": i[1],
+                "ingredient_unit": i[2]
+            })
+
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "recipe_name": request.form.get("recipe_name"),
+            "recipe_description": request.form.get("recipe_description"),
+            "ingredients": item_list,
+            "creation_date": datetime.now(),
+            "created_by": session["user"]
+        }
+
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
+        flash("Recipe Successfully Updated")
+    
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    ingredients = mongo.db.ingredients.find()
+    categories = mongo.db.categories.find()
+    creation_date = mongo.db.recipes.find().sort("creation_date", 1)
+    return render_template("add_recipe.html", recipe=recipe, creation_date=creation_date, categories=categories, ingredients=ingredients)
 
 
 

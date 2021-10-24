@@ -14,26 +14,23 @@ $('#reg-password, #confirm_password').on('keyup', function () {
 });
 
 
-
-
-
-
-
-
-
-
-
 function remove(ingredient){
-    /* Function to remove individual ingredient options that were added */
+    /* Function to remove individual ingredient option that was added */
     ingredient.parentNode.parentNode.parentNode.removeChild(ingredient.parentNode.parentNode);
 }
 
 $(function () {
-    $("#myButton").click(function (e) {
+    /* 
+        On-click Add Ingredient button function.
+
+        Adding extra input fields for more ingredients with Remove button 
+        if added too many or ingredient is no longer needed.
+    */
+    $("#addIngredient").click(function (e) {
         e.preventDefault();
         $("#ingredient_item").append(`
         <!-- Add ingredient item -->
-        <div class="mt-3" id="ingredient_item" name="ingredient_item">
+        <div class="row mt-3" id="ingredient_item" name="ingredient_item">
 
             <!-- Add Ingredient name -->
             <div class="col-md-6 col-sm-12">
