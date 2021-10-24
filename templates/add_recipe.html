@@ -18,13 +18,15 @@
             <!-- choose category -->
             <div class="col-md-4 col-sm-12">
                 <label class="form-label" for="category_name">Category:</label>
-                <select class="form-control" name="category_name" id="category_name" type="text" required> 
-                    {% for category in categories %}
-                    <option value="{{ category.category_name }}">
-                        {{ category.category_name }}
+                <input class="form-control" name="category_name" id="category_name" list="category_list" type="text" required>
+
+                <datalist id="category_list">
+                    {% for cat in categories %}
+                    <option value="{{ cat.category_name }}">
+                        {{ cat.category_name }}
                     </option>
                     {% endfor %}
-                </select>
+                </datalist>
             </div>
         </div>
 

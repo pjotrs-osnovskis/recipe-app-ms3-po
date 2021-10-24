@@ -196,7 +196,7 @@ def add_recipe():
 
 
 # Edit recipe
-@app.route("/edit_recipe", methods=["GET", "POST"])
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     if request.method == "POST":
 
@@ -229,7 +229,7 @@ def edit_recipe(recipe_id):
     ingredients = mongo.db.ingredients.find()
     categories = mongo.db.categories.find()
     creation_date = mongo.db.recipes.find().sort("creation_date", 1)
-    return render_template("add_recipe.html", recipe=recipe, creation_date=creation_date, categories=categories, ingredients=ingredients)
+    return render_template("edit_recipe.html", recipe=recipe, creation_date=creation_date, categories=categories, ingredients=ingredients)
 
 
 

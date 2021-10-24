@@ -28,7 +28,8 @@ $(function () {
     */
     $("#addIngredient").click(function (e) {
         e.preventDefault();
-        $("#ingredient_item").append(`
+        $("#ingredient_item").append(
+        `
         <!-- Add ingredient item -->
         <div class="row mt-3" id="ingredient_item" name="ingredient_item">
 
@@ -39,9 +40,9 @@ $(function () {
 
                 <datalist id="ingredients_list">
                     {% for ingredient in ingredients %}
-                    <option value="{{ ingredient.ingredient_name }}">
-                        {{ ingredient.ingredient_name }}
-                    </option>
+                        <option>
+                            {{ ingredient.ingredient_name }}
+                        </option>
                     {% endfor %}
                 </datalist>
 
