@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="categories-list scrolling-wrapper-flexbox" id="categoriesList">
-    <!-- Looping through categories in MongoDB and showing all. Plus fetching 
+    <!-- Looping through categories in MongoDB and showing all. Plus fetching
         images from static\img folder and combining them together in a block -->
     {% for category in categories %}
         <div class="categories-card" value="{{ category.category_name }}">
@@ -11,31 +11,53 @@
             </a>
         </div>
 
-    
+
     {% endfor %}
 </div>
 
 <h3>Recipes</h3>
 
-<div class="row">
+<div class="">
     <!-- {% if recipes|length > 0 %} -->
-        <ul>
-            {% for recipe in recipes %}
-                <h5> {{ recipe.recipe_name }}</h5>
-                <p> {{ recipe.category_name }}</p>
-                <p> {{ recipe.recipe_description }}</p>
-                <ul>
-                    {% for i in recipe.ingredients %}
-                        <li>{{ i.ingredient_name }}</li>
-                        <li>{{ i.ingredient_qty }}</li>
-                        <li>{{ i.ingredient_unit }}</li>
-                    {% endfor %}
-                </ul>
-                <span>Created on {{ recipe.creation_date.strftime('%B %d %Y') }} by {{ recipe.created_by }}</span>
-                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit</a>
 
-            {% endfor %}
+        <ul class="ms-3 me-3 p-0">
+
+                {% for recipe in recipes %}
+                <div class="card mt-5">
+
+                <div class="card-header">
+                    <div class="row">
+
+
+                    <div class="col-md-8 col-sm-12">
+                        <h5> {{ recipe.recipe_name }}</h5>
+                    </div>
+                    <div class="col-md-4 col-sm-12 d-flex justify-content-md-end">
+                        <p>Category: {{ recipe.category_name }}</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        {% for i in recipe.ingredients %}
+                            <li>{{ i.ingredient_name }}</li>
+                            <li>{{ i.ingredient_qty }}</li>
+                            <li>{{ i.ingredient_unit }}</li>
+                        {% endfor %}
+                    </ul>
+                    <h5>Description:</h5>
+                    <p> {{ recipe.recipe_description }}</p>
+                    <span>Created on {{ recipe.creation_date.strftime('%B %d %Y') }} by {{ recipe.created_by }}</span>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit</a>
+                </div>
+
+
+            </div>
+{% endfor %}
         </ul>
+
     <!-- {% endif %} -->
 
 </div>
