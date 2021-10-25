@@ -4,60 +4,83 @@
     <!-- Looping through categories in MongoDB and showing all. Plus fetching
         images from static\img folder and combining them together in a block -->
     {% for category in categories %}
-        <div class="categories-card" value="{{ category.category_name }}">
-            <a href="#">
-                <img src="static\img\{{ category.category_name.lower() }}.png" alt="category">
-                <div>{{ category.category_name }}</div>
-            </a>
-        </div>
+    <div class="categories-card" value="{{ category.category_name }}">
+        <a href="#">
+            <img src="static\img\{{ category.category_name.lower() }}.png" alt="category">
+            <div>{{ category.category_name }}</div>
+        </a>
+    </div>
 
 
     {% endfor %}
 </div>
 
-<h3>Recipes</h3>
+<h3 class="text-center mt-5">Recipes</h3>
 
-<div class="">
+<div class="row d-flex justify-content-center">
     <!-- {% if recipes|length > 0 %} -->
-
+    <div class="col-md-8 col-sm-12  ">
         <ul class="ms-3 me-3 p-0">
 
-                {% for recipe in recipes %}
-                <div class="card mt-5">
+            {% for recipe in recipes %}
+            <div class="card mt-5 drop-shadow recipe-card">
 
                 <div class="card-header">
                     <div class="row">
-
-
-                    <div class="col-md-8 col-sm-12">
-                        <h5> {{ recipe.recipe_name }}</h5>
-                    </div>
-                    <div class="col-md-4 col-sm-12 d-flex justify-content-md-end">
-                        <p>Category: {{ recipe.category_name }}</p>
-                    </div>
+                        <div class="col-md-8 col-sm-12">
+                            <h5> {{ recipe.recipe_name }}</h5>
+                        </div>
+                        <div class="col-md-4 col-sm-12 d-flex justify-content-md-end">
+                            <p>Category: {{ recipe.category_name }}</p>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <ul>
-                        {% for i in recipe.ingredients %}
-                            <li>{{ i.ingredient_name }}</li>
-                            <li>{{ i.ingredient_qty }}</li>
-                            <li>{{ i.ingredient_unit }}</li>
-                        {% endfor %}
-                    </ul>
                     <h5>Description:</h5>
-                    <p> {{ recipe.recipe_description }}</p>
-                    <span>Created on {{ recipe.creation_date.strftime('%B %d %Y') }} by {{ recipe.created_by }}</span>
+                    <div class="smooth-edges p-1 mt-2 mb-2">
+                        <p> {{ recipe.recipe_description }}</p>
+                    </div>
+
+
+                    <h5>Ingredients List:</h5>
+                    <table class="ingredients-table smooth-edges">
+                        <thead>
+                            <tr>
+                                <th>Nr</th>
+                                <th>Ingredient</th>
+                                <th>Qty</th>
+                                <th>Unit</th>
+                            </tr>
+                        </thead>
+                        {% for i in recipe.ingredients %}
+                        <tbody>
+                            <tr>
+                                <td><i class="fas fa-cookie-bite"></i></td>
+                                <td>{{ i.ingredient_name }}</td>
+                                <td>{{ i.ingredient_qty }}</td>
+                                <td>{{ i.ingredient_unit }}</td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+
                 </div>
                 <div class="card-footer">
-                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit</a>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <span>Created on {{ recipe.creation_date.strftime('%B %d, %Y') }} by <em>{{ recipe.created_by }}</em></span>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit</a>
+                        </div>
+                    </div>
                 </div>
 
 
             </div>
-{% endfor %}
+            {% endfor %}
         </ul>
-
+    </div>
     <!-- {% endif %} -->
 
 </div>

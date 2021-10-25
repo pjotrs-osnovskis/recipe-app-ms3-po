@@ -1,6 +1,15 @@
 
 /* ------------------ BASE ------------------ */
 
+.drop-shadow{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.smooth-edges{
+    border: 1px solid #DFDFDF;
+    border-radius: 5px;
+}
+
 /* BUTTONS */
 /* Remove outline from buttons amd forms */
 button:focus,
@@ -22,6 +31,11 @@ button i:hover {
 
 .navbar i {
     font-size: 1.5rem;
+}
+
+.desktop-search{
+    border: none;
+    outline: none;
 }
 
 /* LOGO */
@@ -145,9 +159,41 @@ https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp */
     margin-right: 0.5rem;
 }
 
+ /* ------ RECIPES CARDS ------ */
 
- /* ------ Ingredients ------ */
 
+ /* ------ INGREDIENTS ------ */
+ .ingredients-table{
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 100%;
+
+ }
+
+
+ .ingredients-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.ingredients-table th,
+.ingredients-table td {
+    padding: 12px 15px;
+}
+
+.ingredients-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.ingredients-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.ingredients-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
 
 
 /* MEDIA QUERIES - MOBILE VERSION */
@@ -240,5 +286,9 @@ https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp */
         margin: 0 1rem;
     }
 
+     /* ------ RECIPES CARDS ------ */
+     .recipe-card{
+         margin: 0 1rem;
+     }
 
 }

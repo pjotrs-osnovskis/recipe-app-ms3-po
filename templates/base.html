@@ -27,7 +27,7 @@
 <body class="container">
     <header>
         <!-- NAVBAR -->
-        <nav class="navbar navbar-expand-sm navbar-light">
+        <nav class="navbar navbar-expand-sm navbar-light drop-shadow smooth-edges">
             <div class="container-fluid">
                 <div class="logo">
                     <a class="navbar-brand" href="#"><i class="fas fa-utensils"></i> | recipehere</a>
@@ -42,13 +42,13 @@
                 <div class="collapse navbar-collapse text-end" id="navbarSupportedContent">
                     <!-- Menu for desktop -->
                     <div class="desktop-nav-menu d-none d-sm-block ms-auto">
-                        <ul class="navbar-nav ">
+                        <ul class="navbar-nav">
                             <li class="home-link nav-item">
                                 <a class="nav-link" href="{{ url_for('home_page') }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <form class="d-flex form-input">
-                                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                <form class="d-flex smooth-edges">
+                                    <input class="desktop-search ms-1" type="search" placeholder="Search" aria-label="Search">
                                     <button class="btn" type="submit"><i class="fas fa-search"></i></button>
                                 </form>
                             </li>
