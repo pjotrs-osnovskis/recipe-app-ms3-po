@@ -30,9 +30,9 @@ def home_page():
 # Search - NOT WORKING YET!
 @app.route("/search", methods=("GET", "POST"))
 def search():
-    query = request.form.get("query")
-    ingredients = list(mongo.db.ingredients.find({"$text": {"$search": query}}))
-    return render_template("add_recipe.html", ingredients=ingredients)
+    query = request.form.get("recipe_search")
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    return render_template("base.html", recipes=recipes)
 
 
 # Register user
@@ -102,7 +102,7 @@ def login():
                 # invalid password
                 message = Markup(
                         """
-                        <div class='message-button alert alert-success alert-dismissible fade show' role='alert'>
+                        <div class='message-button alert alert-danger alert-dismissible fade show' role='alert'>
                             <p>Incorrect Username and/or Password</p>
                             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'><span aria-hidden='true'></span></button>
                         </div>
@@ -114,7 +114,7 @@ def login():
             # If username does not exist show message
             message = Markup(
                     """
-                    <div class='message-button alert alert-success alert-dismissible fade show' role='alert'>
+                    <div class='message-button alert alert-danger alert-dismissible fade show' role='alert'>
                         <p>Incorrect Username and/or Password</p>
                         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'><span aria-hidden='true'></span></button>
                     </div>
@@ -132,7 +132,7 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     if session["user"]:
-        recipes = list(mongo.db.recipes.find())
+        recipes = list(mongo.db.recipes.find({"created_by": username}))
 
         return render_template("profile.html", username=username, recipes=recipes)
     else:
@@ -225,8 +225,6 @@ def edit_recipe(recipe_id):
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
         return redirect(url_for("profile", username=session["user"]))
 
-
-    
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     ingredients = mongo.db.ingredients.find()
     categories = mongo.db.categories.find()
@@ -236,7 +234,6 @@ def edit_recipe(recipe_id):
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
-    flash("Recipe Successfully Deleted")
     return redirect(url_for("profile", username=session["user"]))
 
 
