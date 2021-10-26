@@ -4,6 +4,7 @@ from flask import (
     Flask, flash, render_template, 
     redirect, request, session, url_for, Markup)
 from flask_pymongo import PyMongo
+from pymongo import TEXT
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
@@ -30,9 +31,18 @@ def home_page():
 # Search - NOT WORKING YET!
 @app.route("/search", methods=("GET", "POST"))
 def search():
+    """
+        Formatting information for create_index found here: https://stackoverflow.com/questions/56474470/pymongo-text-index-formatting
+    """
+    index_name = "my_index"
+    # mongo.db.recipes.create_index([("", TEXT)])
+    # mongo.db.recipes.create_index([("recipe_name", TEXT)])
+    mongo.db.recipes.create_index([('category_name', TEXT)], name=index_name, unique=False)
+
     query = request.form.get("recipe_search")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
-    return render_template("base.html", recipes=recipes)
+    print(recipes)
+    return render_template("search_results.html", recipes=recipes)
 
 
 # Register user

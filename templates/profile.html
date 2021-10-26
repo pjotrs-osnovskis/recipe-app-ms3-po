@@ -8,8 +8,8 @@
     </div>
 
     <div class="row d-flex justify-content-center">
+        {% if recipes %}
         {% for recipe in recipes %}
-            {% if session.user|lower == recipe.created_by|lower %}
                 <div class="col-md-8 col-sm-12 ms-3 me-3 p-0 ">
                     <div class="card mt-5 drop-shadow recipe-card">
                         <div class="card-header">
@@ -23,9 +23,11 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <h5>Description:</h5>
-                            <div class="smooth-edges p-1 mt-2 mb-2">
-                                <p> {{ recipe.recipe_description }}</p>
+                            <div class="mb-3">
+                                <h5 class="mb-3">Description:</h5>
+                                <div class="background smooth-edges p-2 mt-2 mb-2">
+                                    <p> {{ recipe.recipe_description }}</p>
+                                </div>
                             </div>
                             <h5>Ingredients List:</h5>
                             <table class="ingredients-table smooth-edges">
@@ -63,11 +65,15 @@
                         </div>
                     </div>
                 </div>
+            {% endfor %}
             {% else %}
-
-            <h4>You have no recipes yet</h4>
-        
+            <div class="row mt-5">
+                <div class="col text-center">
+                    <h4>You have no recipes yet... </h4>
+                    <a href="{{ url_for('add_recipe') }}">Create one now!</a>
+                </div>
+            </div>
             {% endif %}
-        {% endfor %}
+        
     </div>
 {% endblock %}

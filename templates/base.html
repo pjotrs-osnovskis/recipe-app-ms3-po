@@ -30,7 +30,7 @@
         <nav class="navbar navbar-expand-sm navbar-light drop-shadow smooth-edges">
             <div class="container-fluid">
                 <div class="logo">
-                    <a class="navbar-brand" href="#"><i class="fas fa-utensils"></i> | recipehere</a>
+                    <a class="navbar-brand" href="{{ url_for('home_page') }}"><i class="fas fa-utensils"></i> | recipehere</a>
                 </div>
 
                 <button id="ChangeToggle" class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -47,26 +47,33 @@
                                 <a class="nav-link" href="{{ url_for('home_page') }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <form class="d-flex smooth-edges">
-                                    <input class="desktop-search ms-1" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                                <form class="d-flex smooth-edges" action="{{ url_for('search') }}" method="post">
+                                    <input class="desktop-search ms-1" name="recipe_search" id="recipe_search" type="text" placeholder="Search">
+                                    <button class="btn" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
                                 </form>
                             </li>
                             <li class="nav-item">
+                                {% if session.user %}
                                 <div class="user-button dropdown">
                                     <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="far fa-user-circle"></i>
                                     </button>
+                                    
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        {% if session.user %}
+                                        
                                         <li><a class="dropdown-item" href="{{ url_for('profile', username=session.user) }}"> {{ session.user.capitalize() }}</i></a></li>
-                                        <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout<i class="fas fa-user-times"></i></a></li>
-                                        {% else %}
-                                        <li><a class="dropdown-item" href="{{ url_for('login') }}">Login<i class="fas fa-user"></i></a></li>
-                                        <li><a class="dropdown-item" href="{{ url_for('register') }}">Register<i class="fas fa-user-plus"></i></a></li>
-                                        {% endif %}
+                                        <li><a class="dropdown-item" href="{{ url_for('add_recipe') }}">Create Recipe</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
                                     </ul>
+
                                 </div>
+                                {% else %}
+                                    <li><a class="btn" href="{{ url_for('login') }}">Login <i class="fas fa-user"></i></a></li>
+                                    <li><a class="btn" href="{{ url_for('register') }}">Register <i class="fas fa-user-plus"></i></a></li>
+                                {% endif %}
+
                             </li>
                         </ul>
                     </div>
@@ -83,6 +90,7 @@
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('home_page') }}">Home</a></li>
                             {% if session.user %}
                             <li><a class="dropdown-item" href="{{ url_for('profile', username=session.user) }}"> {{ session.user.capitalize() }}'s Profile</i></a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('add_recipe') }}">Create Recipe</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
                             {% else %}
                             <li><a class="dropdown-item" href="{{ url_for('login') }}">Login</a></li>
@@ -102,7 +110,6 @@
             </div>
         </nav>
     </header>
-
 
 
 

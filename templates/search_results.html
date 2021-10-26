@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="text-center mt-5">Search results</h3>
+{% if recipes|length != 0 %}
+{% for recipe in recipes %}
+
+<div class="row d-flex justify-content-center">
+        <div class="col-md-8 col-sm-12">
+            <ul class="ms-3 me-3 p-0">
+
+                <div class="card mt-5 drop-shadow recipe-card">
+
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-12">
+                                <h5> {{ recipe.recipe_name }}</h5>
+                            </div>
+                            <div class="col-md-4 col-sm-12 d-flex justify-content-md-end">
+                                <p>Category: {{ recipe.category_name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5>Description:</h5>
+                        <div class="smooth-edges p-1 mt-2 mb-2">
+                            <p> {{ recipe.recipe_description }}</p>
+                        </div>
+
+                        <h5>Ingredients List:</h5>
+                        <table class="ingredients-table smooth-edges">
+                            <thead>
+                                <tr>
+                                    <th>Nr</th>
+                                    <th>Ingredient</th>
+                                    <th>Qty</th>
+                                    <th>Unit</th>
+                                </tr>
+                            </thead>
+                            {% for i in recipe.ingredients %}
+                            <tbody>
+                                <tr>
+                                    <td><i class="fas fa-cookie-bite"></i></td>
+                                    <td>{{ i.ingredient_name }}</td>
+                                    <td>{{ i.ingredient_qty }}</td>
+                                    <td>{{ i.ingredient_unit }}</td>
+                                </tr>
+                            </tbody>
+                            {% endfor %}
+                        </table>
+
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <span>Created on {{ recipe.creation_date.strftime('%B %d, %Y') }} by <em>{{ recipe.created_by }}</em></span>
+                            </div>
+                            {% if session.user|lower == recipe.created_by|lower %}
+                            <div class="col-md-4 text-end">
+                                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete</a>
+                                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+        </ul>
+    </div>
+
+</div>
+{% endfor %}
+
+{% else %}
+<div class="row mt-5">
+    <div class="col text-center">
+        <h4>No recipes found... </h4>
+        <a href="{{ url_for('home_page') }}">Have a look on homepage</a>
+    </div>
+</div>
+{% endif %}
+
+
+{% endblock %}

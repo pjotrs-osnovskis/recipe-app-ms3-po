@@ -4,21 +4,18 @@
     <!-- Looping through categories in MongoDB and showing all. Plus fetching
         images from static\img folder and combining them together in a block -->
     {% for category in categories %}
-    <div class="categories-card" value="{{ category.category_name }}">
-        <a href="#">
+    <div class="categories-card" value="{{ category.category_name }}" name="category_icon">
+        <a href="">
             <img src="static\img\{{ category.category_name.lower() }}.png" alt="category">
             <div>{{ category.category_name }}</div>
         </a>
     </div>
-
-
     {% endfor %}
 </div>
 
 <h3 class="text-center mt-5">Recipes</h3>
 
 <div class="row d-flex justify-content-center">
-    <!-- {% if recipes|length > 0 %} -->
     <div class="col-md-8 col-sm-12  ">
         <ul class="ms-3 me-3 p-0">
 
@@ -84,7 +81,6 @@
             {% endfor %}
         </ul>
     </div>
-    <!-- {% endif %} -->
 
 </div>
 
