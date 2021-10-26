@@ -22,10 +22,9 @@ mongo = PyMongo(app)
 # Home Page Route
 @app.route("/")
 def home_page():
-    ingredients = mongo.db.recipes.ingredients.find()
     categories = mongo.db.categories.find()
-    recipes = list(mongo.db.recipes.find())
-    return render_template("home.html", ingredients=ingredients, recipes=recipes, categories=categories)
+    recipes = list(mongo.db.recipes.find().sort('creation_date', -1))
+    return render_template("home.html", recipes=recipes, categories=categories)
 
 
 # Search - NOT WORKING YET!
@@ -133,7 +132,9 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     if session["user"]:
-        return render_template("profile.html", username=username)
+        recipes = list(mongo.db.recipes.find())
+
+        return render_template("profile.html", username=username, recipes=recipes)
     else:
         return redirect(url_for("login"))
 
@@ -152,7 +153,7 @@ def logout():
             </div>
             """)
     flash(message)
-    session.pop("user")
+    session.clear()
     
     return redirect(url_for("login"))
 
@@ -186,7 +187,7 @@ def add_recipe():
         }
 
         mongo.db.recipes.insert_one(recipe)
-        return redirect( url_for("add_recipe") )
+        return redirect(url_for("profile", username=session["user"]))
     
 
     ingredients = mongo.db.ingredients.find()
@@ -221,9 +222,10 @@ def edit_recipe(recipe_id):
             "creation_date": datetime.now(),
             "created_by": session["user"]
         }
-
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
-        flash("Recipe Successfully Updated")
+        return redirect(url_for("profile", username=session["user"]))
+
+
     
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     ingredients = mongo.db.ingredients.find()
@@ -231,6 +233,11 @@ def edit_recipe(recipe_id):
     creation_date = mongo.db.recipes.find().sort("creation_date", 1)
     return render_template("edit_recipe.html", recipe=recipe, creation_date=creation_date, categories=categories, ingredients=ingredients)
 
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    flash("Recipe Successfully Deleted")
+    return redirect(url_for("profile", username=session["user"]))
 
 
 # Admin - List ingredients
