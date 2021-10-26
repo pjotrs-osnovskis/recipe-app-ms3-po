@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="categories-list scrolling-wrapper-flexbox" id="categoriesList">
+<div class="mt-3 categories-list scrolling-wrapper-flexbox" id="categoriesList">
     <!-- Looping through categories in MongoDB and showing all. Plus fetching
         images from static\img folder and combining them together in a block -->
     {% for category in categories %}
@@ -70,9 +70,12 @@
                         <div class="col-md-8">
                             <span>Created on {{ recipe.creation_date.strftime('%B %d, %Y') }} by <em>{{ recipe.created_by }}</em></span>
                         </div>
+                        {% if session.user|lower == recipe.created_by|lower %}
                         <div class="col-md-4 text-end">
+                            <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete</a>
                             <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit</a>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
 
