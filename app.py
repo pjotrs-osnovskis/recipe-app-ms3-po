@@ -34,15 +34,11 @@ def search():
     """
         Formatting information for create_index found here: https://stackoverflow.com/questions/56474470/pymongo-text-index-formatting
     """
-    index_name = "my_index"
-    # mongo.db.recipes.create_index([("", TEXT)])
-    # mongo.db.recipes.create_index([("recipe_name", TEXT)])
-    mongo.db.recipes.create_index([('category_name', TEXT)], name=index_name, unique=False)
-
     query = request.form.get("recipe_search")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
-    print(recipes)
     return render_template("search_results.html", recipes=recipes)
+
+    # use same functionality for categoreis icons, so it grabs item like in query, then grabs argument from it and uses it as search text
 
 
 # Register user

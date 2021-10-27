@@ -16,21 +16,20 @@
 <h3 class="text-center mt-5">Recipes</h3>
 
 <div class="row d-flex justify-content-center">
-    <div class="col-md-8 col-sm-12  ">
-        <ul class="ms-3 me-3 p-0">
-
+    <div class="">
+        <ul class="list-group list-group-horizontal" id="recipes_home">
             {% for recipe in recipes %}
-            <div class="card mt-5 drop-shadow recipe-card">
+            <li class="card mt-5 list-group-item drop-shadow recipe-card">
                 <!-- Recipe card header -->
                 <div class="card-header">
                     <div class="row">
                         <!-- Show recipe name -->
-                        <div class="col-md-8 col-sm-12">
+                        <div class="col-md-7 col-sm-12 recipe-name">
                             <h5> {{ recipe.recipe_name }}</h5>
                         </div>
                         <!-- Show recipe category -->
-                        <div class="col-md-4 col-sm-12 d-flex justify-content-md-end">
-                            <p>Category: {{ recipe.category_name }}</p>
+                        <div class="col-md-5 col-sm-12 d-flex justify-content-md-end recipe-category">
+                            <p><i class="fas fa-folder-open"></i> {{ recipe.category_name }}</p>
                         </div>
                     </div>
                 </div>
@@ -79,11 +78,9 @@
                         </div>
                         {% endif %}
                     </div>
-                </div>
-
-
-            </div>
+            </li>
             {% endfor %}
+        </div>
         </ul>
     </div>
 

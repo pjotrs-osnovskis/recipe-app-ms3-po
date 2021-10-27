@@ -116,7 +116,7 @@
         </nav>
     </header>
 
-    Main container with data from templates
+    <!-- Main container with data from templates -->
     <main class="container">
         {% block content %}
         {% endblock %}
@@ -133,6 +133,8 @@
 
     <!-- Custom JS -->
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/random.js') }}"></script>
+
 
     {% block scripts %}
     {% endblock %}
