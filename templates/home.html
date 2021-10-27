@@ -21,29 +21,32 @@
 
             {% for recipe in recipes %}
             <div class="card mt-5 drop-shadow recipe-card">
-
+                <!-- Recipe card header -->
                 <div class="card-header">
                     <div class="row">
+                        <!-- Show recipe name -->
                         <div class="col-md-8 col-sm-12">
                             <h5> {{ recipe.recipe_name }}</h5>
                         </div>
+                        <!-- Show recipe category -->
                         <div class="col-md-4 col-sm-12 d-flex justify-content-md-end">
                             <p>Category: {{ recipe.category_name }}</p>
                         </div>
                     </div>
                 </div>
+                <!-- Show recipe description -->
                 <div class="card-body">
                     <h5>Description:</h5>
                     <div class="smooth-edges p-1 mt-2 mb-2">
                         <p> {{ recipe.recipe_description }}</p>
                     </div>
 
-
+                    <!-- List recipes ingredients -->
                     <h5>Ingredients List:</h5>
                     <table class="ingredients-table smooth-edges">
                         <thead>
                             <tr>
-                                <th>Nr</th>
+                                <th></th>
                                 <th>Ingredient</th>
                                 <th>Qty</th>
                                 <th>Unit</th>
@@ -64,9 +67,11 @@
                 </div>
                 <div class="card-footer">
                     <div class="row">
+                        <!-- Creation date and user -->
                         <div class="col-md-8">
                             <span>Created on {{ recipe.creation_date.strftime('%B %d, %Y') }} by <em>{{ recipe.created_by }}</em></span>
                         </div>
+                        <!-- If logged in, show Delete and Edir options -->
                         {% if session.user|lower == recipe.created_by|lower %}
                         <div class="col-md-4 text-end">
                             <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete</a>

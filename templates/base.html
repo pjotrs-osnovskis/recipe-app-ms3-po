@@ -29,6 +29,7 @@
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-sm navbar-light drop-shadow smooth-edges">
             <div class="container-fluid">
+                <!-- Logo -->
                 <div class="logo">
                     <a class="navbar-brand" href="{{ url_for('home_page') }}"><i class="fas fa-utensils"></i> | recipehere</a>
                 </div>
@@ -55,20 +56,22 @@
                                 </form>
                             </li>
                             <li class="nav-item">
+                                <!-- If logged in, show relevant buttons -->
                                 {% if session.user %}
                                 <div class="user-button dropdown">
                                     <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="far fa-user-circle"></i>
                                     </button>
-                                    
+
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        
+
                                         <li><a class="dropdown-item" href="{{ url_for('profile', username=session.user) }}"> {{ session.user.capitalize() }}</i></a></li>
                                         <li><a class="dropdown-item" href="{{ url_for('add_recipe') }}">Create Recipe</a></li>
                                         <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
                                     </ul>
 
                                 </div>
+                                <!-- If NOT logged - buttons -->
                                 {% else %}
                                     <li><a class="btn" href="{{ url_for('login') }}">Login <i class="fas fa-user"></i></a></li>
                                     <li><a class="btn" href="{{ url_for('register') }}">Register <i class="fas fa-user-plus"></i></a></li>
@@ -88,10 +91,12 @@
                         <!-- Link List -->
                         <ul class="nav-link-list">
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('home_page') }}">Home</a></li>
+                            <!-- If logged in buttons -->
                             {% if session.user %}
                             <li><a class="dropdown-item" href="{{ url_for('profile', username=session.user) }}"> {{ session.user.capitalize() }}'s Profile</i></a></li>
                             <li><a class="dropdown-item" href="{{ url_for('add_recipe') }}">Create Recipe</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
+                            <!-- If NOT logged in buttons -->
                             {% else %}
                             <li><a class="dropdown-item" href="{{ url_for('login') }}">Login</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('register') }}">Register</a></li>
@@ -111,8 +116,7 @@
         </nav>
     </header>
 
-
-
+    Main container with data from templates
     <main class="container">
         {% block content %}
         {% endblock %}

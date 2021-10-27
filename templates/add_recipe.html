@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Secion name -->
 <div class="text-center mt-3">
     <h3>Create New Recipe</h3>
 </div>
@@ -9,17 +10,18 @@
     <form class="col-sm-12 col-md-8" id="add_recipe_form" name="add_recipe" method="POST" action="{{ url_for('add_recipe') }}">
         <div class="row">
 
-            <!-- recipe name -->
+            <!-- Recipe name input -->
             <div class="col-md-8 col-sm-12">
                 <label class="form-label" for="recipe_name">Recipe name: </label>
                 <input class="form-control" name="recipe_name" id="recipe_name" type="text" minlength="5" maxlength="50" required>
             </div>
 
-            <!-- choose category -->
+            <!-- Recipe category input -->
             <div class="col-md-4 col-sm-12">
                 <label class="form-label" for="category_name">Category:</label>
                 <input class="form-control" name="category_name" id="category_name" list="category_list" type="search" required>
 
+                <!-- Loop through categories, to help selet when typing in a category -->
                 <datalist id="category_list">
                     {% for cat in categories %}
                     <option value="{{ cat.category_name }}">
@@ -30,7 +32,7 @@
             </div>
         </div>
 
-        <!-- Ingredients List -->
+        <!-- Place for ingredients list that is being created with Add Ingredient button -->
         <div id="ingredient_item"></div>
 
         <!-- Add New Ingredient Button -->
@@ -38,7 +40,7 @@
             <button class="btn btn-success" id="addIngredient">Add Ingredient</button>
         </div>
 
-        <!-- Add description -->
+        <!-- Recipe Description textarea -->
         <div class="col-12 mt-3">
             <label class="form-label" for="description" >Description:</label>
             <textarea class="form-control" id="recipe_description" name="recipe_description" type="text" minlength="5"
