@@ -2,88 +2,88 @@
 {% block content %}
 <div class="mt-3 categories-list scrolling-wrapper-flexbox" id="categoriesList">
     <!-- Looping through categories in MongoDB and showing all. Plus fetching
-        images from static\img folder and combining them together in a block -->
+        images from static\img folder and combining them together in a block 
+        when clicked - shows search results with that name-->
     {% for category in categories %}
-    <div class="categories-card" value="{{ category.category_name }}" name="category_icon">
-        <a href="">
+    <form action="{{ url_for('search') }}" method="POST">
+    <div class="categories-card" value="{{ category.category_name }}" type="text" name="category_icon" method="GET">
+        <button type="submit" >
             <img src="static\img\{{ category.category_name.lower() }}.png" alt="category">
-            <div>{{ category.category_name }}</div>
-        </a>
+            <input value="{{ category.category_name }}" type="text" name="recipe_search" id="categoty_search" type="text">{{ category.category_name }}</input>
+        </button>
     </div>
+</form>
     {% endfor %}
 </div>
 
 <h3 class="text-center mt-5">Recipes</h3>
 
 <div class="row d-flex justify-content-center">
-    <div class="">
-        <ul class="list-group list-group-horizontal" id="recipes_home">
-            {% for recipe in recipes %}
-            <li class="card mt-5 list-group-item drop-shadow recipe-card">
-                <!-- Recipe card header -->
-                <div class="card-header">
-                    <div class="row">
-                        <!-- Show recipe name -->
-                        <div class="col-md-7 col-sm-12 recipe-name">
-                            <h5> {{ recipe.recipe_name }}</h5>
-                        </div>
-                        <!-- Show recipe category -->
-                        <div class="col-md-5 col-sm-12 d-flex justify-content-md-end recipe-category">
-                            <p><i class="fas fa-folder-open"></i> {{ recipe.category_name }}</p>
-                        </div>
+    <ul class="list-group list-group-horizontal" id="recipes_home">
+        {% for recipe in recipes %}
+        <li class="card mt-5 list-group-item drop-shadow recipe-card">
+            <!-- Recipe card header -->
+            <div class="card-header">
+                <div class="row">
+                    <!-- Show recipe name -->
+                    <div class="col-md-7 col-sm-12 recipe-name">
+                        <h5> {{ recipe.recipe_name }}</h5>
+                    </div>
+                    <!-- Show recipe category -->
+                    <div class="col-md-5 col-sm-12 d-flex justify-content-md-end recipe-category">
+                        <p><i class="fas fa-folder-open"></i> {{ recipe.category_name }}</p>
                     </div>
                 </div>
-                <!-- Show recipe description -->
-                <div class="card-body">
-                    <h5>Description:</h5>
-                    <div class="smooth-edges p-1 mt-2 mb-2">
-                        <p> {{ recipe.recipe_description }}</p>
-                    </div>
-
-                    <!-- List recipes ingredients -->
-                    <h5>Ingredients List:</h5>
-                    <table class="ingredients-table smooth-edges">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Ingredient</th>
-                                <th>Qty</th>
-                                <th>Unit</th>
-                            </tr>
-                        </thead>
-                        {% for i in recipe.ingredients %}
-                        <tbody>
-                            <tr>
-                                <td><i class="fas fa-cookie-bite"></i></td>
-                                <td>{{ i.ingredient_name }}</td>
-                                <td>{{ i.ingredient_qty }}</td>
-                                <td>{{ i.ingredient_unit }}</td>
-                            </tr>
-                        </tbody>
-                        {% endfor %}
-                    </table>
-
+            </div>
+            <!-- Show recipe description -->
+            <div class="card-body">
+                <h5>Description:</h5>
+                <div class="smooth-edges p-1 mt-2 mb-2">
+                    <p> {{ recipe.recipe_description }}</p>
                 </div>
-                <div class="card-footer">
-                    <div class="row">
-                        <!-- Creation date and user -->
-                        <div class="col-md-8">
-                            <span>Created on {{ recipe.creation_date.strftime('%B %d, %Y') }} by <em>{{ recipe.created_by }}</em></span>
-                        </div>
-                        <!-- If logged in, show Delete and Edir options -->
-                        {% if session.user|lower == recipe.created_by|lower %}
-                        <div class="col-md-4 text-end">
-                            <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete</a>
-                            <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit</a>
-                        </div>
-                        {% endif %}
+
+                <!-- List recipes ingredients -->
+                <h5>Ingredients List:</h5>
+                <table class="ingredients-table smooth-edges">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Ingredient</th>
+                            <th>Qty</th>
+                            <th>Unit</th>
+                        </tr>
+                    </thead>
+                    {% for i in recipe.ingredients %}
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-cookie-bite"></i></td>
+                            <td>{{ i.ingredient_name }}</td>
+                            <td>{{ i.ingredient_qty }}</td>
+                            <td>{{ i.ingredient_unit }}</td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <!-- Creation date and user -->
+                    <div class="col-md-8">
+                        <span>Created on {{ recipe.creation_date.strftime('%B %d, %Y') }} by <em>{{ recipe.created_by }}</em></span>
                     </div>
-            </li>
-            {% endfor %}
-        </div>
-        </ul>
+                    <!-- If logged in, show Delete and Edir options -->
+                    {% if session.user|lower == recipe.created_by|lower %}
+                    <div class="col-md-4 text-end">
+                        <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete</a>
+                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit</a>
+                    </div>
+                    {% endif %}
+                </div>
+        </li>
+        {% endfor %}
     </div>
-
+    </ul>
 </div>
 
 {% endblock %}

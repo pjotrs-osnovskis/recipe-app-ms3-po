@@ -28,7 +28,7 @@ def home_page():
     return render_template("home.html", recipes=recipes, categories=categories)
 
 
-# Search - NOT WORKING YET!
+# Search 
 @app.route("/search", methods=("GET", "POST"))
 def search():
     """
@@ -37,8 +37,6 @@ def search():
     query = request.form.get("recipe_search")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
     return render_template("search_results.html", recipes=recipes)
-
-    # use same functionality for categoreis icons, so it grabs item like in query, then grabs argument from it and uses it as search text
 
 
 # Register user

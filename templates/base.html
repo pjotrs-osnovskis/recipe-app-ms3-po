@@ -48,7 +48,8 @@
                                 <a class="nav-link" href="{{ url_for('home_page') }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <form class="d-flex smooth-edges" action="{{ url_for('search') }}" method="post">
+                                <!-- Search form -->
+                                <form class="d-flex smooth-edges" action="{{ url_for('search') }}" method="POST">
                                     <input class="desktop-search ms-1" name="recipe_search" id="recipe_search" type="text" placeholder="Search">
                                     <button class="btn" type="submit">
                                         <i class="fas fa-search"></i>
