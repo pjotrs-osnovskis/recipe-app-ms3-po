@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,100;1,200;1,300&family=Lato:wght@100;300&display=swap');
+:root {
+    --Lato: 'Lato', sans-serif;
+    --Josefin: 'Josefin Sans', sans-serif;
+}
+
 html, body {
     height: 100%;
 }
@@ -7,6 +13,15 @@ body {
     flex-direction: column;
 }
 
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
 
 /* ================== NAVIGATION ================== */
 .navigation {
@@ -23,7 +38,11 @@ body {
     padding: 0 0.5rem 0 0;
     margin: 0;
     text-decoration: none;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
+    font-family: var(--Lato);
+    font-weight: 300;
+    text-transform: uppercase;
+
 }
 .navigation a i{
     padding: 0 0 0 0.25rem;
@@ -42,6 +61,7 @@ body {
     font-size: 2rem;
     vertical-align: middle;
 }
+
 
 /*
     Hide the link that should open and close the navigation
@@ -90,6 +110,11 @@ body {
 }
 
 /* Categories general styles */
+
+.categories button{
+    cursor: pointer;
+}
+
 .categories-list {
     padding: 0;
     margin: 0 auto;
@@ -110,6 +135,8 @@ body {
     padding: 0;
     border: none;
     background: none;
+    font-family: var(--Lato);
+    font-size: 1.25rem;
 }
 
 .categories-card img {
@@ -119,6 +146,7 @@ body {
 
 .categories-card input {
     display: none;
+
 }
 
 /* ================== SEARCH ================== */
@@ -126,15 +154,12 @@ body {
     width: 20rem;
     margin: auto;
 }
-
 /* 
     Search styling code taken from here:
     https://getcssscan.com/css-box-shadow-examples 
 */
-
 .search{
     margin: 2rem 0;
-    /* border: 1px solid #000; */
     border-radius: 25px;
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
@@ -154,7 +179,13 @@ body {
     font-size: 1.2rem;
 }
 .search input{
-    flex-grow:2
+    flex-grow: 2;
+    font-family: var(--Lato)
+}
+
+.search button{
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 /*
@@ -168,16 +199,27 @@ body {
     transition: background-color 5000s ease-in-out 0s;
 }
 
-.search button{
-    cursor: pointer;
-    border-radius: 50%;
-}
-
 /* ================== MAIN CONTAINER ================== */
 .main-container{
     width: 75%;
     margin: 0 auto;
     flex: 1 0 auto;
+}
+
+.main-container .title{
+    font-family: var(--Lato);
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 3rem;
+    margin: 1rem 0;
+}
+
+.main-container .subtitle{
+    font-family: var(--Josefin);
+    text-align: center;
+    font-size: 1.5rem;
+    margin: .5rem 0;
 }
 
 /* ================== FOOTER ================== */
@@ -200,19 +242,111 @@ body {
 }
 
 .footer i{
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin: 1rem .75rem;
     vertical-align: middle;
 }
 
+/* ================== HOME ================== */
+#recipes_home{
+    margin: 0;
+    padding: 0;
+}
 
-/* ================== MOBILE VIEW ================== */
-/* ================== MOBILE VIEW ================== */
-/* ================== MOBILE VIEW ================== */
+.recipe-card{
+    margin: 1rem 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;    padding: 1rem;
+    list-style: none;
+}
+
+.card-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #000;
+}
+
+.recipe-name h4,
+.recipe-category p{
+    margin: 0 0 .75rem 0;
+}
+
+.recipe-name,
+.recipe-category{
+    margin: 0;
+    vertical-align: middle;
+}
+
+.recipe-name h4{
+    font-size: 2rem;
+    font-family: var(--Lato);
+}
+
+.recipe-category{
+    text-align: end;
+}
+
+.recipe-category img{
+    height: 3rem;
+}
+
+.card-body h5{
+    font-family: var(--Lato);
+    font-size: 1.5rem;
+    margin: .75rem 0;
+}
+
+.recipe-description p{
+    font-family: var(--Josefin);
+    font-size: 1.5rem;
+    margin: 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #000;
+}
+
+/* 
+Code idea was taken from here:
+https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-grid/
+*/
+.ingr-cooktime > ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 1rem;
+}
+
+
+.ingredients-list ul,
+.cooking-time ul{
+    margin: 0;
+    padding: 0;
+}
+
+.ingredients-list li,
+.cooking-time li{
+    list-style: none;
+    font-family: var(--Lato);
+    font-size: 1.25rem;
+}
+
+.cooking-time{
+    text-align: end;
+}
+
+.recipe-footer{
+    font-family: var(--Lato);
+    text-align: center;
+    margin-top: 1rem;
+}
+/* ================== MOBILE VIEW ==================  MOBILE VIEW ================== */
+/* ================== MOBILE VIEW ==================  MOBILE VIEW ================== */
 
 @media screen and (max-width: 600px) {
 
     /* ================== NAVIGATION ================== */
+
     .navigation a:not(:first-child) {
         display: none;
     }
@@ -252,7 +386,7 @@ body {
         text-align: center;
     }
 
-/* ================== NAVIGATION ================== */
+    /* ================== NAVIGATION ================== */
 
     .categories-list::-webkit-scrollbar,
     .categories-list::-webkit-scrollbar-track,
@@ -261,8 +395,8 @@ body {
     }
 
     /* ================== MAIN CONTAINER ================== */
-.main-container{
-    width: 95%;
-}
+    .main-container{
+        width: 95%;
+    }
 
 }
