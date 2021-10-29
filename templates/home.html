@@ -4,9 +4,9 @@
     <!-- Looping through categories in MongoDB and showing all. Plus fetching
         images from static\img folder and combining them together in a block 
         when clicked - shows search results with that name-->
-    {% for category in categories %}
+    {% for category in categories|sort(attribute='category_name') %}
     <form action="{{ url_for('search') }}" method="POST">
-    <div class="categories-card" value="{{ category.category_name }}" type="text" name="category_icon" method="GET">
+    <div class="categories-card" value="{{ category.category_name }}">
         <button type="submit" >
             <img src="static\img\{{ category.category_name.lower() }}.png" alt="category">
             <input value="{{ category.category_name }}" type="text" name="recipe_search" id="categoty_search" type="text">{{ category.category_name }}</input>
@@ -16,12 +16,15 @@
     {% endfor %}
 </div>
 
-<h3 class="text-center mt-5">Recipes</h3>
+<div class="text-center">
+    <h3 class="mt-3">Welcome to recipehere!</h3>
+    <p>Find and share best recipes!</p>
+</div>
 
 <div class="row d-flex justify-content-center">
-    <ul class="list-group list-group-horizontal" id="recipes_home">
+    <ul class="col-sm-12 col-md-8 list-group list-group-horizontal" id="recipes_home">
         {% for recipe in recipes %}
-        <li class="card mt-5 list-group-item drop-shadow recipe-card">
+        <li class="card mt-3 list-group-item drop-shadow recipe-card">
             <!-- Recipe card header -->
             <div class="card-header">
                 <div class="row">
@@ -72,7 +75,7 @@
                     <div class="col-md-8">
                         <span>Created on {{ recipe.creation_date.strftime('%B %d, %Y') }} by <em>{{ recipe.created_by }}</em></span>
                     </div>
-                    <!-- If logged in, show Delete and Edir options -->
+                    <!-- If logged in, show Delete and Edit options -->
                     {% if session.user|lower == recipe.created_by|lower %}
                     <div class="col-md-4 text-end">
                         <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete</a>
@@ -84,6 +87,7 @@
         {% endfor %}
     </div>
     </ul>
+
 </div>
 
 {% endblock %}

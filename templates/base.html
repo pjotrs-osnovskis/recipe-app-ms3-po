@@ -11,10 +11,6 @@
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css" />
 
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
 
@@ -24,104 +20,73 @@
     <title>recipeshere</title>
 </head>
 
-<body class="container">
+<body>
     <header>
-        <!-- NAVBAR -->
-        <nav class="navbar navbar-expand-sm navbar-light drop-shadow smooth-edges">
-            <div class="container-fluid">
-                <!-- Logo -->
-                <div class="logo">
-                    <a class="navbar-brand" href="{{ url_for('home_page') }}"><i class="fas fa-utensils"></i> | recipehere</a>
-                </div>
-
-                <button id="ChangeToggle" class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse text-end" id="navbarSupportedContent">
-                    <!-- Menu for desktop -->
-                    <div class="desktop-nav-menu d-none d-sm-block ms-auto">
-                        <ul class="navbar-nav">
-                            <li class="home-link nav-item">
-                                <a class="nav-link" href="{{ url_for('home_page') }}">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <!-- Search form -->
-                                <form class="d-flex smooth-edges" action="{{ url_for('search') }}" method="POST">
-                                    <input class="desktop-search ms-1" name="recipe_search" id="recipe_search" type="text" placeholder="Search">
-                                    <button class="btn" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </form>
-                            </li>
-                            <li class="nav-item">
-                                <!-- If logged in, show relevant buttons -->
-                                {% if session.user %}
-                                <div class="user-button dropdown">
-                                    <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="far fa-user-circle"></i>
-                                    </button>
-
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
-                                        <li><a class="dropdown-item" href="{{ url_for('profile', username=session.user) }}"> {{ session.user.capitalize() }}</i></a></li>
-                                        <li><a class="dropdown-item" href="{{ url_for('add_recipe') }}">Create Recipe</a></li>
-                                        <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
-                                    </ul>
-
-                                </div>
-                                <!-- If NOT logged - buttons -->
-                                {% else %}
-                                    <li><a class="btn" href="{{ url_for('login') }}">Login <i class="fas fa-user"></i></a></li>
-                                    <li><a class="btn" href="{{ url_for('register') }}">Register <i class="fas fa-user-plus"></i></a></li>
-                                {% endif %}
-
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Menu for mobile -->
-                    <div class="mobile-nav-menu d-sm-none">
-                        <!-- Search Field -->
-                        <form class="d-flex">
-                            <input class="form-control form-input" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-                        </form>
-                        <!-- Link List -->
-                        <ul class="nav-link-list">
-                            <li class="nav-item"><a class="nav-link" href="{{ url_for('home_page') }}">Home</a></li>
-                            <!-- If logged in buttons -->
-                            {% if session.user %}
-                            <li><a class="dropdown-item" href="{{ url_for('profile', username=session.user) }}"> {{ session.user.capitalize() }}'s Profile</i></a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('add_recipe') }}">Create Recipe</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
-                            <!-- If NOT logged in buttons -->
-                            {% else %}
-                            <li><a class="dropdown-item" href="{{ url_for('login') }}">Login</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('register') }}">Register</a></li>
-                            {% endif %}
-                        </ul>
-                        <!-- Social Media Icons -->
-                        <div class="fixed-bottom mb-5 d-flex justify-content-center">
-                            <div class="mobile-menu-soc-med-icons inline-list">
-                                <a class="list-inline-item"><i class="fab fa-facebook-square"></i></a>
-                                <a class="list-inline-item"><i class="fab fa-instagram-square"></i></a>
-                                <a class="list-inline-item"><i class="fab fa-pinterest-square"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- NAVIGATION -->
+        <div class="navigation" id="navigation">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="{{ url_for('home_page') }}">
+                    <i class="fas fa-utensils"></i> | recipehere
+                </a>
             </div>
-        </nav>
-    </header>
 
+            {% if session.user %}
+            <!-- If logged in, show relevant buttons -->
+            <a class="nav-item" href="{{ url_for('logout') }}">Logout</a>
+            <a class="nav-item" href="{{ url_for('add_recipe') }}">Create Recipe</a>
+
+            {% if session.user|lower == "admin"|lower %}
+            <!-- Show Admin Panel if admin is logged in -->
+            <a class="nav-item" href="{{ url_for('get_ingredients') }}">Admin Panel</a>
+            {% endif %}
+            <a class="nav-item" href="{{ url_for('profile', username=session.user) }}">
+                {{ session.user.capitalize() }}
+            </a>
+
+            {% else %}
+            <!-- If NOT logged - buttons -->
+            <a class="nav-item" href="{{ url_for('register') }}">Register <i class="fas fa-user-plus"></i></a>
+            <a class="nav-item" href="{{ url_for('login') }}">Login <i class="fas fa-user"></i></a>
+
+            {% endif %}
+            <!-- Home link -->
+            <a class="nav-item" href="{{ url_for('home_page') }}">Home<i class="fas fa-home"></i></a>
+
+            <!-- Mobile view icon -->
+            <a href="javascript:void(0);" class="icon" onclick="mobileNav()">&#9776;</a>
+        </div>
+
+    </header>
+    <section class="search-section">
+        <!-- Search form -->
+        <div class="search">
+            <form action="{{ url_for('search') }}" method="post">
+                <input name="recipe_search" id="recipe_search" type="text" placeholder="Search">
+                <button type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+
+    </section>
     <!-- Main container with data from templates -->
     <main class="container">
         {% block content %}
         {% endblock %}
     </main>
+
+    <footer>
+        <!-- Social Media Icons -->
+        <div class="fixed-bottom mb-5 d-flex justify-content-center">
+            <div class="mobile-menu-soc-med-icons inline-list">
+                <a class="list-inline-item"><i class="fab fa-facebook-square"></i></a>
+                <a class="list-inline-item"><i class="fab fa-instagram-square"></i></a>
+                <a class="list-inline-item"><i class="fab fa-pinterest-square"></i></a>
+            </div>
+        </div>
+
+    </footer>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
