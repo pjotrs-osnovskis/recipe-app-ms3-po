@@ -1,13 +1,20 @@
-/* ================== NAVIGATION ================== */
+html, body {
+    height: 100%;
+}
 
-/* Add a black background color to the top navigation */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ================== NAVIGATION ================== */
 .navigation {
     overflow: hidden;
     border-bottom: 2px solid #000;
     line-height: 5rem;
 }
 
-/* Style the links inside the navigation bar */
 .navigation a{
     float: right;
     display: block;
@@ -36,8 +43,10 @@
     vertical-align: middle;
 }
 
-/* Hide the link that should open and close the navigation
-on small screens */
+/*
+    Hide the link that should open and close the navigation
+    on small screens
+*/
 .navigation .icon {
     display: none;
     font-size: 2rem;
@@ -45,10 +54,11 @@ on small screens */
 }
 
 /* ================== CATEGORIES ================== */
-
-/* Scrollable categories sideways, code snippet was taken from:
-https://codeburst.io/how-to-create-horizontal-scrolling-containers-d8069651e9c6
-and amended to project needs */
+/* 
+    Scrollable categories sideways, code snippet was taken from:
+    https://codeburst.io/how-to-create-horizontal-scrolling-containers-d8069651e9c6
+    and amended to project needs 
+*/
 
 /* Categories scrolling */
 .scrolling-wrapper-flexbox {
@@ -57,8 +67,10 @@ and amended to project needs */
     overflow-x: auto;
 }
 
-/* Code taken from:
-https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp */
+/* 
+    Code taken from:
+    https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp
+*/
 
 /* Scrollbar Width */
 .categories-list::-webkit-scrollbar {
@@ -80,7 +92,7 @@ https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp */
 /* Categories general styles */
 .categories-list {
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
 }
 
 .categories-list a {
@@ -115,10 +127,16 @@ https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp */
     margin: auto;
 }
 
+/* 
+    Search styling code taken from here:
+    https://getcssscan.com/css-box-shadow-examples 
+*/
+
 .search{
     margin: 2rem 0;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     border-radius: 25px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 .search form{
     height: 2.5rem;
@@ -140,8 +158,8 @@ https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp */
 }
 
 /*
-Removing autofill color, found code snippet here:
-https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete
+    Removing autofill color, found code snippet here:
+    https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete
 */
 .search input:-webkit-autofill,
 .search input:-webkit-autofill:hover,
@@ -155,6 +173,37 @@ https://stackoverflow.com/questions/2781549/removing-input-background-colour-for
     border-radius: 50%;
 }
 
+/* ================== MAIN CONTAINER ================== */
+.main-container{
+    width: 75%;
+    margin: 0 auto;
+    flex: 1 0 auto;
+}
+
+/* ================== FOOTER ================== */
+
+/*
+    Took idea of sticky footer here:
+    https://css-tricks.com/couple-takes-sticky-footer/
+*/
+.footer{
+    margin-top: 2rem;
+    line-height: 4rem;
+    flex-shrink: 0;
+    border-top: 2px solid #000;
+    text-align: center;
+}
+
+.footer a{
+    text-decoration: none;
+    color: #000;
+}
+
+.footer i{
+    font-size: 2.5rem;
+    margin: 1rem .75rem;
+    vertical-align: middle;
+}
 
 
 /* ================== MOBILE VIEW ================== */
@@ -163,6 +212,7 @@ https://stackoverflow.com/questions/2781549/removing-input-background-colour-for
 
 @media screen and (max-width: 600px) {
 
+    /* ================== NAVIGATION ================== */
     .navigation a:not(:first-child) {
         display: none;
     }
@@ -201,5 +251,18 @@ https://stackoverflow.com/questions/2781549/removing-input-background-colour-for
         width: 100%;
         text-align: center;
     }
+
+/* ================== NAVIGATION ================== */
+
+    .categories-list::-webkit-scrollbar,
+    .categories-list::-webkit-scrollbar-track,
+    .categories-list::-webkit-scrollbar-thumb {
+        visibility: hidden;
+    }
+
+    /* ================== MAIN CONTAINER ================== */
+.main-container{
+    width: 95%;
+}
 
 }

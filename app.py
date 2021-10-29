@@ -28,15 +28,26 @@ def home_page():
     return render_template("home.html", recipes=recipes, categories=categories)
 
 
-# Search 
+# Search
 @app.route("/search", methods=("GET", "POST"))
 def search():
-    """
-        Formatting information for create_index found here: https://stackoverflow.com/questions/56474470/pymongo-text-index-formatting
-    """
     query = request.form.get("recipe_search")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
     return render_template("search_results.html", recipes=recipes)
+
+
+# Profile
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    # grab the session user's username
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    if session["user"]:
+        recipes = list(mongo.db.recipes.find({"created_by": username}).sort('creation_date', -1))
+
+        return render_template("profile.html", username=username, recipes=recipes)
+    else:
+        return redirect(url_for("login"))
 
 
 # Register user
@@ -129,20 +140,6 @@ def login():
     return render_template("login.html")
 
 
-# Profile
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
-    # grab the session user's username
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    if session["user"]:
-        recipes = list(mongo.db.recipes.find({"created_by": username}))
-
-        return render_template("profile.html", username=username, recipes=recipes)
-    else:
-        return redirect(url_for("login"))
-
-
 # Logout
 @app.route("/logout")
 def logout():
@@ -173,7 +170,6 @@ def add_recipe():
         unit = request.form.getlist("ingredient_unit")
         item = list(zip(name, qty, unit))
         item_list = []
-
         for i in item:
             item_list.append({
                 "ingredient_name": i[0],
@@ -181,11 +177,25 @@ def add_recipe():
                 "ingredient_unit": i[2]
             })
 
+        prep = request.form.getlist("prep_time")
+        cook = request.form.getlist("cook_time")
+        total = request.form.getlist("total_time")
+        time = list(zip(prep, cook, total))
+        time_list = []
+        for j in time:
+            time_list.append({
+                "prep_time": j[0],
+                "cook_time": j[1],
+                "total_time": j[2]
+            })
+
         recipe = {
+            "recipe_img": request.form.get("recipe_img"),
             "category_name": request.form.get("category_name"),
             "recipe_name": request.form.get("recipe_name"),
             "recipe_description": request.form.get("recipe_description"),
             "ingredients": item_list,
+            "cooking_time": time_list,
             "creation_date": datetime.now(),
             "created_by": session["user"]
         }
@@ -210,7 +220,6 @@ def edit_recipe(recipe_id):
         unit = request.form.getlist("ingredient_unit")
         item = list(zip(name, qty, unit))
         item_list = []
-
         for i in item:
             item_list.append({
                 "ingredient_name": i[0],
@@ -218,14 +227,29 @@ def edit_recipe(recipe_id):
                 "ingredient_unit": i[2]
             })
 
+        prep = request.form.getlist("prep_time")
+        cook = request.form.getlist("cook_time")
+        total = request.form.getlist("total_time")
+        time = list(zip(prep, cook, total))
+        time_list = []
+        for j in time:
+            time_list.append({
+                "prep_time": j[0],
+                "cook_time": j[1],
+                "total_time": j[2]
+            })
+
         submit = {
+            "recipe_img": request.form.get("recipe_img"),
             "category_name": request.form.get("category_name"),
             "recipe_name": request.form.get("recipe_name"),
             "recipe_description": request.form.get("recipe_description"),
             "ingredients": item_list,
+            "cooking_time": time_list,
             "creation_date": datetime.now(),
             "created_by": session["user"]
         }
+
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
         return redirect(url_for("profile", username=session["user"]))
 
@@ -235,6 +259,8 @@ def edit_recipe(recipe_id):
     creation_date = mongo.db.recipes.find().sort("creation_date", 1)
     return render_template("edit_recipe.html", recipe=recipe, creation_date=creation_date, categories=categories, ingredients=ingredients)
 
+
+# Delete Reicpe
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})

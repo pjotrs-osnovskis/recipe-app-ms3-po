@@ -13,6 +13,15 @@ $('#reg-password, #confirm_password').on('keyup', function () {
         $("[id=exclIcon").css("visibility", "hidden")
 });
 
+/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+function mobileNav() {
+    var x = document.getElementById("navigation");
+    if (x.className === "navigation") {
+      x.className += " responsive";
+    } else {
+      x.className = "navigation";
+    }
+  }
 
 function remove(ingredient){
     /* Function to remove individual ingredient option that was added */
@@ -51,7 +60,7 @@ $(function () {
             <!-- Add ingredient quantity -->
             <div class="col-md-3 col-sm-6">
                 <label class="form-label" for="ingredient_qty">Quantity:</label>
-                <input class="form-control" name="ingredient_qty" id="ingredient_qty" type="number" required>
+                <input class="form-control" name="ingredient_qty" id="ingredient_qty" type="number" step="0.01" required>
             </div>
 
             <!-- Add ingredient unit -->

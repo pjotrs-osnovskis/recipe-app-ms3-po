@@ -1,0 +1,153 @@
+
+
+/* --------------- BASE --------------- */
+/* ------------ NAVIGATION ------------ */
+/* LOGO */
+.logo i {
+    vertical-align: middle;
+    font-size: 2rem;
+}
+
+.home-link {
+    margin-right: .75rem;
+    font-size: 1.2rem;
+}
+
+.search-input input,
+.search-input button{
+    border: none;
+    outline: none;
+}
+
+.search-input input{
+    border-radius: 25px;
+    width: 100%;
+}
+
+.search-input{
+    margin-bottom: 1rem;
+    border: 1px solid #00CFBA;
+    border-radius: 25px;
+    padding: 0 1rem;
+    margin-top: 1rem;
+}
+
+
+.mobile-nav-menu ul{
+    margin: 0;
+    padding: 0;
+}
+
+.mobile-nav-menu li{
+    list-style: none;
+    background-color: #49F1BA;
+    border-radius: 25px;
+}
+
+.mobile-nav-menu a{
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
+}
+
+
+
+/* -------------- FOOTER -------------- */
+
+/* -------------- LOGIN --------------- */
+/* ------------- REGISTER ------------- */
+
+/* --------------- HOME --------------- */
+
+/* ----------- CATEGORY LIST ---------- */
+.scrolling-wrapper-flexbox {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+/* Code idea taken from:
+https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp */
+
+/* Scrollbar Width */
+.categories-list::-webkit-scrollbar {
+    height: 10px;
+}
+
+/* Scrollbar Track */
+.categories-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+/* Scrollbar Handle */
+.categories-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+/* Categories general styles */
+.categories-list{
+    padding: 0;
+    margin: 0;
+}
+
+.categories-list a {
+    text-decoration: none;
+    color: #000;
+}
+
+.categories-card {
+    flex: 0 0 auto;
+    margin: 1rem;
+    text-align: center;
+}
+
+.categories-card button{
+    padding: 0;
+    border: none;
+    background: none;
+}
+.categories-card img {
+    height: 64px;
+    border-radius: 50%;
+}
+
+.categories-card input{
+    display: none;
+}
+
+/* ------------ ADD RECIPE ------------ */
+/* ------------ EDIT RECIPE ----------- */
+
+/* ------------- PROFILE -------------- */
+/* ------------- SEARCH --------------- */
+
+/* -------------- ADMIN --------------- */
+
+
+
+/* ----------- DESKTOP VIEW ----------- */
+/* ----------- DESKTOP VIEW ----------- */
+
+@media (max-width: 600px) {
+
+/* --------------- BASE --------------- */
+/* ------------ NAVIGATION ------------ */
+/* -------------- FOOTER -------------- */
+
+/* -------------- LOGIN --------------- */
+/* ------------- REGISTER ------------- */
+
+/* --------------- HOME --------------- */
+/* ----------- CATEGORY LIST ---------- */
+
+/* ------------ ADD RECIPE ------------ */
+/* ------------ EDIT RECIPE ----------- */
+
+/* ------------- PROFILE -------------- */
+/* ------------- SEARCH --------------- */
+
+/* -------------- ADMIN --------------- */
+
+
+
+}

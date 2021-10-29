@@ -8,7 +8,7 @@ $("button").click(function(){
 });
 
 function randomItem(){
-    for (var i = 0; i < 3; i++){
+    for (var i = 0; i < 1; i++){
         var length = $("#recipes_home > li:not(:visible)").length;
         var random = Math.floor(Math.random() * length);
         $("#recipes_home > li:not(:visible)").eq(random).show();
