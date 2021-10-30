@@ -159,7 +159,7 @@ body {
     margin: 0 auto;
 }
 .search{
-    margin: 1rem 0;
+    margin: 1.25rem 0 .75rem 0;
     border-radius: 25px;
     box-shadow: var(--shadow);
     border: var(--border-color);
@@ -202,7 +202,7 @@ body {
 
 /* ================== MAIN CONTAINER ================== */
 .main-container{
-    width: 75%;
+    width: 70%;
     margin: 0 auto;
     flex: 1 0 auto;
 }
@@ -212,19 +212,20 @@ body {
     font-weight: 300;
     text-transform: uppercase;
     text-align: center;
-    font-size: 3rem;
-    margin: .5rem 0 1.5rem 0;
+    font-size: 2.25rem;
+    margin: .5rem 0 1rem 0;
 }
 
 .main-container .subtitle{
     font-family: var(--Josefin);
     text-align: center;
-    font-size: 1.5rem;
-    margin: .5rem 0;
+    font-size: 1.2rem;
+    margin: 0 0 .75rem 0;
 }
 
 .main-container .subtitle a{
     color: #000;
+
 }
 
 /* ================== FOOTER ================== */
@@ -261,7 +262,7 @@ body {
 }
 
 .recipe-card{
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     box-shadow: var(--shadow);
     border: var(--border-color);
     border-radius: 15px;
@@ -287,7 +288,7 @@ body {
 }
 
 .recipe-name h4{
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-family: var(--Lato);
 }
 
@@ -299,13 +300,13 @@ body {
 
 .card-body h5{
     font-family: var(--Lato);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin: .75rem 0;
 }
 
 .recipe-description p{
     font-family: var(--Josefin);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin: 0;
     padding-bottom: 1rem;
     border-bottom: var(--border-color);
@@ -461,6 +462,10 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
         width: 100%;
     }
 
+    .search{
+        margin-top: 0;
+
+    }
     /* ================== RECIPE CARDS ================== */
     .cooking-time{
         text-align: start;
