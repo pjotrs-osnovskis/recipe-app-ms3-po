@@ -1,3 +1,12 @@
+function mobileNav() {
+    var x = document.querySelector(".navigation");
+    if (x.className === "navigation") {
+      x.className += " responsive";
+    } else {
+      x.className = "navigation";
+    }
+  }
+
 $('#reg-password, #confirm_password').on('keyup', function () {
     /*
         Checking registration form if password and confirm_password match 
@@ -12,16 +21,6 @@ $('#reg-password, #confirm_password').on('keyup', function () {
     } else if ($('#reg-password').val() == $('#confirm_password').val() || $("#regBtn").val() != "")
         $("[id=exclIcon").css("visibility", "hidden")
 });
-
-/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-function mobileNav() {
-    var x = document.getElementById("navigation");
-    if (x.className === "navigation") {
-      x.className += " responsive";
-    } else {
-      x.className = "navigation";
-    }
-  }
 
 function remove(ingredient){
     /* Function to remove individual ingredient option that was added */
