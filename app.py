@@ -161,7 +161,6 @@ def logout():
     return redirect(url_for("login"))
 
 
-
 # Add recipe
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
@@ -182,13 +181,15 @@ def add_recipe():
         prep = request.form.getlist("prep_time")
         cook = request.form.getlist("cook_time")
         total = request.form.getlist("total_time")
-        time = list(zip(prep, cook, total))
+        serves = request.form.getlist("serves")
+        time = list(zip(prep, cook, total, serves))
         time_list = []
         for j in time:
             time_list.append({
                 "prep_time": j[0],
                 "cook_time": j[1],
-                "total_time": j[2]
+                "total_time": j[2],
+                "serves": j[3]
             })
 
         recipe = {
@@ -208,8 +209,7 @@ def add_recipe():
 
     ingredients = mongo.db.ingredients.find()
     categories = mongo.db.categories.find()
-    creation_date = mongo.db.recipes.find().sort("creation_date", 1)
-    return render_template("add_recipe.html", creation_date=creation_date, categories=categories, ingredients=ingredients)
+    return render_template("add_recipe.html", categories=categories, ingredients=ingredients)
 
 
 # Edit recipe

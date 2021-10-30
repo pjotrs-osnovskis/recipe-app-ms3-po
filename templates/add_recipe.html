@@ -1,55 +1,100 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- Secion name -->
-<div class="text-center mt-3">
-    <h3>Create New Recipe</h3>
-</div>
+<!-- Section title -->
+<h3 class="title">Create New Recipe</h3>
 
-<div class="mt-4 d-flex justify-content-center">
-    <form class="col-sm-12 col-md-8" id="add_recipe_form" name="add_recipe" method="POST" action="{{ url_for('add_recipe') }}">
-        <div class="row">
-
+<div class="recipe-card" id="add_recipe" >
+    <form id="add_recipe_form" name="add_recipe" method="POST"
+        action="{{ url_for('add_recipe') }}">
+        <div class="name-category-section">
             <!-- Recipe name input -->
-            <div class="col-md-8 col-sm-12">
-                <label class="form-label" for="recipe_name">Recipe name: </label>
-                <input class="form-control" name="recipe_name" id="recipe_name" type="text" minlength="5" maxlength="50" required>
+            <div class="add-recipe-name">
+                <label for="recipe_name">Recipe name: </label>
+                <input class="input" name="recipe_name" id="recipe_name" type="text" minlength="5" maxlength="50" required>
             </div>
-
             <!-- Recipe category input -->
-            <div class="col-md-4 col-sm-12">
-                <label class="form-label" for="category_name">Category:</label>
-                <input class="form-control" name="category_name" id="category_name" list="category_list" type="search" required>
-
-                <!-- Loop through categories, to help selet when typing in a category -->
+            <div class="add-recipe-category">
+                <label for="category_name">Category:</label>
+                <input class="input" name="category_name" id="category_name" list="category_list" type="text" required>
+                
+                <!-- Loop through categories, to help select when typing in a category -->
                 <datalist id="category_list">
-                    {% for cat in categories %}
-                    <option value="{{ cat.category_name }}">
-                        {{ cat.category_name }}
-                    </option>
+                    {% for category in categories %}
+                    <option>{{ category.category_name }}</option>
                     {% endfor %}
                 </datalist>
+            </div>
+            <div class="add-recipe-serves">
+                <label for="serves">Serves:</label>
+                <input class="input" name="serves" id="serves" type="text" minlength="5" maxlength="50" required>
+            </div>
+        </div>
+        <div class="add-cooking-time">
+            <!-- Add prep and cooking times -->
+            <div class="add-prep-time">
+                <label for="prep_time">Prep Time:</label>
+                <input class="input" name="prep_time" id="prep_time" type="text" minlength="5" maxlength="50" required>
+            </div>
+            <div class="add-cook-time">
+                <label for="cook_time">Cooking Time:</label>
+                <input class="input" name="cook_time" id="cook_time" type="text" minlength="5" maxlength="50" required>
+            </div>
+            <div class="add-total-time">
+                <label for="total_time">Total:</label>
+                <input class="input" name="total_time" id="total_time" type="text" minlength="5" maxlength="50" required>
             </div>
         </div>
 
         <!-- Place for ingredients list that is being created with Add Ingredient button -->
-        <div id="ingredient_item"></div>
+        <div id="ingredient_item">
+            <!-- Add ingredient item -->
+            <div class="add-ingredients-section" id="ingredient_item" name="ingredient_item">
+                <!-- Add Ingredient name -->
+                <div class="add-ingredient-name">
+                    <label for="ingredient_name">Ingredient:</label>
+                    <input class="input" name="ingredient_name" id="ingredient_name" list="ingredients_list" type="text"
+                        required>
+                    <datalist id="ingredients_list">
+                        {% for ingredient in ingredients %}
+                        <option>{{ ingredient.ingredient_name }}</option>
+                        {% endfor %}
+                    </datalist>
+                </div>
+                    <!-- Add ingredient quantity -->
+                <div class="add-ingredient-qty">
+                    <label for="ingredient_qty">Quantity:</label>
+                    <input class="input" name="ingredient_qty" id="ingredient_qty" type="number" step="0.01" required>
+                </div>
+                    <!-- Add ingredient unit -->
+                <div class="add-ingredient-unit">
+                    <label for="ingredient_unit">Unit:</label>
+                    <input class="input" name="ingredient_unit" id="ingredient_unit" type="text" required>
+                </div>
+                <!-- Remove ingredient line button -->
+                <div class="remove-ingredient-button">
+                    <button class="delete-btn" id="remButton" onclick="remove(this);">
+                        <i class="far fa-times-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
         <!-- Add New Ingredient Button -->
-        <div class="text-center mt-3" id="">
-            <button class="btn btn-success" id="addIngredient">Add Ingredient</button>
+        <div class="">
+            <button class="" id="addIngredient">Add Ingredient</button>
         </div>
 
         <!-- Recipe Description textarea -->
-        <div class="col-12 mt-3">
-            <label class="form-label" for="description" >Description:</label>
-            <textarea class="form-control" id="recipe_description" name="recipe_description" type="text" minlength="5"
+        <div class="">
+            <label class="" for="description">Description:</label>
+            <textarea class="input" id="recipe_description" name="recipe_description" type="text" minlength="5"
                 maxlength="2500" rows="5" required></textarea>
         </div>
 
         <!-- Create Recipe Button -->
-        <div class="text-center mt-3">
-            <button class="btn btn-success" type="submit">
+        <div class="">
+            <button class="" type="submit">
                 Create Recipe
             </button>
         </div>
