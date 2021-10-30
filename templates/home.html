@@ -1,21 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="mt-3 categories-list scrolling-wrapper-flexbox" id="categoriesList">
-    <!-- Looping through categories in MongoDB and showing all. Plus fetching
-        images from static\img folder and combining them together in a block 
-        when clicked - shows search results with that name-->
-    {% for category in categories|sort(attribute='category_name') %}
-    <form class="noselect categories" action="{{ url_for('search') }}" method="POST">
-        <div class="categories-card" value="{{ category.category_name }}">
-            <button class="category-item" type="submit">
-                <img src="static\img\{{ category.category_name.lower() }}.png" alt="category">
-                <input value="{{ category.category_name }}" type="text" name="recipe_search" id="categoty_search"
-                    type="text">{{ category.category_name }}</input>
-            </button>
-        </div>
-    </form>
-    {% endfor %}
-</div>
 
 <div>
     <h3 class="title">Welcome to recipehere!</h3>
@@ -27,13 +11,14 @@
     <li class="recipe-card">
         <!-- Recipe card header -->
         <div class="card-head">
-            <!-- Show recipe name -->
-            <div class="recipe-name">
-                <h4> {{ recipe.recipe_name }}</h4>
-            </div>
             <!-- Show recipe category -->
             <div class="recipe-category">
                 <img src="static\img\{{ recipe.category_name.lower() }}.png" alt="category">
+            </div>
+
+            <!-- Show recipe name -->
+            <div class="recipe-name">
+                <h4> {{ recipe.recipe_name }}</h4>
             </div>
         </div>
         <!-- Show recipe description -->
@@ -94,6 +79,4 @@
     </li>
     {% endfor %}
 </ul>
-
-
 {% endblock %}

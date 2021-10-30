@@ -33,7 +33,9 @@ def home_page():
 def search():
     query = request.form.get("recipe_search")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
-    return render_template("search_results.html", recipes=recipes)
+    categories = mongo.db.categories.find()
+
+    return render_template("search_results.html", recipes=recipes, categories=categories)
 
 
 # Profile
@@ -44,7 +46,7 @@ def profile(username):
         {"username": session["user"]})["username"]
     if session["user"]:
         recipes = list(mongo.db.recipes.find({"created_by": username}).sort('creation_date', -1))
-
+    
         return render_template("profile.html", username=username, recipes=recipes)
     else:
         return redirect(url_for("login"))

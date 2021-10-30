@@ -66,7 +66,6 @@ body {
     vertical-align: middle;
 }
 
-
 /*
     Hide the link that should open and close the navigation
     on small screens
@@ -114,7 +113,10 @@ body {
 }
 
 /* Categories general styles */
-
+.categories-section{
+    width: 75%;
+    margin: 0 auto;
+}
 .categories button{
     cursor: pointer;
 }
@@ -149,20 +151,15 @@ body {
 
 .categories-card input {
     display: none;
-
 }
 
 /* ================== SEARCH ================== */
 .search-section{
     width: 20rem;
-    margin: auto;
+    margin: 0 auto;
 }
-/* 
-    Search styling code taken from here:
-    https://getcssscan.com/css-box-shadow-examples 
-*/
 .search{
-    margin: 2rem 0;
+    margin: 1rem 0;
     border-radius: 25px;
     box-shadow: var(--shadow);
     border: var(--border-color);
@@ -216,7 +213,7 @@ body {
     text-transform: uppercase;
     text-align: center;
     font-size: 3rem;
-    margin: 1rem 0;
+    margin: .5rem 0 1.5rem 0;
 }
 
 .main-container .subtitle{
@@ -224,6 +221,10 @@ body {
     text-align: center;
     font-size: 1.5rem;
     margin: .5rem 0;
+}
+
+.main-container .subtitle a{
+    color: #000;
 }
 
 /* ================== FOOTER ================== */
@@ -252,8 +253,9 @@ body {
     vertical-align: middle;
 }
 
-/* ================== HOME ================== */
-#recipes_home{
+/* ================== RECIPE CARDS ================== */
+#recipes_home,
+#get_recipes{
     margin: 0;
     padding: 0;
 }
@@ -269,7 +271,6 @@ body {
 
 .card-head{
     display: flex;
-    justify-content: space-between;
     align-items: center;
     border-bottom: var(--border-color);
 }
@@ -290,12 +291,10 @@ body {
     font-family: var(--Lato);
 }
 
-.recipe-category{
-    text-align: end;
-}
-
 .recipe-category img{
     height: 3rem;
+    margin-right: 1rem;
+    margin-bottom: .5rem;
 }
 
 .card-body h5{
@@ -458,6 +457,11 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
         width: 95%;
     }
 
+    .categories-section{
+        width: 100%;
+    }
+
+    /* ================== RECIPE CARDS ================== */
     .cooking-time{
         text-align: start;
     }
