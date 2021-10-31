@@ -51,8 +51,6 @@
                 <input type="url" id="imageURL" name="recipe_img" value="{{ recipe.recipe_img }}" required>
             </div>
         </div>
-        <!-- Place for ingredients list that is being created with Add Ingredient button -->
-        <div id="ingredient_item"></div>
 
         <!-- Add ingredient item -->
         {% for i in recipe.ingredients %}
@@ -81,16 +79,22 @@
                 <!-- Remove ingredient line button -->
                 <div class="col-10">
                     <label class="no-text" for="remButton">a</label>
-                    <button class="add-btn" id="addIngredient">
-                        <i class="fas fa-plus-circle"></i>
+                    <button class="delete-itm-btn" id="remButton" onclick="remove(this);">
+                        <i class="far fa-times-circle"></i>
                     </button>
                 </div>
             </div>
         </div>
         {% endfor %}
+        <!-- Place for ingredients list that is being created with Add Ingredient button -->
+        <div id="ingredient_item"></div>
+
         <!-- Create Recipe Button -->
-        <div class="row">
+        <div class="row edit-buttons">
+            <div class="col-full">
             <button class="button create-button" type="submit">Update Recipe</button>
+            <button class="button create-button" id="addIngredient">Add Ingredient</button>
+            </div>
         </div>
     </form>
 </div>

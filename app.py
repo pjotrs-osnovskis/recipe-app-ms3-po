@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 
 
 # Home Page Route
-@app.route("/home")
+@app.route("/")
 def home_page():
     categories = mongo.db.categories.find()
     recipes = list(mongo.db.recipes.find().sort('creation_date', -1))

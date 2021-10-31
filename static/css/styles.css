@@ -632,12 +632,12 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
 
     /* ================== MAIN CONTAINER ================== */
     .main-container{
-        width: 95%;
+        width: 100%;
     }
 
     /* ================== RECIPE CARDS ================== */
     .recipe-card{
-        width: 90%;
+        width: 85%;
         margin: 0 auto;
     }
     
@@ -664,6 +664,15 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
 @media screen and (max-width: 600px) {
 
     /* ================== ADD RECIPE ================== */
+    .add-recipe-card{
+        width: 85%;
+    }
+
+    .edit-buttons .col-full{
+        display: flex;
+        justify-content: center;
+    }
+
     .row{
         display: initial;
     }
