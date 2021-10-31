@@ -3,7 +3,6 @@
     --Lato: 'Lato', sans-serif;
     --Josefin: 'Josefin Sans', sans-serif;
     --shadow: 1.5px 2px 0 0 #D8D7D5;
-    --hover: #FFF;
     --border-color: 1px solid #D8D7D5;
 }
 
@@ -25,6 +24,50 @@ body {
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
 }
+
+.no-text{
+    color: transparent;
+}
+/* ================== BUTTONS ================== */
+.button{
+    border: var(--border-color);
+    border-radius: 15px;
+    font-family: var(--Lato);
+    padding: .5rem 1rem;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.add-btn{
+    color: #00800069;
+}
+
+.delete-btn{
+    color: #ff000069;
+}
+
+.create-button{
+    margin: 1rem auto 0 auto;
+    background-color: #00800069;
+    border-color: #0080008e;
+    font-size: 1rem;
+}
+
+.create-button:hover{
+    background-color: #0080008e;
+}
+
+.add-btn:hover{
+    color: #0080008e;
+}
+
+.delete-btn:hover{
+    color: #ff00008e;
+
+}
+
 
 /* ================== NAVIGATION ================== */
 .navigation {
@@ -380,123 +423,87 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     font-weight: 300;
     color: #000;
 }
-.edit-btn,
-.delete-btn{
-    border: var(--border-color);
-    border-radius: 15px;
-    font-family: var(--Lato);
-    padding: .5rem 1rem;
-}
-
-.edit-btn:hover,
-.delete-btn:hover{
-    color: var(--hover);
-    
-}
-
-.delete-btn{
-    background-color: #FFB7B2;
-}
 
 /* ================== ADD RECIPE ================== */
-.input{
-    border-radius: 25px;
-    box-shadow: var(--shadow);
+.add-recipe-card{
     border: var(--border-color);
-    outline: none;
-}
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+    padding: 1rem;
+    margin: 0;
 
-.name-category-section,
-.add-cooking-time,
-.add-ingredients-section{
+}
+/* 
+    https://www.w3schools.com/howto/howto_css_stacked_form.asp
+    https://www.w3schools.com/howto/howto_css_responsive_form.asp
+    combine stacked and responsive  */
+.row,
+.ing-units{
     display: flex;
-    flex-flow: row wrap;
     justify-content: space-between;
 }
 
-.add-recipe-name,
-.add-recipe-category,
-.add-recipe-serves,
-.add-prep-time,
-.add-cook-time,
-.add-total-time,
-.add-ingredient-name,
-.add-ingredient-qty,
-.add-ingredient-unit,
-.remove-ingredient-button{
+.col-full{
+    width: 100%;
+}
+
+.col-50{
+    width: 48%;
+}
+
+.col-40{
+    width: 40%;
+}
+
+.col-10{
+    width: 8%;
+}
+.col-10 button{
+    font-size: 2rem;
+    border: none;
+    background-color: transparent;
     margin: 0;
     padding: 0;
 }
 
-
-.name-category-section label,
-.add-cooking-time label,
-.add-ingredients-section label{
-    margin: 5px 0;
+.add-recipe-card label {
+    display: block;
+    margin-top: 1rem;
+    margin-left: .5rem;
+    font-family: var(--Lato);
 }
 
-.add-recipe-name input,
-.add-recipe-category input,
-.add-recipe-serves input,
-.add-prep-time input,
-.add-cook-time input,
-.add-total-time input,
-.add-ingredient-name input,
-.add-ingredient-qty input,
-.add-ingredient-unit input{
-    margin: 5px 0;
-    padding: 0.5rem 1rem;
-    vertical-align: middle;
+.add-recipe-card input, select, textarea{
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+    border-radius: 25px;
+    box-shadow: var(--shadow);
+    border: var(--border-color);
+    outline: none;
+    padding: .5rem 1rem;
+}
+
+.add-recipe-card textarea{
+    margin-right: 3rem;
+}
+
+.add-cook-time{
+    float: right;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 
-.add-ingredients-section button{
-    border-radius: 50%;
-    height: 2rem;
-    width: 2rem;
-    margin: 0.32rem 0;
-    padding: 0;
-}
+
 
 /* ================== MOBILE VIEW ==================  MOBILE VIEW ================== */
 /* ================== MOBILE VIEW ==================  MOBILE VIEW ================== */
 
-
-
-
-@media screen and (max-width: 1215px) {
-    /* ================== ADD RECIPE ================== */
-    .add-recipe-name,
-    .add-recipe-category,
-    .add-recipe-serves,
-    .add-prep-time,
-    .add-cook-time,
-    .add-total-time,
-    .add-ingredient-name,
-    .add-ingredient-qty,
-    .add-ingredient-unit,
-    .remove-ingredient-button{
-        display: grid;
-        width: 49%;
-        justify-content: stretch;
-    }
-
-    .name-category-section input,
-    .add-cooking-time input,
-    .add-ingredients-section input{
-        margin: 0;
-        padding: 0.5rem 1rem;
-    }
-    .remove-ingredient-button{
-        margin: 0;
-        padding: 0;
-    }
-    #remButton{
-        align-items: start;
-        margin-top: 1.9rem;
-        margin-bottom: -1rem;
-    }        
-}
 
 @media screen and (max-width: 800px) {
     /* ================== NAVIGATION ================== */
@@ -582,32 +589,16 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
 
 @media screen and (max-width: 600px) {
 
-    /* ================== ADD RECIPE ================== */
-    .name-category-section,
-    .add-cooking-time,
-    .add-ingredients-section{
-        flex-direction: column;
-        align-items: stretch;
+    .main-container{
+        margin: 0;
     }
 
-    .add-recipe-name,
-    .add-recipe-category,
-    .add-recipe-serves,
-    .add-prep-time,
-    .add-cook-time,
-    .add-total-time,
-    .add-ingredient-name,
-    .add-ingredient-qty,
-    .add-ingredient-unit,
-    .remove-ingredient-button{
+    /* ================== ADD RECIPE ================== */
+    .row{
+        display: initial;
+    }
+
+    .col-50{
         width: 100%;
     }
-
-    .remove-ingredient-button{
-        justify-content: end;
-    }
-    #remButton{
-        margin: .75rem 0 0 0;
-    }        
-
 }

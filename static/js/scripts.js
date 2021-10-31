@@ -44,7 +44,7 @@ for (var i = 0; i < deleteLinks.length; i++) {
 
 function remove(ingredient){
     /* Function to remove individual ingredient option that was added */
-        ingredient.parentNode.parentNode.removeChild(ingredient.parentNode);
+        ingredient.parentNode.parentNode.parentNode.parentNode.removeChild(ingredient.parentNode.parentNode.parentNode);
     }
 
 $(function () {
@@ -58,37 +58,39 @@ $(function () {
         e.preventDefault();
         $("#ingredient_item").append(
         `
-        <!-- Add ingredient item -->
-        <div class="add-ingredients-section" id="ingredient_item" name="ingredient_item">
-            <!-- Add Ingredient name -->
-            <div class="add-ingredient-name">
-                <label for="ingredient_name">Ingredient:</label>
-                <input class="input" name="ingredient_name" id="ingredient_name" list="ingredients_list" type="text"
-                    required>
-                <datalist id="ingredients_list">
-                    {% for ingredient in ingredients %}
-                    <option>{{ ingredient.ingredient_name }}</option>
-                    {% endfor %}
-                </datalist>
-            </div>
-                <!-- Add ingredient quantity -->
-            <div class="add-ingredient-qty">
+        <div class="row" id="ingredient_item" name="ingredient_item">
+        <!-- Add Ingredient name -->
+        <div class="col-50">
+            <label for="ingredient_name">Ingredient:</label>
+            <input name="ingredient_name" id="ingredient_name" list="ingredients_list" type="text"
+                required>
+            <datalist id="ingredients_list">
+                {% for ingredient in ingredients %}
+                <option>{{ ingredient.ingredient_name }}</option>
+                {% endfor %}
+            </datalist>
+        </div>
+            <!-- Add ingredient quantity -->
+        <div class="col-50 ing-units">
+            <div class="col-40 ">
                 <label for="ingredient_qty">Quantity:</label>
-                <input class="input" name="ingredient_qty" id="ingredient_qty" type="number" step="0.01" required>
+                <input name="ingredient_qty" id="ingredient_qty" type="number" step="0.01" required>
             </div>
-                <!-- Add ingredient unit -->
-            <div class="add-ingredient-unit">
-                <label for="ingredient_unit">Unit:</label>
-                <input class="input" name="ingredient_unit" id="ingredient_unit" type="text" required>
+            <!-- Add ingredient unit -->
+            <div class="col-40">
+            <label for="ingredient_unit">Unit:</label>
+            <input name="ingredient_unit" id="ingredient_unit" type="text" required>
             </div>
-            <!-- Remove ingredient line button -->
-            <div class="remove-ingredient-button">
+        <!-- Remove ingredient line button -->
+            <div class="col-10">
+                <label class="no-text" for="remButton">a</label>
                 <button class="delete-btn" id="remButton" onclick="remove(this);">
                     <i class="far fa-times-circle"></i>
                 </button>
             </div>
         </div>
-    `);
+    </div>
+`);
     });
 
 });
