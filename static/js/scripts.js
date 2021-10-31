@@ -19,23 +19,21 @@ $('#reg-password, #confirm_password').on('keyup', function () {
     if ($('#reg-password').val() != $('#confirm_password').val()) {
         $("[id=exclIcon").css("visibility", "visible")
 
-    } else if ($('#reg-password').val() == $('#confirm_password').val() || $("#regBtn").val() != "")
+    } else if ($('#reg-password').val() == $('#confirm_password').val())
         $("[id=exclIcon").css("visibility", "hidden")
 });
 
 
-/*
-Delete confirmation function for delete-btn class
-Code ideas taken from here:
-https://stackoverflow.com/questions/9139075/how-to-show-a-confirm-message-before-delete/12582246#12582246
-*/
 var deleteLinks = document.querySelectorAll('#delete-btn');
 for (var i = 0; i < deleteLinks.length; i++) {
+/*
+    Delete confirmation function for delete-btn class
+    Code ideas taken from here:
+    https://stackoverflow.com/questions/9139075/how-to-show-a-confirm-message-before-delete/12582246#12582246
+*/
     deleteLinks[i].addEventListener('click', function (event) {
         event.preventDefault();
-
         var choice = confirm("Are you sure you want to delete this?");
-
         if (choice) {
             window.location.href = this.getAttribute('href');
         }

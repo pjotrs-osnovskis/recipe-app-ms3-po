@@ -45,14 +45,14 @@
 
             {% else %}
             <!-- If NOT logged - buttons -->
-            <a class="nav-item" href="{{ url_for('register') }}">Register <i class="fas fa-user-plus"></i></a>
-            <a class="nav-item" href="{{ url_for('login') }}">Login <i class="fas fa-user"></i></a>
+            <a class="nav-item" href="{{ url_for('register') }}">Register</a>
+            <a class="nav-item" href="{{ url_for('login') }}">Login</a>
 
             {% endif %}
             <!-- Home link -->
-            <a class="nav-item" href="{{ url_for('home_page') }}">Home<i class="fas fa-home"></i></a>
+            <a class="nav-item" href="{{ url_for('home_page') }}">Home</a>
 
-            <!-- Mobile view icon -->
+        <!-- Mobile view icon -->
             <a href="javascript:void(0);" class="icon" onclick="mobileNav()">&#9776;</a>
         </div>
 

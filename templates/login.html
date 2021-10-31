@@ -1,60 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="row justify-content-center">
-    <div class=" col-md-4 col-sm-8 col-xs-12 register-form">
-        <div class="text-center mb-3">
-            <h3>Login</h3>
-        </div>
+<h3 class="title">Login</h3>
 
-        <div class="card">
-            <section class="ms-3 me-3 mt-3">
-                <!-- flash messages -->
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            {{ message }}
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            </section>
-        
-            <form class="" name="loginForm" method="POST" action="{{ url_for('login') }}">
-                <!-- username field -->
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <div class="form-input">
-                            <input class="form-control" id="username" name="username" type="text" minlength="5" maxlength="15"
-                                pattern="^[a-zA-Z0-9]{5,15}$" required>
-                        </div>
-                    </div>
-                    <!-- password field -->
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <div class="form-input">
-                            <input class="form-control" id="password" name="password" type="password" minlength="5" maxlength="15"
-                                pattern="^[a-zA-Z0-9]{5,15}$" required>
-                        </div>
-                    </div>
-                </div>
-                <!-- register button -->
-                <div class="card-footer text-center">
-                    <button class="btn btn-success" type="submit" id="loginBtn" >
-                        Login
-                    </button>
-                </div>
-            </form>
-        </div>
-        <div class="row">
-            <div class="col mt-4">
-                <p class="text-center">
-                    New Here?
-                    <a href="{{ url_for('register') }}" class="">Register</a>
-                </p>
-            </div>
-        </div>
-        
+<div class="auth-card">
+    <section>
+        <!-- flash messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+
+    <form name="loginForm" method="POST" action="{{ url_for('login') }}">
+        <!-- username field -->
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" minlength="5" maxlength="15"
+            pattern="^[a-zA-Z0-9]{5,15}$" required>
+        <!-- password field -->
+        <label for="password" class="form-label">Password</label>
+        <input id="password" name="password" type="password" minlength="5" maxlength="15"
+            pattern="^[a-zA-Z0-9]{5,15}$" required>
+        <button class="button" type="submit" id="loginBtn" >
+            Login
+        </button>
+    </form>
+    <div class="under-form">
+        <p>
+            New Here? <a href="{{ url_for('register') }}" class="">Register</a>
+        </p>
     </div>
+    
 </div>
-
 {% endblock %}

@@ -1,68 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="row justify-content-center">
-    <div class=" col-md-4 col-sm-8 col-xs-12 register-form">
-        <div class="text-center mb-3">
-            <h3>Register</h3>
-        </div>
+<h3 class="title">Register</h3>
 
-        <div class="card">
-            <section class="ms-3 me-3 mt-3">
-                <!-- flash messages -->
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            {{ message }}
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            </section>
-        
-            <form class="" name="regForm" method="POST" action="{{ url_for('register') }}">
-                <!-- username field -->
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <div class="smooth-edges">
-                            <input class="form-control" id="username" name="username" type="text" minlength="5" maxlength="15"
-                                pattern="^[a-zA-Z0-9]{5,15}$" required>
-                        </div>
-                    </div>
-                    <!-- password field -->
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <div class="d-flex smooth-edges">
-                            <input class="form-control" id="reg_password" name="reg_password" type="password" minlength="5" maxlength="15"
-                                pattern="^[a-zA-Z0-9]{5,15}$" required>
-                                <span id="exclIcon" class="exclamation"><i class="fas fa-exclamation-circle"></i></span>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Confirm Password</label>
-                        <div class= "d-flex smooth-edges">
-                            <input class="form-control" id="confirm_password" name="confirm_password" type="password" minlength="5" maxlength="15"
-                                pattern="^[a-zA-Z0-9]{5,15}$" required>
-                                <span id="exclIcon" class="exclamation"><i class="fas fa-exclamation-circle"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <!-- register button -->
-                <div class="card-footer text-center">
-                    <button class="btn btn-success" type="submit" id="regBtn">
-                        Register
-                    </button>
-                </div>
-            </form>
-        </div>
-        <div class="row">
-            <div class="col mt-4">
-                <p class="text-center">
-                    Already Registered?
-                    <a href="{{ url_for('login') }}" class="">Log In</a>
-                </p>
-            </div>
-        </div>
-        
+<div class="auth-card">
+    <section>
+        <!-- flash messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+
+    <form class="" name="regForm" method="POST" action="{{ url_for('register') }}">
+        <!-- username field -->
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" minlength="5" maxlength="15"
+            pattern="^[a-zA-Z0-9]{5,15}$" required>
+        <!-- password field -->
+        <label for="password" class="form-label">Password <span id="exclIcon" class="exclamation"><i class="fas fa-exclamation-circle"></i></span>
+        </label>
+        <input id="password" name="password" type="password" minlength="5" maxlength="15"
+            pattern="^[a-zA-Z0-9]{5,15}$" required>
+
+        <label for="password">Confirm Password <span id="exclIcon" class="exclamation"><i class="fas fa-exclamation-circle"></i></span></label>
+        <input id="confirm_password" name="confirm_password" type="password" minlength="5" maxlength="15"
+            pattern="^[a-zA-Z0-9]{5,15}$" required>
+        <button class="button" type="submit" id="regBtn" >
+            Register
+        </button>
+    </form>
+    <div class="under-form">
+        <p>
+            Already Registered? <a href="{{ url_for('login') }}" class="">Log In</a>
+        </p>
     </div>
 </div>
 

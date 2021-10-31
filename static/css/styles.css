@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,100;1,200;1,300&family=Lato:wght@100;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,100;1,200;1,300&family=Lato:wght@100;300;400&display=swap');
 :root {
     --Lato: 'Lato', sans-serif;
     --Josefin: 'Josefin Sans', sans-serif;
@@ -8,6 +8,8 @@
 
 html, body {
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -28,6 +30,35 @@ body {
 .no-text{
     color: transparent;
 }
+
+/* ================== MAIN CONTAINER ================== */
+.main-container{
+    flex: 1 0 auto;
+    margin: 0 auto;
+    padding: 0;
+    width: 70%;
+}
+
+.main-container .title{
+    font-family: var(--Lato);
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2.25rem;
+    margin: .5rem 0 1rem 0;
+}
+
+.main-container .subtitle{
+    font-family: var(--Josefin);
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 0 0 .75rem 0;
+}
+
+.main-container .subtitle a{
+    color: #000;
+}
+
 /* ================== BUTTONS ================== */
 .button{
     border: var(--border-color);
@@ -78,11 +109,17 @@ button:hover{
 
 
 /* ================== NAVIGATION ================== */
+
 .navigation {
     overflow: hidden;
     border-bottom: var(--border-color);
     border-width: 2px;
-    line-height: 5rem;
+    line-height: 4rem;
+}
+
+.navigation a{
+    margin: 0;
+    padding: 0;
 }
 
 .navigation a{
@@ -90,18 +127,18 @@ button:hover{
     display: block;
     color: #000;
     text-align: center;
-    padding: 0 0.5rem 0 0;
+    padding: 0 .75rem;
     margin: 0;
     text-decoration: none;
     font-size: 1.3rem;
     font-family: var(--Lato);
     font-weight: 300;
     text-transform: uppercase;
+}
+.navigation .nav-item:hover{
+    font-weight: 400;
+}
 
-}
-.navigation a i{
-    padding: 0 0 0 0.25rem;
-}
 
 .logo{
     padding-left: 0.5rem;
@@ -250,34 +287,6 @@ button:hover{
     transition: background-color 5000s ease-in-out 0s;
 }
 
-/* ================== MAIN CONTAINER ================== */
-.main-container{
-    margin: 0 auto;
-    padding: 0;
-    width: 70%;
-}
-
-.main-container .title{
-    font-family: var(--Lato);
-    font-weight: 300;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 2.25rem;
-    margin: .5rem 0 1rem 0;
-}
-
-.main-container .subtitle{
-    font-family: var(--Josefin);
-    text-align: center;
-    font-size: 1.2rem;
-    margin: 0 0 .75rem 0;
-}
-
-.main-container .subtitle a{
-    color: #000;
-
-}
-
 /* ================== FOOTER ================== */
 
 /*
@@ -287,7 +296,7 @@ button:hover{
 .footer{
     margin-top: 2rem;
     line-height: 4rem;
-    flex-shrink: 0;
+    /* flex-shrink: 0; */
     border-top: var(--border-color);
     border-width: 2px;
     text-align: center;
@@ -375,7 +384,6 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-gap: 1rem;
 }
-
 
 .ingredients-list ul,
 .cooking-time ul{
@@ -506,11 +514,71 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     clear: both;
 }
 
+/* ================== AUTHENTICATION ================== */
+.auth-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    margin: 0 auto;
+}
+
+.auth-card form{
+    width: 16rem;
+    border: var(--border-color);
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+    text-align: center;
+}
+
+
+.auth-card label,
+.auth-card button{
+    display: block;
+    margin-top: .5rem;
+    font-family: var(--Lato);
+}
+
+.auth-card input{
+    align-items: center;
+    margin-top: .5rem;
+    border-radius: 25px;
+    box-shadow: var(--shadow);
+    border: var(--border-color);
+    outline: none;
+    padding: .5rem 1rem;
+}
+
+.auth-card button{
+    margin: 1rem auto;
+}
+
+.under-form{
+    margin: 1rem;
+    text-align: center;
+    font-family: var(--Lato);
+}
+
+.exclamation{
+    visibility: hidden;
+}
 
 
 
 /* ================== MOBILE VIEW ==================  MOBILE VIEW ================== */
 /* ================== MOBILE VIEW ==================  MOBILE VIEW ================== */
+
+@media screen and (max-width: 1100px) {
+
+    .main-container{
+        width: 100%;
+    }
+
+    .recipe-card{
+        width: 80%;
+    }
+}
 
 
 @media screen and (max-width: 800px) {
@@ -568,6 +636,12 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     }
 
     /* ================== RECIPE CARDS ================== */
+    .recipe-card{
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    
     .cooking-time{
         text-align: start;
     }
