@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 
 
 # Home Page Route
-@app.route("/")
+@app.route("/home")
 def home_page():
     categories = mongo.db.categories.find()
     recipes = list(mongo.db.recipes.find().sort('creation_date', -1))
@@ -205,7 +205,6 @@ def add_recipe():
 
         mongo.db.recipes.insert_one(recipe)
         return redirect(url_for("profile", username=session["user"]))
-    
 
     ingredients = mongo.db.ingredients.find()
     categories = mongo.db.categories.find()
@@ -258,11 +257,10 @@ def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     ingredients = mongo.db.ingredients.find()
     categories = mongo.db.categories.find()
-    creation_date = mongo.db.recipes.find().sort("creation_date", 1)
-    return render_template("edit_recipe.html", recipe=recipe, creation_date=creation_date, categories=categories, ingredients=ingredients)
+    return render_template("edit_recipe.html", recipe=recipe, categories=categories, ingredients=ingredients)
 
 
-# Delete Reicpe
+# Delete Recipe
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Edit Recipe</h3>
+
+<div class="mt-4 d-flex justify-content-center">
+    <form class="col-sm-12 col-md-8" id="add_recipe_form" name="add_recipe" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
+        <div class="row">
+
+            <!-- recipe name -->
+            <div class="col-md-8 col-sm-12">
+                <label class="form-label" for="recipe_name">Recipe name:</label>
+                <input class="form-control" name="recipe_name" id="recipe_name" type="text" minlength="5" maxlength="50" value="{{ recipe.recipe_name }}" required>
+            </div>
+
+            <!-- choose category -->
+            <div class="col-md-4 col-sm-12">
+                <label class="form-label" for="category_name">Category:</label>
+                <input class="form-control" name="category_name" id="category_name" list="category_list" type="text" value="{{ recipe.category_name }}" required>
+                <datalist id="category_list">
+                    {% for category in categories %}
+                    <option value="{{ category.category_name }}">
+                        {{ category.category_name }}
+                    </option>
+                    {% endfor %}
+                </datalist>
+            </div>
+        </div>
+
+        <!-- Ingredients List -->
+        <div id="ingredient_item">
+            {% for i in recipe.ingredients %}
+                <div class="row mt-3" id="ingredient_item" name="ingredient_item">
+                    <!-- Add Ingredient name -->
+                    <div class="col-md-6 col-sm-12">
+                        <label class="form-label" for="ingredient_name">Ingredient:</label>
+                        <input class="form-control" name="ingredient_name" id="ingredient_name" list="ingredients_list" type="text" value="{{ i.ingredient_name }}" required>
+        
+                        <datalist id="ingredients_list">
+                            {% for ingredient in ingredients %}
+                            <option value="{{ ingredient.ingredient_name }}">
+                                {{ ingredient.ingredient_name }}
+                            </option>
+                            {% endfor %}
+                        </datalist>
+        
+                    </div>
+        
+                    <!-- Add ingredient quantity -->
+                    <div class="col-md-3 col-sm-6">
+                        <label class="form-label" for="ingredient_qty">Quantity:</label>
+                        <input class="form-control" name="ingredient_qty" id="ingredient_qty" type="number" value="{{ i.ingredient_qty }}" required>
+                    </div>
+        
+                    <!-- Add ingredient unit -->
+                    <div class="col-md-3 col-sm-6">
+                        <label class="form-label" for="ingredient_unit" >Unit:</label>
+                        <div class="d-flex">
+                            <input class="form-control" name="ingredient_unit" id="ingredient_unit" type="text" value="{{ i.ingredient_unit }}" required>
+                        </div>
+                        </div>
+                    <div class="text-center mt-2">
+                        <button class="btn btn-sm btn-outline-danger" id="remButton" onclick="remove(this);" >Remove</button>
+                    </div>
+                </div>
+        
+            {% endfor %}
+</div>
+
+        <!-- Add New Ingredient Button -->
+        <div class="text-center mt-3" id="">
+            <button class="btn btn-success" id="addIngredient">Add Ingredient</button>
+        </div>
+
+        <!-- Add description -->
+        <div class="col-12 mt-3">
+            <label class="form-label" for="description" >Description:</label>
+            <textarea class="form-control" id="recipe_description" name="recipe_description" type="text" minlength="5"
+                maxlength="255" rows="3" required>{{ recipe.recipe_description }}</textarea>
+        </div>
+
+        <!-- Create Recipe Button -->
+        <div class="text-center mt-3">
+            <button class="btn btn-success" type="submit">
+                Edit Recipe
+            </button>
+        </div>
+    </form>
+</div>
+
+
+
+
+{% endblock %}

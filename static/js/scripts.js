@@ -2,11 +2,11 @@ function mobileNav() {
     // Navigation trigger for mobile view menu button
     var x = document.querySelector(".navigation");
     if (x.className === "navigation") {
-      x.className += " responsive";
+        x.className += " responsive";
     } else {
-      x.className = "navigation";
+        x.className = "navigation";
     }
-  }
+}
 
 $('#reg-password, #confirm_password').on('keyup', function () {
     /*
@@ -28,24 +28,24 @@ $('#reg-password, #confirm_password').on('keyup', function () {
 Delete confirmation function for delete-btn class
 Code ideas taken from here:
 https://stackoverflow.com/questions/9139075/how-to-show-a-confirm-message-before-delete/12582246#12582246
-*/ 
+*/
 var deleteLinks = document.querySelectorAll('#delete-btn');
 for (var i = 0; i < deleteLinks.length; i++) {
-  deleteLinks[i].addEventListener('click', function(event) {
-	  event.preventDefault();
+    deleteLinks[i].addEventListener('click', function (event) {
+        event.preventDefault();
 
-	  var choice = confirm("Are you sure you want to delete this?");
+        var choice = confirm("Are you sure you want to delete this?");
 
-	  if (choice) {
-	    window.location.href = this.getAttribute('href');
-	  }
-  });
+        if (choice) {
+            window.location.href = this.getAttribute('href');
+        }
+    });
 }
 
-function remove(ingredient){
+function remove(ingredient) {
     /* Function to remove individual ingredient option that was added */
-        ingredient.parentNode.parentNode.parentNode.parentNode.removeChild(ingredient.parentNode.parentNode.parentNode);
-    }
+    ingredient.parentNode.parentNode.parentNode.parentNode.removeChild(ingredient.parentNode.parentNode.parentNode);
+}
 
 $(function () {
     /* 
@@ -58,39 +58,43 @@ $(function () {
         e.preventDefault();
         $("#ingredient_item").append(
         `
+        <!-- Add ingredient item -->
         <div class="row" id="ingredient_item" name="ingredient_item">
-        <!-- Add Ingredient name -->
-        <div class="col-50">
-            <label for="ingredient_name">Ingredient:</label>
-            <input name="ingredient_name" id="ingredient_name" list="ingredients_list" type="text"
-                required>
-            <datalist id="ingredients_list">
-                {% for ingredient in ingredients %}
-                <option>{{ ingredient.ingredient_name }}</option>
-                {% endfor %}
-            </datalist>
-        </div>
+            <!-- Add Ingredient name -->
+            <div class="col-50">
+                <label for="ingredient_name">Ingredient:</label>
+                <input name="ingredient_name" id="ingredient_name" list="ingredients_list" type="text" required>
+                <datalist id="ingredients_list">
+                    {% for ingredient in ingredients %}
+                    <option>{{ ingredient.ingredient_name }}</option>
+                    {% endfor %}
+                </datalist>
+            </div>
             <!-- Add ingredient quantity -->
-        <div class="col-50 ing-units">
-            <div class="col-40 ">
-                <label for="ingredient_qty">Quantity:</label>
-                <input name="ingredient_qty" id="ingredient_qty" type="number" step="0.01" required>
-            </div>
-            <!-- Add ingredient unit -->
-            <div class="col-40">
-            <label for="ingredient_unit">Unit:</label>
-            <input name="ingredient_unit" id="ingredient_unit" type="text" required>
-            </div>
-        <!-- Remove ingredient line button -->
-            <div class="col-10">
-                <label class="no-text" for="remButton">a</label>
-                <button class="delete-btn" id="remButton" onclick="remove(this);">
+            <div class="col-50 ing-units">
+                <div class="col-40 ">
+                    <label for="ingredient_qty">Quantity:</label>
+                    <input name="ingredient_qty" id="ingredient_qty" type="number" step="0.01" required>
+                </div>
+                <!-- Add ingredient unit -->
+                <div class="col-40">
+                    <label for="ingredient_unit">Unit:</label>
+                    <input name="ingredient_unit" id="ingredient_unit" type="text" required>
+                </div>
+                <!-- Remove ingredient line button -->
+                <div class="col-10">
+                    <label class="no-text" for="remButton">a</label>
+                    <button class="delete-itm-btn" id="remButton" onclick="remove(this);">
                     <i class="far fa-times-circle"></i>
-                </button>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-`);
+
+        `);
     });
 
 });
+
+
+

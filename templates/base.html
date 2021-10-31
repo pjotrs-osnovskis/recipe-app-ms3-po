@@ -57,27 +57,6 @@
         </div>
 
     </header>
-    {% if categories %}
-    <section class="categories-section">
-        <div class="categories-list scrolling-wrapper-flexbox" id="categoriesList">
-            <!-- Looping through categories in MongoDB and showing all. Plus fetching
-                images from static\img folder and combining them together in a block 
-                when clicked - shows search results with that name-->
-            {% for category in categories|sort(attribute='category_name') %}
-            <form class="noselect categories" action="{{ url_for('search') }}" method="POST">
-                <div class="categories-card" value="{{ category.category_name }}">
-                    <button class="category-item" type="submit">
-                        <img src="static\img\{{ category.category_name.lower() }}.png" alt="category">
-                        <input value="{{ category.category_name }}" type="text" name="recipe_search" id="categoty_search"
-                            type="text">{{ category.category_name }}</input>
-                    </button>
-                </div>
-            </form>
-            {% endfor %}
-        </div>
-    </section>
-    {% endif %}
-
 
     <section class="search-section">
         <!-- Search form -->

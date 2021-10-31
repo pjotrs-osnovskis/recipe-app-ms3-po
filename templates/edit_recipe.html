@@ -1,36 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3>Edit Recipe</h3>
+<h3 class="title">Edit Recipe</h3>
 
 <div class="add-recipe-card" id="add_recipe">
-    <form id="add_recipe_form" name="add_recipe" method="POST" action="{{ url_for('add_recipe') }}">
+    <form id="add_recipe_form" name="add_recipe" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
         <div class="row">
             <div class="col-50">
                 <!-- Recipe name input -->
                 <label for="recipe_name">Recipe name: </label>
-                <input name="recipe_name" id="recipe_name" type="text" minlength="5" maxlength="50" required>
+                <input name="recipe_name" id="recipe_name" type="text" minlength="5" maxlength="50" value="{{ recipe.recipe_name }}" required>
                 <!-- Recipe category input -->
                 <label for="category_name">Category:</label>
-                <input name="category_name" id="category_name" list="category_list" type="text" required>
+                <input name="category_name" id="category_name" list="category_list" type="text" value="{{ recipe.category_name }}" required>
 
                 <!-- Loop through categories, to help select when typing in a category -->
                 <datalist id="category_list">
                     {% for category in categories %}
-                    <option>{{ category.category_name }}</option>
+                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
                     {% endfor %}
                 </datalist>
+                {% for i in recipe.cooking_time %}
+
                 <label for="serves">Serves:</label>
-                <input name="serves" id="serves" type="text" minlength="5" maxlength="50" required>
+                <input name="serves" id="serves" type="text" maxlength="2" value="{{ i.serves }}" required>
             </div>
             <div class="col-50 add-cook-time">
                 <!-- Add prep and cooking times -->
                 <label for="prep_time">Prep Time:</label>
-                <input name="prep_time" id="prep_time" type="text" maxlength="4" required>
+                <input name="prep_time" id="prep_time" type="text" maxlength="2" value="{{ i.prep_time }}" required>
                 <label for="cook_time">Cooking Time:</label>
-                <input name="cook_time" id="cook_time" type="text" maxlength="4" required>
+                <input name="cook_time" id="cook_time" type="text" maxlength="2" value="{{ i.cook_time }}" required>
                 <label for="total_time">Total:</label>
-                <input name="total_time" id="total_time" type="text" maxlength="4" required>
+                <input name="total_time" id="total_time" type="text" maxlength="2" value="{{ i.total_time }}" required>
+                {% endfor %}
             </div>
         </div>
         <!-- Recipe Description textarea -->
@@ -38,28 +41,29 @@
             <div class="col-full">
                 <label for="description">Description:</label>
                 <textarea id="recipe_description" name="recipe_description" type="text" minlength="5" maxlength="2500"
-                    rows="10" required></textarea>
+                    rows="10" required>{{ recipe.recipe_description }}</textarea>
             </div>
         </div>
 
         <div class="row">
             <div class="col-full">
                 <label for="imageURL">Image URL:</label>
-                <input type="url" id="imageURL" name="recipe_img">
+                <input type="url" id="imageURL" name="recipe_img" value="{{ recipe.recipe_img }}" required>
             </div>
         </div>
         <!-- Place for ingredients list that is being created with Add Ingredient button -->
         <div id="ingredient_item"></div>
 
         <!-- Add ingredient item -->
+        {% for i in recipe.ingredients %}
         <div class="row" id="ingredient_item" name="ingredient_item">
             <!-- Add Ingredient name -->
             <div class="col-50">
                 <label for="ingredient_name">Ingredient:</label>
-                <input name="ingredient_name" id="ingredient_name" list="ingredients_list" type="text" required>
+                <input name="ingredient_name" id="ingredient_name" list="ingredients_list" type="text" value="{{ i.ingredient_name }}" required>
                 <datalist id="ingredients_list">
                     {% for ingredient in ingredients %}
-                    <option>{{ ingredient.ingredient_name }}</option>
+                    <option">{{ ingredient.ingredient_name }}</option>
                     {% endfor %}
                 </datalist>
             </div>
@@ -67,12 +71,12 @@
             <div class="col-50 ing-units">
                 <div class="col-40 ">
                     <label for="ingredient_qty">Quantity:</label>
-                    <input name="ingredient_qty" id="ingredient_qty" type="number" step="0.01" required>
+                    <input name="ingredient_qty" id="ingredient_qty" type="number" step="0.01" value="{{ i.ingredient_qty }}" required>
                 </div>
                 <!-- Add ingredient unit -->
                 <div class="col-40">
                     <label for="ingredient_unit">Unit:</label>
-                    <input name="ingredient_unit" id="ingredient_unit" type="text" required>
+                    <input name="ingredient_unit" id="ingredient_unit" type="text" value="{{ i.ingredient_unit }}" required>
                 </div>
                 <!-- Remove ingredient line button -->
                 <div class="col-10">
@@ -83,15 +87,12 @@
                 </div>
             </div>
         </div>
-
+        {% endfor %}
         <!-- Create Recipe Button -->
         <div class="row">
             <button class="button create-button" type="submit">Update Recipe</button>
         </div>
     </form>
 </div>
-
-
-
 
 {% endblock %}

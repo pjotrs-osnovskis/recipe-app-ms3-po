@@ -18,20 +18,20 @@
                 <!-- Loop through categories, to help select when typing in a category -->
                 <datalist id="category_list">
                     {% for category in categories %}
-                    <option>{{ category.category_name }}</option>
+                        <option>{{ category.category_name }}</option>
                     {% endfor %}
                 </datalist>
                 <label for="serves">Serves:</label>
-                <input name="serves" id="serves" type="text" minlength="5" maxlength="50" required>
+                <input name="serves" id="serves" type="text" minlength="2" required>
             </div>
             <div class="col-50 add-cook-time">
                 <!-- Add prep and cooking times -->
-                <label for="prep_time">Prep Time:</label>
-                <input name="prep_time" id="prep_time" type="text" maxlength="4" required>
-                <label for="cook_time">Cooking Time:</label>
-                <input name="cook_time" id="cook_time" type="text" maxlength="4" required>
-                <label for="total_time">Total:</label>
-                <input name="total_time" id="total_time" type="text" maxlength="4" required>
+                <label for="prep_time">Prep Time (mins):</label>
+                <input name="prep_time" id="prep_time" type="text" maxlength="2" required>
+                <label for="cook_time">Cooking Time (mins):</label>
+                <input name="cook_time" id="cook_time" type="text" maxlength="2" required>
+                <label for="total_time">Total (mins):</label>
+                <input name="total_time" id="total_time" type="text" maxlength="2" required>
             </div>
         </div>
         <!-- Recipe Description textarea -->
@@ -78,7 +78,7 @@
                 <!-- Remove ingredient line button -->
                 <div class="col-10">
                     <label class="no-text" for="remButton">a</label>
-                    <button class="add-btn" id="addIngredient">
+                    <button class="add-itm-btn" id="addIngredient">
                         <i class="fas fa-plus-circle"></i>
                     </button>
                 </div>

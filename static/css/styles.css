@@ -40,12 +40,16 @@ button:hover{
     cursor: pointer;
 }
 
-.add-btn{
+.add-itm-btn{
     color: #00800069;
 }
 
-.delete-btn{
+.delete-itm-btn{
     color: #ff000069;
+}
+
+.delete-recipe-btn{
+    background-color: #ff000069;
 }
 
 .create-button{
@@ -59,14 +63,18 @@ button:hover{
     background-color: #0080008e;
 }
 
-.add-btn:hover{
+.add-itm-btn:hover{
     color: #0080008e;
 }
 
-.delete-btn:hover{
+.delete-itm-btn:hover{
     color: #ff00008e;
-
 }
+
+.delete-recipe-btn:hover{
+    background-color: #ff00008e;
+}
+
 
 
 /* ================== NAVIGATION ================== */
@@ -125,7 +133,6 @@ button:hover{
     https://codeburst.io/how-to-create-horizontal-scrolling-containers-d8069651e9c6
     and amended to project needs 
 */
-
 /* Categories scrolling */
 .scrolling-wrapper-flexbox {
     display: flex;
@@ -157,7 +164,7 @@ button:hover{
 
 /* Categories general styles */
 .categories-section{
-    width: 75%;
+    width: 100%;
     margin: 0 auto;
 }
 .categories button{
@@ -199,7 +206,7 @@ button:hover{
 /* ================== SEARCH ================== */
 .search-section{
     width: 20rem;
-    margin: 0 auto;
+    margin: 1rem auto 0 auto;
 }
 .search{
     margin: 1.25rem 0 .75rem 0;
@@ -245,9 +252,9 @@ button:hover{
 
 /* ================== MAIN CONTAINER ================== */
 .main-container{
-    width: 70%;
     margin: 0 auto;
-    flex: 1 0 auto;
+    padding: 0;
+    width: 70%;
 }
 
 .main-container .title{
@@ -305,12 +312,13 @@ button:hover{
 }
 
 .recipe-card{
-    margin: 1.5rem 0;
     box-shadow: var(--shadow);
     border: var(--border-color);
     border-radius: 15px;
     padding: 1rem;
     list-style: none;
+    margin: 1.5rem auto;
+    width: 60%;
 }
 
 .card-head{
@@ -430,8 +438,8 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     box-shadow: var(--shadow);
     border-radius: 15px;
     padding: 1rem;
-    margin: 0;
-
+    margin: 0 auto;
+    width: 60%;
 }
 /* 
     https://www.w3schools.com/howto/howto_css_stacked_form.asp
@@ -444,7 +452,7 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
 }
 
 .col-full{
-    width: 100%;
+    width: 98%;
 }
 
 .col-50{
@@ -559,14 +567,6 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
         width: 95%;
     }
 
-    .categories-section{
-        width: 100%;
-    }
-
-    .search{
-        margin-top: 0;
-
-    }
     /* ================== RECIPE CARDS ================== */
     .cooking-time{
         text-align: start;
@@ -588,10 +588,6 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
 }
 
 @media screen and (max-width: 600px) {
-
-    .main-container{
-        margin: 0;
-    }
 
     /* ================== ADD RECIPE ================== */
     .row{
