@@ -64,9 +64,9 @@ def register():
             # https://stackoverflow.com/questions/58940246/flask-flashing-with-html-class
             message = Markup(
                             """
-                            <div>
-                                <p>Username already exists</p>
-                            </div>
+                                <div class="error">
+                                    <p>Username already exists!</p>
+                                </div>
                             """)
             flash(message)
             return redirect( url_for("register") )
@@ -77,9 +77,9 @@ def register():
         if password1 != password2:
             message = Markup(
                             """
-                            <div>
-                                <p>Passwords don't match</p>
-                            </div>
+                                <div class="error">
+                                    <p>Passwords don't match!</p>
+                                </div>
                             """)
             flash(message)
             return redirect( url_for("register"))
@@ -117,9 +117,9 @@ def login():
                 # invalid password
                 message = Markup(
                         """
-                        <div>
-                            <p>Incorrect Username and/or Password</p>
-                        </div>
+                            <div class="error">
+                                <p>Incorrect Username and/or Password!</p>
+                            </div>
                         """)
                 flash(message)
                 return redirect(url_for("login"))
@@ -128,8 +128,8 @@ def login():
             # If username does not exist show message
             message = Markup(
                     """
-                        <div>
-                            <p>Incorrect Username and/or Password</p>
+                        <div class="error">
+                            <p>Incorrect Username and/or Password!</p>
                         </div>
                     """)
             flash(message)
@@ -144,13 +144,13 @@ def logout():
     # remove user from session cookies
     message = Markup(
             """
-                <div>
+                <div class="success">
                     <p>You have been logged out!</p>
                 </div>
             """)
-    flash(message)
-    session.clear()
     
+    session.clear()
+    flash(message)
     return redirect(url_for("login"))
 
 

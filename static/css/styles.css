@@ -616,6 +616,36 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     visibility: hidden;
 }
 
+/* ================== ALERT MESSAGES ================== */
+
+.success{
+    border: var(--border-color);
+    background-color: #00800069;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    margin: 1rem auto;
+    padding: .75rem;
+    font-family: var(--Lato);
+}
+
+.error{
+    border: var(--border-color);
+    background-color: #ff000069;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    margin: 1rem auto;
+    padding: .75rem;
+    font-family: var(--Lato);
+}
+
+.success p,
+.error p{
+    margin: 0;
+    text-align: center;
+}
+
+
+
 
 
 /* ================== MOBILE VIEW ==================  MOBILE VIEW ================== */
@@ -686,6 +716,14 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     /* ================== MAIN CONTAINER ================== */
     .main-container{
         width: 100%;
+    }
+
+    .main-container .title{
+        margin-top: 0;
+    }
+
+    .main-container .subtitle{
+        margin-top: 2rem;
     }
 
     /* ================== RECIPE CARDS ================== */
