@@ -682,7 +682,6 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
         margin: 0 auto;
     }
     
-    
     .cooking-time{
         text-align: start;
     }
@@ -694,7 +693,7 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     .recipe-footer,
     .recipe-crud-btns{
         width: 100%;
-        margin: .5rem 0;
+        text-align: center;
     }
     .delete-btn{
         margin-right: .75rem;

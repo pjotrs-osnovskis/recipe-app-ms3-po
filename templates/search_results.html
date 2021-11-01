@@ -2,22 +2,27 @@
 {% block content %}
 
 <h3 class="title">Search results</h3>
-{% if recipes|length != 0 %}
-{% for recipe in recipes %}
 
-<ul id="get_recipes">
+{% if recipes|length != 0 %}
+<ul id="recipes_home">
     {% for recipe in recipes %}
     <li class="recipe-card">
         <!-- Recipe card header -->
         <div class="card-head">
-            <!-- Show recipe category -->
-            <div class="recipe-category">
-                <img src="static\img\{{ recipe.category_name.lower() }}.png" alt="category">
+            <div>
+                <img class="recipe-hero-img" src="{{ recipe.recipe_img }}" alt="recipe-hero-image">
             </div>
+            <!-- Show recipe category -->
+            <div class="recipe-sub-head">
+                <div class="recipe-category">
+                    <span class="category-image-helper"></span>
+                    <img src="static\img\{{ recipe.category_name.lower() }}.png" alt="category">
+                </div>
 
-            <!-- Show recipe name -->
-            <div class="recipe-name">
-                <h4> {{ recipe.recipe_name }}</h4>
+                <!-- Show recipe name -->
+                <div class="recipe-name">
+                    <h4> {{ recipe.recipe_name }}</h4>
+                </div>
             </div>
         </div>
         <!-- Show recipe description -->
@@ -74,14 +79,12 @@
                     <a class="button create-button" href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">Edit</a>
                     <a class="button delete-recipe-btn" id="delete-btn" href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete</a>
                 </li>
+                {% endif %}
             </ul>
-            {% endif %}
         </div>
     </li>
     {% endfor %}
 </ul>
-{% endfor %}
-
 {% else %}
 <div class="subtitle">
     <h4>No recipes found... </h4>
