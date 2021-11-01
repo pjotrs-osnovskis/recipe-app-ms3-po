@@ -64,9 +64,8 @@ def register():
             # https://stackoverflow.com/questions/58940246/flask-flashing-with-html-class
             message = Markup(
                             """
-                            <div class='message-button alert alert-danger alert-dismissible fade show' role='alert'>
+                            <div>
                                 <p>Username already exists</p>
-                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'><span aria-hidden='true'></span></button>
                             </div>
                             """)
             flash(message)
@@ -78,9 +77,8 @@ def register():
         if password1 != password2:
             message = Markup(
                             """
-                            <div class='message-button alert alert-danger alert-dismissible fade show' role='alert'>
+                            <div>
                                 <p>Passwords don't match</p>
-                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'><span aria-hidden='true'></span></button>
                             </div>
                             """)
             flash(message)
@@ -119,9 +117,8 @@ def login():
                 # invalid password
                 message = Markup(
                         """
-                        <div class='message-button alert alert-danger alert-dismissible fade show' role='alert'>
+                        <div>
                             <p>Incorrect Username and/or Password</p>
-                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'><span aria-hidden='true'></span></button>
                         </div>
                         """)
                 flash(message)
@@ -131,10 +128,9 @@ def login():
             # If username does not exist show message
             message = Markup(
                     """
-                    <div class='message-button alert alert-danger alert-dismissible fade show' role='alert'>
-                        <p>Incorrect Username and/or Password</p>
-                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'><span aria-hidden='true'></span></button>
-                    </div>
+                        <div>
+                            <p>Incorrect Username and/or Password</p>
+                        </div>
                     """)
             flash(message)
             return redirect(url_for("login"))
@@ -148,12 +144,9 @@ def logout():
     # remove user from session cookies
     message = Markup(
             """
-            <div class='message-button alert alert-success alert-dismissible fade show' role='alert'>
-                <p>You have been logged out</p>
-                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
-                    <span aria-hidden='true'></span>
-                </button>
-            </div>
+                <div>
+                    <p>You have been logged out!</p>
+                </div>
             """)
     flash(message)
     session.clear()

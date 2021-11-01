@@ -45,14 +45,15 @@ body {
     text-transform: uppercase;
     text-align: center;
     font-size: 2.25rem;
-    margin: 1rem 0;
+    margin: 0 0 1rem 0;
 }
 
 .main-container .subtitle{
     font-family: var(--Josefin);
     text-align: center;
-    font-size: 1.2rem;
-    margin: 0 0 .75rem 0;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem auto;
+    width: 90%;
 }
 
 .main-container .subtitle a{
@@ -210,7 +211,7 @@ button:hover{
 /* Categories general styles */
 .categories-section{
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto 1rem auto;
 }
 .categories button{
     cursor: pointer;

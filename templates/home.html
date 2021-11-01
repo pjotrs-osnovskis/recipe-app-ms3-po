@@ -23,7 +23,7 @@
 
 <div>
     <h3 class="title">Welcome to recipehere!</h3>
-    <p class="subtitle">Find and share best recipes!</p>
+    <p class="subtitle">LOOK! We found a great recipe for you to try! Or <a href="#" id="randomRecipe">try you'r luck</a> and see if theres a better one!</p>
 </div>
 
 <ul id="recipes_home">
@@ -62,7 +62,7 @@
                         <ul>
                             {% for i in recipe.ingredients %}
                             <li>
-                                <p>{{ i.ingredient_qty }} {{ i.ingredient_unit }} of {{ i.ingredient_name }}</p>
+                                <p>{{ i.ingredient_qty }} {{ i.ingredient_unit }} of {{ i.ingredient_name|lower }}</p>
                             </li>
                             {% endfor %}
                         </ul>

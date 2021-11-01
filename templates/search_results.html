@@ -40,7 +40,7 @@
                         <ul>
                             {% for i in recipe.ingredients %}
                             <li>
-                                <p>{{ i.ingredient_qty }} {{ i.ingredient_unit }} of {{ i.ingredient_name }}</p>
+                                <p>{{ i.ingredient_qty }} {{ i.ingredient_unit }} of {{ i.ingredient_name|lower }}</p>
                             </li>
                             {% endfor %}
 

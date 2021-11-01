@@ -58,11 +58,11 @@ $("#recipes_home > li").hide();
 // Function for a home page to show a random recipe on landing page
 randomItem();
 
-// $("button").click(function(){
-//     var lastItems = $("#recipes_home > li:visible");
-//     randomItem();
-//     lastItems.hide();
-// });
+$("#randomRecipe").click(function(){
+    var lastItems = $("#recipes_home > li:visible");
+    randomItem();
+    lastItems.hide();
+});
 
 function randomItem(){
     for (var i = 0; i < 1; i++){
