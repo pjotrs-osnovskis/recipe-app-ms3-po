@@ -72,41 +72,49 @@ button:hover{
 }
 
 .add-itm-btn{
-    color: #00800069;
+    color: #ff8c0069;
+}
+
+.add-itm-btn:hover{
+    color: #ff8c008e;
+}
+
+.add-itm-btn-edit{
+    background-color: #ff8c0069;
+}
+
+.add-itm-btn-edit:hover{
+    background-color: #ff8c008e;
 }
 
 .delete-itm-btn{
     color: #ff000069;
 }
 
-.delete-recipe-btn{
-    background-color: #ff000069;
-}
-
-.create-button{
-    margin: 1rem auto 0 auto;
-    background-color: #00800069;
-    border-color: #0080008e;
-    font-size: 1rem;
-}
-
-.create-button:hover{
-    background-color: #0080008e;
-}
-
-.add-itm-btn:hover{
-    color: #0080008e;
-}
-
 .delete-itm-btn:hover{
     color: #ff00008e;
+}
+
+.delete-recipe-btn{
+    background-color: #ff000069;
 }
 
 .delete-recipe-btn:hover{
     background-color: #ff00008e;
 }
 
+.create-button{
+    background-color: #00800069;
+}
 
+.create-button:hover{
+    background-color: #0080008e;
+}
+
+.form-buttons{
+    margin: 1rem 0 0 0;
+    text-align: center;
+}
 
 /* ================== NAVIGATION ================== */
 
@@ -233,7 +241,7 @@ button:hover{
 }
 
 .categories-card img {
-    height: 64px;
+    height: 50px;
 }
 
 .categories-card input {
@@ -327,7 +335,7 @@ button:hover{
     padding: 1rem;
     list-style: none;
     margin: 1.5rem auto;
-    width: 60%;
+    width: 80%;
 }
 
 /* Recipe card head */
@@ -438,10 +446,12 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     font-size: 1.25rem;
 }
 
-.cooking-time{
-    text-align: end;
+.cooking-time p{
+    font-family: var(--Josefin);
+    font-size: 1.25rem;
 }
 
+/* Recipe Card Footer */
 .card-footer{
     display: flex;
     line-height: 2rem;
@@ -610,7 +620,7 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
 /* ================== MOBILE VIEW ==================  MOBILE VIEW ================== */
 /* ================== MOBILE VIEW ==================  MOBILE VIEW ================== */
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1200px) {
 
     .main-container{
         width: 100%;
@@ -702,15 +712,14 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
 }
 
 @media screen and (max-width: 600px) {
+    /* ================== BUTTONS ================== */
+    .form-buttons .col-full{
+        margin: 1rem 0 0.5rem 0;
+    }
 
     /* ================== ADD RECIPE ================== */
     .add-recipe-card{
         width: 85%;
-    }
-
-    .edit-buttons .col-full{
-        display: flex;
-        justify-content: center;
     }
 
     .row{

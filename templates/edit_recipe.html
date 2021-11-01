@@ -55,7 +55,6 @@
             </div>
         </div>
         <div id="ingredient_item">
-
             <!-- Add ingredient item -->
             {% for i in recipe.ingredients %}
             <div class="row" id="ingredient_item" name="ingredient_item">
@@ -106,13 +105,18 @@
             </div>
             {% endfor %}
         </div>
-        <!-- Place for ingredients list that is being created with Add Ingredient button -->
-
-        <!-- Create Recipe Button -->
-        <div class="row edit-buttons">
+        <div class="row form-buttons">
             <div class="col-full">
+                <button class="button add-itm-btn-edit" id="editIngredient">Add Ingredient</button>
+            </div>
+        </div>
+
+
+        <!-- Edit Recipe Button -->
+        <div class="row form-buttons">
+            <div class="col-full">
+                <button class="button delete-recipe-btn" onclick="goBack()">Cancel</button>
                 <button class="button create-button" type="submit">Update Recipe</button>
-                <button class="button create-button" id="addIngredient">Add Ingredient</button>
             </div>
         </div>
     </form>

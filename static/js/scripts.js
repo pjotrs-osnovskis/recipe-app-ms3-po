@@ -61,7 +61,63 @@ $(function () {
         Adding extra input fields for more ingredients with Remove button 
         if added too many or ingredient is no longer needed.
     */
+   
     $("#addIngredient").click(function (e) {
+        e.preventDefault();
+        $("#ingredient_item").prepend(
+        `
+        <!-- Add ingredient item -->
+        <div class="row" id="ingredient_item" name="ingredient_item">
+            <!-- Add Ingredient name -->
+            <div class="col-50">
+                <label for="ingredient_name">Ingredient:</label>
+                <input name="ingredient_name" id="ingredient_name" list="ingredients_list" type="text" required>
+                <datalist id="ingredients_list">
+                    {% for ingredient in ingredients %}
+                    <option></option>
+                    {% endfor %}
+                </datalist>
+            </div>
+            <!-- Add ingredient quantity -->
+            <div class="col-50 ing-units">
+                <div class="col-40 ">
+                    <label for="ingredient_qty">Quantity:</label>
+                    <select name="ingredient_qty" id="ingredient_qty" required>
+                        <option value="¼">¼</option>
+                        <option value="½">½</option>
+                        <option value="¾">¾</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                <!-- Add ingredient unit -->
+                <div class="col-40">
+                    <label for="ingredient_unit">Unit:</label>
+                    <!-- Not required as sometimes you don't need a unit -->
+                    <input name="ingredient_unit" id="ingredient_unit" type="text">
+                </div>
+                <!-- Remove ingredient line button -->
+                <div class="col-10">
+                    <label class="no-text" for="remButton">a</label>
+                    <button class="delete-itm-btn" id="remButton" onclick="remove(this);">
+                        <i class="far fa-times-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        `);
+    });
+});
+$(function () {
+    $("#editIngredient").click(function (e) {
         e.preventDefault();
         $("#ingredient_item").append(
         `
@@ -81,18 +137,33 @@ $(function () {
             <div class="col-50 ing-units">
                 <div class="col-40 ">
                     <label for="ingredient_qty">Quantity:</label>
-                    <input name="ingredient_qty" id="ingredient_qty" type="number" step="0.01" required>
+                    <select name="ingredient_qty" id="ingredient_qty" required>
+                        <option value="¼">¼</option>
+                        <option value="½">½</option>
+                        <option value="¾">¾</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
                 </div>
                 <!-- Add ingredient unit -->
                 <div class="col-40">
                     <label for="ingredient_unit">Unit:</label>
-                    <input name="ingredient_unit" id="ingredient_unit" type="text" required>
+                    <!-- Not required as sometimes you don't need a unit -->
+                    <input name="ingredient_unit" id="ingredient_unit" type="text">
                 </div>
                 <!-- Remove ingredient line button -->
                 <div class="col-10">
                     <label class="no-text" for="remButton">a</label>
                     <button class="delete-itm-btn" id="remButton" onclick="remove(this);">
-                    <i class="far fa-times-circle"></i>
+                        <i class="far fa-times-circle"></i>
                     </button>
                 </div>
             </div>
