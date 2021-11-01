@@ -50,7 +50,7 @@
             </div>
         </div>
         <!-- Place for ingredients list that is being created with Add Ingredient button -->
-        <div id="ingredient_item"></div>
+        <div id="ingredient_item">
 
         <!-- Add ingredient item -->
         <div class="row" id="ingredient_item" name="ingredient_item">
@@ -60,7 +60,7 @@
                 <input name="ingredient_name" id="ingredient_name" list="ingredients_list" type="text" required>
                 <datalist id="ingredients_list">
                     {% for ingredient in ingredients %}
-                    <option>{{ ingredient.ingredient_name }}</option>
+                    <option></option>
                     {% endfor %}
                 </datalist>
             </div>
@@ -84,7 +84,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
         <!-- Create Recipe Button -->
         <div class="row">
             <button class="button create-button" type="submit">Create Recipe</button>

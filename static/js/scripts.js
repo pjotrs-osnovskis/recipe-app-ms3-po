@@ -64,7 +64,7 @@ $(function () {
                 <input name="ingredient_name" id="ingredient_name" list="ingredients_list" type="text" required>
                 <datalist id="ingredients_list">
                     {% for ingredient in ingredients %}
-                    <option>{{ ingredient.ingredient_name }}</option>
+                    <option></option>
                     {% endfor %}
                 </datalist>
             </div>
