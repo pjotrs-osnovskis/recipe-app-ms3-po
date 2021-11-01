@@ -31,14 +31,20 @@
     <li class="recipe-card">
         <!-- Recipe card header -->
         <div class="card-head">
-            <!-- Show recipe category -->
-            <div class="recipe-category">
-                <img src="static\img\{{ recipe.category_name.lower() }}.png" alt="category">
+            <div>
+                <img class="recipe-hero-img" src="{{ recipe.recipe_img }}" alt="recipe-hero-image">
             </div>
+            <!-- Show recipe category -->
+            <div class="recipe-sub-head">
+                <div class="recipe-category">
+                    <span class="category-image-helper"></span>
+                    <img src="static\img\{{ recipe.category_name.lower() }}.png" alt="category">
+                </div>
 
-            <!-- Show recipe name -->
-            <div class="recipe-name">
-                <h4> {{ recipe.recipe_name }}</h4>
+                <!-- Show recipe name -->
+                <div class="recipe-name">
+                    <h4> {{ recipe.recipe_name }}</h4>
+                </div>
             </div>
         </div>
         <!-- Show recipe description -->

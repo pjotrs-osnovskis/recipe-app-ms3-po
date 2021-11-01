@@ -219,27 +219,29 @@ def edit_recipe(recipe_id):
         name = request.form.getlist("ingredient_name")
         qty = request.form.getlist("ingredient_qty")
         unit = request.form.getlist("ingredient_unit")
+
         item = list(zip(name, qty, unit))
         item_list = []
         for i in item:
             item_list.append({
                 "ingredient_name": i[0],
                 "ingredient_qty": i[1],
-                "ingredient_unit": i[2]
+                "ingredient_unit": i[2],
             })
 
         prep = request.form.getlist("prep_time")
         cook = request.form.getlist("cook_time")
         total = request.form.getlist("total_time")
-        time = list(zip(prep, cook, total))
+        serves = request.form.getlist("serves")
+        time = list(zip(prep, cook, total, serves))
         time_list = []
         for j in time:
             time_list.append({
                 "prep_time": j[0],
                 "cook_time": j[1],
-                "total_time": j[2]
+                "total_time": j[2],
+                "serves": j[3]
             })
-
         submit = {
             "recipe_img": request.form.get("recipe_img"),
             "category_name": request.form.get("category_name"),

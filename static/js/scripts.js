@@ -8,6 +8,15 @@ function mobileNav() {
     }
 }
 
+function goBack() {
+    /*
+        Function for "Back" button
+        Code snippet found here:
+        https://newbedev.com/how-to-check-confirm-password-field-in-form-without-reloading-page
+    */
+    window.history.back();
+  }
+
 $('#reg-password, #confirm_password').on('keyup', function () {
     /*
         Checking registration form if password and confirm_password match 
@@ -88,7 +97,6 @@ $(function () {
                 </div>
             </div>
         </div>
-
         `);
     });
 

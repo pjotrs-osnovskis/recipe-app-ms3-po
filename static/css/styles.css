@@ -45,7 +45,7 @@ body {
     text-transform: uppercase;
     text-align: center;
     font-size: 2.25rem;
-    margin: .5rem 0 1rem 0;
+    margin: 1rem 0;
 }
 
 .main-container .subtitle{
@@ -183,18 +183,18 @@ button:hover{
 */
 
 /* Scrollbar Width */
-.categories-list::-webkit-scrollbar {
+.categories-list::-webkit-scrollbar{
     height: 10px;
 }
 
 /* Scrollbar Track */
-.categories-list::-webkit-scrollbar-track {
+.categories-list::-webkit-scrollbar-track{
     background: #f1f1f1;
     border-radius: 5px;
 }
 
 /* Scrollbar Handle */
-.categories-list::-webkit-scrollbar-thumb {
+.categories-list::-webkit-scrollbar-thumb{
     background: #888;
     border-radius: 5px;
 }
@@ -330,34 +330,74 @@ button:hover{
     width: 60%;
 }
 
+/* Recipe card head */
 .card-head{
-    display: flex;
-    align-items: center;
+    padding-bottom: 1rem;
     border-bottom: var(--border-color);
+    position: relative;
 }
 
-.recipe-name h4,
-.recipe-category p{
-    margin: 0 0 .75rem 0;
+.recipe-sub-head{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    width: 100%;
+    margin-bottom: 1.25rem;
+    line-height: 4rem;
 }
 
-.recipe-name,
-.recipe-category{
+.recipe-hero-img{
+    width: 100%;
+    max-height: 25rem;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.recipe-name{
     margin: 0;
-    vertical-align: middle;
+    padding: 0;
+    height: 100%;
+    display: flex;
+}
+
+.recipe-name{
+    width: 90%;
+    margin: 0;
 }
 
 .recipe-name h4{
     font-size: 1.75rem;
     font-family: var(--Lato);
+    vertical-align: middle;
+    margin: 0;
+}
+
+/*
+    Category image middle vertical align code idea taken from here:
+    https://stackoverflow.com/questions/7273338/how-to-vertically-align-an-image-inside-a-div
+*/
+.recipe-category{
+    white-space: nowrap;
+}
+
+.category-image-helper{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }
 
 .recipe-category img{
+    vertical-align: middle;
     height: 3rem;
-    margin-right: 1rem;
-    margin-bottom: .5rem;
+    margin: 0 .5rem;
 }
 
+/* Recipe Card Body */
 .card-body h5{
     font-family: var(--Lato);
     font-size: 1.25rem;
@@ -502,6 +542,7 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
 
 .add-recipe-card textarea{
     margin-right: 3rem;
+    resize: none;
 }
 
 .add-cook-time{
