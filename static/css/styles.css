@@ -691,7 +691,7 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     /* ================== RECIPE CARDS ================== */
     .recipe-card{
         width: 90%;
-        margin: 0 auto;
+        margin: 1.5rem auto;
     }
     
     .cooking-time{
