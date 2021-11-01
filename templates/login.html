@@ -3,7 +3,7 @@
 <h3 class="title">Login</h3>
 
 <div class="auth-card">
-    
+
     <section>
         <!-- flash messages -->
         {% with messages = get_flashed_messages() %}
@@ -21,7 +21,7 @@
         <input id="username" name="username" type="text" minlength="5" maxlength="15"
             pattern="^[a-zA-Z0-9]{5,15}$" required>
         <!-- password field -->
-        <label for="password" class="form-label">Password</label>
+        <label for="password">Password</label>
         <input id="password" name="password" type="password" minlength="5" maxlength="15"
             pattern="^[a-zA-Z0-9]{5,15}$" required>
         <button class="button" type="submit" id="loginBtn" >

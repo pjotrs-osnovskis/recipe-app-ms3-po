@@ -262,6 +262,14 @@ def delete_recipe(recipe_id):
     return redirect(url_for("profile", username=session["user"]))
 
 
+# Contact Us
+@app.route("/contact_us")
+def contact_us():
+    return render_template("contact_us.html")
+
+
+
+
 # Admin - List ingredients
 @app.route("/get_ingredients")
 def get_ingredients():

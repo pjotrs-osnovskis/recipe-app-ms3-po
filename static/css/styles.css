@@ -305,10 +305,13 @@ button:hover{
 .footer{
     margin-top: 2rem;
     line-height: 4rem;
-    /* flex-shrink: 0; */
     border-top: var(--border-color);
     border-width: 2px;
-    text-align: center;
+}
+
+.footer.row{
+    display: flex;
+    justify-content: center;
 }
 
 .footer a{
@@ -320,6 +323,18 @@ button:hover{
     font-size: 2rem;
     margin: 1rem .75rem;
     vertical-align: middle;
+}
+
+.contact-us-footer{
+    margin: 0;
+    padding: 0;
+    font-family: var(--Lato);
+    text-align: left;
+}
+
+.social-links{
+    text-align: right;
+    margin: 0 1rem;
 }
 
 /* ================== RECIPE CARDS ================== */
@@ -644,6 +659,11 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     text-align: center;
 }
 
+/* ================== CONTACT US ================== */
+
+#contactForm{
+    padding: 1rem;
+}
 
 
 
@@ -748,6 +768,18 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     .delete-btn{
         margin-right: .75rem;
     }
+
+    /* ================== AUTHENTICATION ================== */
+    .auth-card{
+        height: 90%;
+    }
+
+    /* ================== FOOTER ================== */
+    .contact-us-footer,
+    .social-links{
+        text-align: center;
+    }
+    
 
 }
 

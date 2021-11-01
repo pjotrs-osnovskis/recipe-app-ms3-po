@@ -17,7 +17,7 @@
     {% block styles %}
     {% endblock %}
 
-    <title>recipeshere</title>
+    <title>recipehere</title>
 </head>
 
 <body>
@@ -76,15 +76,18 @@
         {% endblock %}
     </main>
 
-    <footer class="footer">
+    <footer class="footer row">
         <!-- Social Media Icons -->
-        <div class="social-links">
+        <div class="social-links col-50">
             <a href="https://www.facebook.com" target="_blank" rel="noopener"><i class="fab fa-facebook-square"></i></a>
             <a href="https://www.instagram.com" target="_blank" rel="noopener"><i
                     class="fab fa-instagram-square"></i></a>
             <a href="https://www.pinterest.com" target="_blank" rel="noopener"><i
                     class="fab fa-pinterest-square"></i></a>
         </div>
+                    <!-- Contact us link -->
+        <a class="contact-us-footer col-50" href="{{ url_for('contact_us') }}">Contact Us</a>
+
     </footer>
 
     <!-- jQuery -->
@@ -98,7 +101,11 @@
 
     <!-- Custom JS -->
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/random.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/sendMail.js') }}"></script>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
 
 
     {% block scripts %}

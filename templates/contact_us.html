@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="auth-card">
+    
+    <form name="contactForm" id="contactForm" onsubmit="return sendMail(this); this.reset();">
+        <!-- Contact name field -->
+        <label for="contact_name">Name</label>
+        <input id="contact_name" name="contact_name" type="text" minlength="2" maxlength="25" required>
+        <!-- Contact email field -->
+        <label for="contact_email">Email</label>
+        <input id="contact_email" name="contact_email" type="email" required>
+        <!-- Contact Message -->
+        <label for="contact_request">Message</label>
+        <textarea name="contact_request" id="contact_request" rows="10"></textarea>
+
+        <button type="submit" class="button" id="contactSend">
+            Send
+        </button>
+    </form>
+
+{% endblock %}
