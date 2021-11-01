@@ -25,7 +25,7 @@
                 </datalist>
                 {% for i in recipe.cooking_time %}
 
-                <label for="serves">Serves:</label>
+                <label for="serves">Servings:</label>
                 <input name="serves" id="serves" type="text" maxlength="2" value="{{ i.serves }}" required>
             </div>
             <div class="col-50 add-cook-time">
@@ -105,14 +105,16 @@
             </div>
             {% endfor %}
         </div>
+                <!-- Add ingredient line -->
+
         <div class="row form-buttons">
             <div class="col-full">
-                <button class="button add-itm-btn-edit" id="editIngredient">Add Ingredient</button>
+                <button class="button add-itm-btn-edit" id="addIngredient">Add Ingredient</button>
             </div>
         </div>
 
 
-        <!-- Edit Recipe Button -->
+        <!-- Update Recipe Button -->
         <div class="row form-buttons">
             <div class="col-full">
                 <button class="button delete-recipe-btn" onclick="goBack()">Cancel</button>

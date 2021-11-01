@@ -6,7 +6,7 @@
 </h3>
 
 {% if recipes|length > 0 %}
-<ul id="recipes_home">
+<ul>
     {% for recipe in recipes %}
     <li class="recipe-card">
         <!-- Recipe card header -->
@@ -42,7 +42,7 @@
                         <ul>
                             {% for i in recipe.ingredients %}
                             <li>
-                                <p>{{ i.ingredient_qty }} {{ i.ingredient_unit }} of {{ i.ingredient_name }}</p>
+                                <p>{{ i.ingredient_qty }} {{ i.ingredient_unit }} of {{ i.ingredient_name|lower }}</p>
                             </li>
                             {% endfor %}
 
@@ -53,7 +53,7 @@
                         <h5>Additional information:</h5>
                         <p>Preparation takes {{ i.prep_time }} minutes and cooking  
                         {{ i.cook_time }} minutes more. Totally it will take you {{ i.total_time }} 
-                        minutes and will make {{ i.serves }} portions.</p>
+                        minutes and will make {{ i.serves }} servings.</p>
                     </li>
                     {% endfor %}
                 </ul>

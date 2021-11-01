@@ -673,6 +673,7 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
         text-align: center;
     }
 
+
     /* ================== CATEGORIES LIST ================== */
 
     .categories-list::-webkit-scrollbar,
@@ -688,7 +689,7 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
 
     /* ================== RECIPE CARDS ================== */
     .recipe-card{
-        width: 85%;
+        width: 90%;
         margin: 0 auto;
     }
     
