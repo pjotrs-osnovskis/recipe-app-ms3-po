@@ -591,23 +591,28 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     margin: 0 auto;
 }
 
-.auth-card form{
+.auth-card form,
+.contact-card form{
     width: 16rem;
     border: var(--border-color);
     box-shadow: var(--shadow);
     border-radius: 15px;
     text-align: center;
+    margin: 1rem;
 }
-
 
 .auth-card label,
-.auth-card button{
+.auth-card button,
+.contact-card label,
+.contact-card button{
     display: block;
-    margin-top: .5rem;
+    margin-top: 1rem;
     font-family: var(--Lato);
+    font-size: 1.25rem;
 }
 
-.auth-card input{
+.auth-card input,
+.contact-card input{
     align-items: center;
     margin-top: .5rem;
     border-radius: 25px;
@@ -617,12 +622,18 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     padding: .5rem 1rem;
 }
 
-.auth-card button{
+.auth-card textarea,
+.contact-card textarea{
+    margin-top: .5rem;
+}
+
+
+.auth-card button,
+.contact-card button{
     margin: 1rem auto;
 }
 
 .under-form{
-    margin: 1rem;
     text-align: center;
     font-family: var(--Lato);
 }
@@ -661,10 +672,22 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
 
 /* ================== CONTACT US ================== */
 
-#contactForm{
-    padding: 1rem;
+.contact-card{
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    height: 80%;
 }
 
+#contactForm{
+    padding: 1rem;
+    width: 27rem;
+    margin: 1rem auto;
+}
+
+.contact-card label{
+    padding-left: .5rem;
+}
 
 
 
@@ -733,17 +756,22 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
         visibility: hidden;
     }
 
+    .categories-section{
+        margin: 1rem auto;
+    }
+    
+
     /* ================== MAIN CONTAINER ================== */
     .main-container{
         width: 100%;
     }
 
     .main-container .title{
-        margin-top: 0;
+        margin: 1rem;
     }
 
     .main-container .subtitle{
-        margin-top: 2rem;
+        margin-bottom: 1rem;
     }
 
     /* ================== RECIPE CARDS ================== */
@@ -771,7 +799,7 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
 
     /* ================== AUTHENTICATION ================== */
     .auth-card{
-        height: 90%;
+        height: 80%;
     }
 
     /* ================== FOOTER ================== */
@@ -779,8 +807,14 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     .social-links{
         text-align: center;
     }
-    
 
+    /* ================== CONTACT US ================== */
+    .contact-card{
+        width: 90%;
+        margin: 2rem auto;
+
+    }
+    
 }
 
 @media screen and (max-width: 600px) {
