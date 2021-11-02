@@ -1,10 +1,9 @@
 import os
 import re
 from flask import (
-    Flask, flash, render_template, 
+    Flask, flash, render_template,
     redirect, request, session, url_for, Markup)
 from flask_pymongo import PyMongo
-from pymongo import TEXT
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
@@ -35,7 +34,9 @@ def search():
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
     categories = mongo.db.categories.find()
 
-    return render_template("search_results.html", recipes=recipes, categories=categories)
+    return render_template(
+        "search_results.html", recipes=recipes, categories=categories
+        )
 
 
 # Profile
@@ -45,9 +46,11 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     if session["user"]:
-        recipes = list(mongo.db.recipes.find({"created_by": username}).sort('creation_date', -1))
-    
-        return render_template("profile.html", username=username, recipes=recipes)
+        recipes = list(mongo.db.recipes.find(
+            {"created_by": username}).sort('creation_date', -1))
+        return render_template(
+            "profile.html", username=username, recipes=recipes
+            )
     else:
         return redirect(url_for("login"))
 
@@ -69,7 +72,7 @@ def register():
                                 </div>
                             """)
             flash(message)
-            return redirect( url_for("register") )
+            return redirect(url_for("register"))
 
         # Variables to check both passwords
         password1 = request.form.get("reg_password")
@@ -82,17 +85,18 @@ def register():
                                 </div>
                             """)
             flash(message)
-            return redirect( url_for("register"))
+            return redirect(url_for("register"))
         else:
             # Getting username and password to send over to Mongo DB
             register = {
                 "username": request.form.get("username").lower(),
-                "password": generate_password_hash(request.form.get("reg_password"))
+                "password": generate_password_hash(
+                    request.form.get("reg_password"))
             }
             # Insert new user creds into DB
             mongo.db.users.insert_one(register)
             session["user"] = request.form.get("username").lower()
-            return redirect( url_for("profile", username=session["user"]) )
+            return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
 
@@ -108,11 +112,11 @@ def login():
         if existing_user:
             # ensure if hashed password matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+                existing_user["password"], request.form.get("password")
+                    ):
                     session["user"] = request.form.get("username").lower()
                     return redirect(url_for(
                         "profile", username=session["user"]))
-
             else:
                 # invalid password
                 message = Markup(
@@ -148,7 +152,6 @@ def logout():
                     <p>You have been logged out!</p>
                 </div>
             """)
-    
     session.clear()
     flash(message)
     return redirect(url_for("login"))
@@ -201,7 +204,8 @@ def add_recipe():
 
     ingredients = mongo.db.ingredients.find()
     categories = mongo.db.categories.find()
-    return render_template("add_recipe.html", categories=categories, ingredients=ingredients)
+    return render_template(
+        "add_recipe.html", categories=categories, ingredients=ingredients)
 
 
 # Edit recipe
@@ -252,7 +256,12 @@ def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     ingredients = mongo.db.ingredients.find()
     categories = mongo.db.categories.find()
-    return render_template("edit_recipe.html", recipe=recipe, categories=categories, ingredients=ingredients)
+    return render_template(
+        "edit_recipe.html",
+        recipe=recipe,
+        categories=categories,
+        ingredients=ingredients
+        )
 
 
 # Delete Recipe
@@ -266,8 +275,6 @@ def delete_recipe(recipe_id):
 @app.route("/contact_us")
 def contact_us():
     return render_template("contact_us.html")
-
-
 
 
 # Admin - List ingredients
@@ -296,10 +303,12 @@ def edit_ingredient(ingredient_id):
         submit = {
             "ingredient_name": request.form.get("ingredient_name")
         }
-        mongo.db.ingredients.update({"_id":ObjectId(ingredient_id)}, submit)
+        mongo.db.ingredients.update({"_id": ObjectId(ingredient_id)}, submit)
         return redirect(url_for("add_ingredient"))
 
-    ingredient = mongo.db.ingredients.find_one({"_id": ObjectId(ingredient_id)})
+    ingredient = mongo.db.ingredients.find_one(
+        {"_id": ObjectId(ingredient_id)}
+        )
     return render_template("edit_ingredient.html", ingredient=ingredient)
 
 

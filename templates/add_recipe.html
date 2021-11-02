@@ -37,8 +37,8 @@
         <!-- Recipe Description textarea -->
         <div class="row">
             <div class="col-full">
-                <label for="description">Description:</label>
-                <textarea id="recipe_description" name="recipe_description" type="text" minlength="5" maxlength="2500"
+                <label for="recipe_description">Description:</label>
+                <textarea id="recipe_description" name="recipe_description" minlength="5" maxlength="2500"
                     rows="10" required></textarea>
             </div>
         </div>
@@ -52,7 +52,7 @@
         <!-- Place for ingredients list that is being created with Add Ingredient button -->
         <div id="ingredient_item">
             <!-- Add ingredient item -->
-            <div class="row" id="ingredient_item" name="ingredient_item">
+            <div class="row">
                 <!-- Add Ingredient name -->
                 <div class="col-50">
                     <label for="ingredient_name">Ingredient:</label>
@@ -68,9 +68,11 @@
                     <div class="col-40 ">
                         <label for="ingredient_qty">Quantity:</label>
                         <select name="ingredient_qty" id="ingredient_qty" required>
-                            <option value="¼">¼</option>
-                            <option value="½">½</option>
-                            <option value="¾">¾</option>
+                            <option value="¼">&frac14;</option>
+                            <option value="½">&frac12;</option>
+                            <option value="¾">&frac34;</option>
+                            <option value="⅓">&frac13;</option>
+                            <option value="⅔">&frac23;</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -92,7 +94,7 @@
                     <!-- Remove ingredient line button -->
                     <div class="col-10">
                         <label class="no-text" for="addIngredient">a</label>
-                        <button class="delete-itm-btn" id="remButton" onclick="remove(this);">
+                        <button class="delete-itm-btn" id="remButton" onclick="remove(this);" aria-label="remove-ingredient">
                             <i class="far fa-times-circle"></i>
                         </button>
                     </div>

@@ -13,7 +13,7 @@ I took idea from the list that was offered by Code Institute. It's a recipe appl
 
 <br>
 
-![I am responsive image](static/img/amiresponsive.png)
+![I am responsive image](static/img/readme-img/amiresponsive.png)
 
 
 ---
@@ -98,22 +98,21 @@ Web application is responsive, so it is convenient to use across different devic
 **Wireframes**:
  Page | Desktop | Mobile |
 | :--- | :--: | :--: |
-| Home | [View](static/img/wireframes/wf-home-dsktp.png) | [View](static/img/wireframes/wf-home-mob.png) |
-| Search | [View](static/img/wireframes/wf-search-dsktp.png) | [View](static/img/wireframes/wf-search-mob.png) |
-| Login | [View](static/img/wireframes/wf-login-dsktp.png) | [View](static/img/wireframes/wf-login-mob.png) |
-| Register | [View](static/img/wireframes/wf-register-dsktp.png) | [View](static/img/wireframes/wf-register-mob.png) |
-| Profile | [View](static/img/wireframes/wf-profile-dsktp.png) | [View](static/img/wireframes/wf-profile-mob.png) |
-| Create/Edit | [View](static/img/wireframes/wf-create-dsktp.png) | [View](static/img/wireframes/wf-create-mob.png) |
-| Recipe Card | [View](static/img/wireframes/wf-recipe-card-dsktp.png) | [View](static/img/wireframes/wf-recipe-card-mob.png) |
+| Home | [View](static/img/readme-img/wireframes/wf-home-dsktp.png) | [View](static/img/readme-img/wireframes/wf-home-mob.png) |
+| Search | [View](static/img/readme-img/wireframes/wf-search-dsktp.png) | [View](static/img/readme-img/wireframes/wf-search-mob.png) |
+| Login | [View](static/img/readme-img/wireframes/wf-login-dsktp.png) | [View](static/img/readme-img/wireframes/wf-login-mob.png) |
+| Register | [View](static/img/readme-img/wireframes/wf-register-dsktp.png) | [View](static/img/readme-img/wireframes/wf-register-mob.png) |
+| Profile | [View](static/img/readme-img/wireframes/wf-profile-dsktp.png) | [View](static/img/readme-img/wireframes/wf-profile-mob.png) |
+| Create/Edit | [View](static/img/readme-img/wireframes/wf-create-dsktp.png) | [View](static/img/readme-img/wireframes/wf-create-mob.png) |
+| Recipe Card | [View](static/img/readme-img/wireframes/wf-recipe-card-dsktp.png) | [View](static/img/readme-img/wireframes/wf-recipe-card-mob.png) |
 
 
----
 * ### **Surface Plane**
-<br>
+
 
 **Colors:**
 
-I decided to keep website simple and did not use any colours apart from CRUD buttons. Simple red, gree and dark orange with a little transparency to make it less bright.
+I decided to keep website simple and did not use any colours apart from CRUD buttons. Simple red, green and dark orange with a little transparency to make it less bright.
 
 **Fonts:**
 
@@ -126,12 +125,131 @@ No CSS frameworks used, created everything my own with some code snippets and id
 
 
 ---
-* ### **Features**
+ ## **Features**
 <br>
 
 **Implemented:**
 
-* Web app has 
+* Web app contains 8 pages, that has a navigation, search and footer on all of them and unique block content templates:
+    * Home - categories vertical list and random recipe
+    * Search - has search results ot if none found - a message
+    * Login - login form
+    * Register - register form
+    * Profile - list of own recipes
+    * Create recipe - relevant form with recipe name, description, image URL, etc
+    * Edit recipe - form same as create recipe, but takes unique id of a recipe that needs editing and pulls out relevant data inside of input fields
+    * 404 - in case of "not found" error it contains relevant message and home link
+* Created using HTML, CSS, JS, jQuery, Python, Flask, EmailJS and Google Fonts.
+* Users can register, login, logout, view, create, edit and delete recipes.
+
+**Potential features:**
+
+* Recipe rating and comments
+* Recipe videos
+* Social media interactions, like "Share recipe on Facebook"
+* Add ingredients to shopping list
+
+---
+## **Technologies Used**
+<br>
+
+|Technology|Reason|
+| :-- | :-- |
+| [HTML](https://www.w3schools.com/html/) | Markup |
+| [CSS](https://www.w3schools.com/css/) | Styling |
+| [JavaScript](https://www.w3schools.com/js/) | Interactive Frontend |
+| [jQuery 3.6](https://jquery.com/) | DOM manipulation in some cases |
+| [Python](https://www.python.org/) | Backend |
+| [Flask](https://palletsprojects.com/p/flask/) | Backend framework |
+| [EmailJS](https://www.emailjs.com/)  | Contact Us functionality |
+
+
+---
+## **Resources**
+<br>
+
+### **Resources used**
+* Code Institute Course Material
+* Code Institute's Slack Community
+* [W3Schools](https://www.w3schools.com/) - Minor CSS and JavaScript code ideas
+* [Stack Overflow](https://stackoverflow.com/) - Problem resolution, credited in the code
+* [jQuery](https://learn.jquery.com/using-jquery-core/) - jQuery documentation
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/) - Flask documentation
+* [EmailJS](https://www.emailjs.com/) - EmailJS documentation
+
+
+### **Tools Used**
+* [Git](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control) - Local Repository/Version Control
+* [GitHub](https://github.com/) - Remote repository and deployment
+* [VSCode](https://code.visualstudio.com/) - IDE
+* [HTML Validator](https://validator.w3.org/) - HTML Validation
+* [CSS Validator](https://jigsaw.w3.org/css-validator/) - CSS Validation
+* [JS Validator](https://jshint.com/) - JS Validation
+* [PEP8 Validator](https://jigsaw.w3.org/css-validator/) - Python Validation
+* [Am I Responsive](http://ami.responsivedesign.is/) - Responsive Webpage Presentation
+* [Balsamiq](https://balsamiq.com/wireframes/) - Creating wireframes
+* [MS Paint](https://support.microsoft.com/en-us/windows/get-microsoft-paint-a6b9578c-ed1c-5b09-0699-4ed8115f9aa9) - Cutting out wireframes and screenshots
+* [PowerMapper](https://www.powermapper.com/) - Browser compatibility checks
+
+---
+## **Testing**
+<br>
+
+### **Pre-testing**
+During the development of this project I used Chrome Dev Tools to test and check for responsiveness across various devices. To double check I used Heroku deployed project on Android Chrome on my phone, what helped a lot as discovered few positioning errors that were fixed.
+
+### **Main Testing**
+
+* **HTML** - as this is an Flask application, HTML validator won't pick up Flask template references and shows up errors due to that reason as well as *lang* warnings. Apart from that here are some errors found while validating the code:
+
+    * add_recipe.html - invalid attribute for text area "type", had duplicate ID, unnecessary name attribute - fixed. Unfixed errors are connected with `value="¾"`, I tried to use html code like `&frac34;` for it, but it won't work with MongoDB.
+
+    * base.html - missing heading for search field. There is no need for one.
+
+    * contact_us.html - was missing a closing div tag - fixed.
+
+    * edit_recipe.html - as it's base was coped from add_recipe.html, I had same errors, that were fixed.
+
+    * home.html - categories list section lacks heading, in my opinion it is not necessary, as section is very clear.
+
+    * login.html - no heading in flash messages section, there is no need for it.
+
+    * profile.html - no errors found
+
+    * register.html - no heading in flash messages section, there is no need for it.
+
+    * search_results.html - no errors found.
 
 
 
+* **CSS** - no errors found
+
+* **JS** - due to some jQuery used for overall author convenience, JS validator shows `$` as an undefined variable. Gives warning about template literal not being available in ES6, but no ES6 was used. Shows `mobileNav`, `goBack` and `remove` as unused variables, altho they are functions and are used in DOM to trigger them.
+
+* **Python** - Errors found on PEP8 validator that were fixed and now shows `"All right"`:
+```
+W291:4:35:trailing whitespace
+E501:38:80:line too long (89 > 79 characters)
+E501:48:80:line too long (97 > 79 characters)
+W293:49:1:blank line contains whitespace
+E501:50:80:line too long (82 > 79 characters)
+E201:72:29:whitespace after '('
+E202:72:49:whitespace before ')'
+E201:85:29:whitespace after '('
+E501:90:80:line too long (84 > 79 characters)
+E201:95:29:whitespace after '('
+E202:95:74:whitespace before ')'
+E125:111:5:continuation line with same indent as next logical line
+W293:151:1:blank line contains whitespace
+E501:204:80:line too long (93 > 79 characters)
+E501:255:80:line too long (109 > 79 characters)
+E303:273:1:too many blank lines (4)
+E302:274:1:expected 2 blank lines, found 4
+E231:299:43:missing whitespace after ':'
+E501:302:80:line too long (80 > 79 characters)
+W292:317:24:no newline at end of file
+```
+
+### **Lighthouse Reports**
+
+ADD 404 page

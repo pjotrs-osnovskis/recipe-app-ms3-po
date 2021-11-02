@@ -61,6 +61,14 @@ body {
 }
 
 /* ================== BUTTONS ================== */
+.form-buttons a{
+    margin: 0;
+    padding: .4rem 1rem;
+    vertical-align: middle;
+    font-size: .9rem;
+    cursor: pointer;
+}
+
 .button{
     border: var(--border-color);
     border-radius: 15px;
@@ -116,6 +124,7 @@ button:hover{
     margin: 1rem 0 0 0;
     text-align: center;
 }
+
 
 /* ================== NAVIGATION ================== */
 

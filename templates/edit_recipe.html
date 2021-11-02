@@ -42,8 +42,8 @@
         <!-- Recipe Description textarea -->
         <div class="row">
             <div class="col-full">
-                <label for="description">Description:</label>
-                <textarea id="recipe_description" name="recipe_description" type="text" minlength="5" maxlength="2500"
+                <label for="recipe_description">Description:</label>
+                <textarea id="recipe_description" name="recipe_description" minlength="5" maxlength="2500"
                     rows="10" required>{{ recipe.recipe_description }}</textarea>
             </div>
         </div>
@@ -57,7 +57,7 @@
         <div id="ingredient_item">
             <!-- Add ingredient item -->
             {% for i in recipe.ingredients %}
-            <div class="row" id="ingredient_item" name="ingredient_item">
+            <div class="row">
                 <!-- Add Ingredient name -->
                 <div class="col-50">
                     <label for="ingredient_name">Ingredient:</label>
@@ -65,7 +65,7 @@
                         value="{{ i.ingredient_name }}" required>
                     <datalist id="ingredients_list">
                         {% for ingredient in ingredients %}
-                        <option">{{ ingredient.ingredient_name }}</option>
+                        <option>{{ ingredient.ingredient_name }}</option>
                             {% endfor %}
                     </datalist>
                 </div>
@@ -74,9 +74,11 @@
                     <div class="col-40 ">
                         <label for="ingredient_qty">Quantity:</label>
                         <select name="ingredient_qty" id="ingredient_qty" required>
-                            <option value="¼" {% if (i.ingredient_qty == '¼')%}selected{% endif %}>¼</option>
-                            <option value="½" {% if (i.ingredient_qty == '½')%}selected{% endif %}>½</option>
-                            <option value="¾" {% if (i.ingredient_qty == '¾')%}selected{% endif %}>¾</option>
+                            <option value="¼" {% if (i.ingredient_qty == '¼')%}selected{% endif %}>&frac14;</option>
+                            <option value="½" {% if (i.ingredient_qty == '½')%}selected{% endif %}>&frac12;</option>
+                            <option value="¾" {% if (i.ingredient_qty == '¾')%}selected{% endif %}>&frac34;</option>
+                            <option value="⅓" {% if (i.ingredient_qty == '⅓')%}selected{% endif %}>&frac13;</option>
+                            <option value="⅔" {% if (i.ingredient_qty == '⅔')%}selected{% endif %}>&frac23;</option>
                             <option value="1" {% if (i.ingredient_qty == '1')%}selected{% endif %}>1</option>
                             <option value="2" {% if (i.ingredient_qty == '2')%}selected{% endif %}>2</option>
                             <option value="3" {% if (i.ingredient_qty == '3')%}selected{% endif %}>3</option>
@@ -97,7 +99,7 @@
                     <!-- Remove ingredient line button -->
                     <div class="col-10">
                         <label class="no-text" for="remButton">a</label>
-                        <button class="delete-itm-btn" id="remButton" onclick="remove(this);">
+                        <button class="delete-itm-btn" id="remButton" onclick="remove(this);" aria-label="remove-ingredient">
                             <i class="far fa-times-circle"></i>
                         </button>
                     </div>
@@ -117,7 +119,7 @@
         <!-- Update Recipe Button -->
         <div class="row form-buttons">
             <div class="col-full">
-                <button class="button delete-recipe-btn" onclick="goBack()">Cancel</button>
+                <a class="button delete-recipe-btn" onclick="goBack()">Cancel</a>
                 <button class="button create-button" type="submit">Update Recipe</button>
             </div>
         </div>

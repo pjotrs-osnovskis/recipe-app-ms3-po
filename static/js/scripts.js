@@ -26,10 +26,10 @@ $('#reg-password, #confirm_password').on('keyup', function () {
         Then optimized to project needs.
     */
     if ($('#reg-password').val() != $('#confirm_password').val()) {
-        $("[id=exclIcon").css("visibility", "visible")
+        $("[id=exclIcon").css("visibility", "visible");
 
     } else if ($('#reg-password').val() == $('#confirm_password').val())
-        $("[id=exclIcon").css("visibility", "hidden")
+        $("[id=exclIcon").css("visibility", "hidden");
 });
 
 
@@ -125,7 +125,7 @@ $(function () {
                 <!-- Remove ingredient line button -->
                 <div class="col-10">
                     <label class="no-text" for="remButton">a</label>
-                    <button class="delete-itm-btn" id="remButton" onclick="remove(this);">
+                    <button class="delete-itm-btn" id="remButton" onclick="remove(this);" aria-label="remove-ingredient">
                         <i class="far fa-times-circle"></i>
                     </button>
                 </div>
