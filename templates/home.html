@@ -9,7 +9,7 @@
         <form class="noselect categories" action="{{ url_for('search') }}" method="POST">
             <div class="categories-card" value="{{ category.category_name }}">
                 <button class="category-item" type="submit">
-                    <img src="..\static\img\{{ category.category_name.lower() }}.png" alt="category">
+                    <img src="..\static\img\{{ category.category_name.lower() }}.png" alt="recipe-category">
                     <input value="{{ category.category_name }}" type="text" name="recipe_search" id="categoty_search"
                         type="text">{{ category.category_name }}</input>
                 </button>

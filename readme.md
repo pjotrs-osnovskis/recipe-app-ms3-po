@@ -202,23 +202,23 @@ During the development of this project I used Chrome Dev Tools to test and check
 
 * **HTML** - as this is an Flask application, HTML validator won't pick up Flask template references and shows up errors due to that reason as well as *lang* warnings. Apart from that here are some errors found while validating the code:
 
-    * add_recipe.html - invalid attribute for text area "type", had duplicate ID, unnecessary name attribute - fixed. Unfixed errors are connected with `value="¾"`, I tried to use html code like `&frac34;` for it, but it won't work with MongoDB.
+    * **add_recipe.html** - invalid attribute for text area "type", had duplicate ID, unnecessary name attribute - fixed. Unfixed errors are connected with `value="¾"`, I tried to use html code like `&frac34;` for it, but it won't work with MongoDB.
 
-    * base.html - missing heading for search field. There is no need for one.
+    * **base.html** - missing heading for search field. There is no need for one.
 
-    * contact_us.html - was missing a closing div tag - fixed.
+    * **contact_us.html** - was missing a closing div tag - fixed.
 
-    * edit_recipe.html - as it's base was coped from add_recipe.html, I had same errors, that were fixed.
+    * **edit_recipe.html** - as it's base was coped from add_recipe.html, I had same errors, that were fixed.
 
-    * home.html - categories list section lacks heading, in my opinion it is not necessary, as section is very clear.
+    * **home.html** - categories list section lacks heading, in my opinion it is not necessary, as section is very clear.
 
-    * login.html - no heading in flash messages section, there is no need for it.
+    * **login.html** - no heading in flash messages section, there is no need for it.
 
-    * profile.html - no errors found
+    * **profile.html** - no errors found
 
-    * register.html - no heading in flash messages section, there is no need for it.
+    * **register.html** - no heading in flash messages section, there is no need for it.
 
-    * search_results.html - no errors found.
+    * **search_results.html** - no errors found.
 
 
 
@@ -252,4 +252,32 @@ W292:317:24:no newline at end of file
 
 ### **Lighthouse Reports**
 
-ADD 404 page
+> Lighthouse testing done on [**deployed project**](https://recipe-app-ms3-po.herokuapp.com/).
+
+<br>
+
+* [Home Page](https://recipe-app-ms3-po.herokuapp.com)
+
+| Test | Mobile | Desktop |
+| :-- | :--: | :--: |
+| Performance     | 91 | 91 |
+| Accessibility   | 100 | 100 |
+| Best Practices  | 93 | 100 |
+| SEO             | 100 | 100 |
+
+* [Login](https://recipe-app-ms3-po.herokuapp.com/login)
+
+| Test | Mobile | Desktop |
+| :-- | :--: | :--: |
+| Performance     | 94 | 97 |
+| Accessibility   | 100 | 100 |
+| Best Practices  | 100 | 100 |
+| SEO             | 100 | 100 |
+
+
+
+
+deployment
+check icons
+admin can crud all recipes
+change to false
