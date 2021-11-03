@@ -14,6 +14,23 @@ I took idea from the list that was offered by Code Institute. It's a recipe appl
 
 <br>
 
+### **Access**
+
+* Regular user:
+
+| Username | Password |
+| :-- | :-- |
+| pete1 | pete1 |
+
+* Superuser/Admin
+
+| Username | Password |
+| :-- | :-- |
+| admin | admin1 |
+
+
+<br>
+
 ![I am responsive image](static/img/readme-img/amiresponsive.png)
 
 <br>
@@ -396,42 +413,35 @@ During the production of this project I used Code Institutes Tutors to help me w
 
 I used [Git](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control) as a local repo and [GitHub](https://github.com/) as a remote one. 
 
- I started my project locally on Windows 10 machine in **VSCode** IDE. Used **VSCode** terminal, changed directory to projects destination, used command `git init`, then `git add .` (to add all files I created to local repo) and made my **Initial commit** with command `git commit -m "Initial Commit"`. Then I created a remote repository on GitHub by pressing **New** on main page and followed these steps:
+ I started my project locally on Windows 10 machine in **VSCode** IDE. Used **VSCode** terminal, changed directory to projects destination, used command `git init`. Created and updated `.gitignore` file, so sensitive information is not pushed to GitHub, then `git add .` (to add all files I created to local repo) and made my **Initial commit** with command `git commit -m "Initial Commit"`. Then I created a remote repository on GitHub by pressing **New** on main page and followed these steps:
 
- 1. Used HTTPS link and then entered `git remote add origin <REMOTE_HTTPS_URL>` in terminal,
- 2. Then pushed my project to remote repository with `git push origin master`,
- 3. Used `git add.`, `git commit -m "<COMMIT_MESSAGE>"`, `git push origin master` commands in the terminal to push further changes.
-
+ 1. Used HTTPS link and then entered `"git remote add origin <REMOTE_HTTPS_URL>"` in terminal,
+ 2. Then pushed my project to remote repository with `"git push origin master"`,
+ 3. Used `"git add ."`, `"git commit -m '<COMMIT_MESSAGE>'"`, `"git push origin master"` commands in the terminal to push further changes.
+ 
 <br>
 
 ---
 ## **Deployment**
 <br>
 
-This project was developed locally on a Windows 10 machine using the VSCode IDE, committed to [Git](https://git-scm.com/) and pushed to [GitHub](https://github.com/) using steps described above in Version Control section.
-
 Before deployment make sure some steps are taken for application to work properly:
 
 * create **virtual environment**:
 
-    1. In terminal ensure you are in your app's directory, if not use `cd <APP_PATH>` command to target it,
-    2. Then execute `python3 -m venv /path/to/new/virtual/environment` command to create a virtual environment. (In some cases need to use `"py"` or `"python"` instead of `"python3"` to execute command correctly),
+    1. In terminal ensure you are in your app's directory, if not use `"cd <APP_PATH>"` command to target it,
+    2. Then execute `"python3 -m venv /path/to/new/virtual/environment"` command to create a virtual environment. (In some cases need to use `"py"` or `"python"` instead of `"python3"` to execute command correctly),
     3. Once virtual environment (`venv`) is created, we need to activate it,
-    4. To activate your apps virtual environment use `venv\Scripts\activate.bat` command, to indicate that you are working in virtual environment, in your CMD you will see a line like `(venv)<APPLICATION_PATH>`,
+    4. To activate your apps virtual environment use `"venv\Scripts\activate.bat"` command, to indicate that you are working in virtual environment, in your CMD you will see a line like `(venv)<APPLICATION_PATH>`,
     5. Next, install any necessary Python frameworks for your application.
-    6. In case you need to de-activate (exit) your virtual environment, use `deactivate` command in terminal.
-
-<br>
+    6. In case you need to de-activate (exit) your virtual environment, use `"deactivate"` command in terminal.
 
 * create **requirements.txt** file:
 
-    1. Create **requirements.txt** file using `pip3 freeze --local > requirements.txt` command.
-
-<br>
-
+    1. Create **requirements.txt** file using `"pip3 freeze --local > requirements.txt"` command.
 
 * create a **Procfile**:
-    1. To create a Procfile use `echo web: python <PYTHON_FILE_NAME> > Procfile` command,
+    1. To create a Procfile use `"echo web: python <PYTHON_FILE_NAME> > Procfile"` command,
     2. Now, open Procfile in IDE and sure that it has `UTF-8` encoding and `web: python <PYTHON_FILE_NAME>` is in one line with no trailing whitespace, otherwise it can create a failure in deployment.
 
 <br>
@@ -444,12 +454,51 @@ Now project is ready to be deployed to [Heroku](https://www.heroku.com/). I foll
 4. Then in **Connect to GitHub** section, click **Connect to GitHub** button,
 5. Enter your GitHub repository name to **repo-name** input field and click **Search**,
 6. Then click **Connect** button to link your GitHub repository with Heroku,
-7. Next, in **Automatic deploys** section, make sure your master/main branch is selected and click **Enable Automatic Deploys**
-8. In **Manual deploy** section click **Deploy Branch** to do a first deployment,
-9. After use step 3 from **Version Control** to commit and push changes to GitHub and it will be automatically deployed to Heroku.
+7. For application to work properly, need to add variables that are not pushed to GitHub. In **Settings** tab **Config Vars** click **Reveal Config Vars**.
+8. Enter necessary **keys** and **values**:
+
+| KEY | VALUE |
+| :--: | :--: |
+| IP | 0.0.0.0 |
+| PORT | 5000 |
+| MONGO_URI | <MONGODB_LINK> |
+| MONGO_DBNAME | <DATABASE_NAME> |
+| SECRET_KEY | <SECRET_KEY> |
+
+9. Back in **Deploy** tab, in **Automatic deploys** section, make sure your master/main branch is selected and click **Enable Automatic Deploys**
+10. In **Manual deploy** section click **Deploy Branch** to do a first deployment,
+11. From this point onward use **step 3** from **Version Control** to commit and push changes to GitHub and it will be automatically deployed to Heroku.
 
 
+---
+## **Credits**
+<br>
 
-deployment
-admin can crud all recipes
-change to false
+### **Code**
+
+All code snippets used are credited in comments in the code. Most of them are taken from:
+ * [w3Schools](https://www.w3schools.com/) - used code snippets for JavaScript and some memory refresher for CSS.
+  * [StackOverflow](https://stackoverflow.com/) - used some code for JavaScript  solutions.
+* [Code Institute](https://learn.codeinstitute.net/login?next=/) - Working with Flask and EmailJS.
+
+### **Media**
+
+* Categories images taken from https://www.flaticon.com/
+* Recipe image links taken from https://www.allrecipes.com/
+
+### **Content**
+
+Main website content was created by me, recipes taken from https://www.allrecipes.com/
+
+---
+## **Contributors**
+<br>
+
+> Pjotrs Osnovskis
+
+---
+## **Acknowledgements**
+<br>
+
+I would like to thank my mentor Spencer Barriball for support and help during this project. Also huge "Thank You!" to Code Institute and CyC Slack community for support and all tutors who helped me with difficulties I faced during production of this project and also who worked hard on the study material that got me to this point. And of course Assessors who will assess this project.
+
