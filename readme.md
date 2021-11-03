@@ -190,6 +190,7 @@ No CSS frameworks used, created everything my own with some code snippets and id
 * [Balsamiq](https://balsamiq.com/wireframes/) - Creating wireframes
 * [MS Paint](https://support.microsoft.com/en-us/windows/get-microsoft-paint-a6b9578c-ed1c-5b09-0699-4ed8115f9aa9) - Cutting out wireframes and screenshots
 * [PowerMapper](https://www.powermapper.com/) - Browser compatibility checks
+* [removebg](https://www.remove.bg/) - Remove category image background
 
 ---
 ## **Testing**
@@ -273,6 +274,38 @@ W292:317:24:no newline at end of file
 | Accessibility   | 100 | 100 |
 | Best Practices  | 100 | 100 |
 | SEO             | 100 | 100 |
+
+* [Register](http://recipe-app-ms3-po.herokuapp.com/register)
+
+| Test | Mobile | Desktop |
+| :-- | :--: | :--: |
+| Performance     | 98 | 100 |
+| Accessibility   | 90 | 90 |
+| Best Practices  | 93 | 93 |
+| SEO             | 100 | 100 |
+
+**Accessibility** - Missed out label and input connection - fixed. 
+
+| Test | Mobile | Desktop |
+| :-- | :--: | :--: |
+| Performance     | 98 | 100 |
+| Accessibility   | 100 | 100 |
+| Best Practices  | 93 | 93 |
+| SEO             | 100 | 100 |
+
+* [Profile (pete1)](http://recipe-app-ms3-po.herokuapp.com/profile/pete1)
+
+| Test | Mobile | Desktop |
+| :-- | :--: | :--: |
+| Performance     | 78 | 97 |
+| Accessibility   | 97 | 97 |
+| Best Practices  | 93 | 93 |
+| SEO             | 100 | 100 |
+
+**Performance (Mobile)** - Category images too large, fixed.
+
+
+
 
 
 
