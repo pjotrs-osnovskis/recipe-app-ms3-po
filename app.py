@@ -19,12 +19,17 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-# Home Page Route
+# Home Page
 @app.route("/")
 def home_page():
     categories = mongo.db.categories.find()
     recipes = list(mongo.db.recipes.find().sort('creation_date', -1))
     return render_template("home.html", recipes=recipes, categories=categories)
+
+# 404 Page
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 
 # Search
