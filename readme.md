@@ -16,18 +16,7 @@ I took idea from the list that was offered by Code Institute. It's a recipe appl
 
 ### **Access**
 
-* Regular user:
-
-| Username | Password |
-| :-- | :-- |
-| pete1 | pete1 |
-
-* Superuser/Admin
-
-| Username | Password |
-| :-- | :-- |
-| admin | admin1 |
-
+Please see project submission form or contact me on pjotrs.osnovskis@gmail.com.
 
 <br>
 
