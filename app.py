@@ -282,46 +282,38 @@ def contact_us():
     return render_template("contact_us.html")
 
 
-# Admin - List ingredients
-@app.route("/get_ingredients")
-def get_ingredients():
-    ingredients = list(mongo.db.ingredients.find().sort("ingredient_name", 1))
-    return render_template("admin.html", ingredients=ingredients)
+# Admin - List Users
+@app.route("/get_users")
+def get_users():
+    users = list(mongo.db.users.find().sort("username", 1))
+    return render_template("admin.html", users=users)
 
 
-# Admin -  add ingredient
-@app.route("/add_ingredient", methods=("GET", "POST"))
-def add_ingredient():
-    if request.method == "POST":
-        ingredient = {
-            "ingredient_name": request.form.get("ingredient_name")
-            }
-        mongo.db.ingredients.insert_one(ingredient)
-        return redirect(url_for("add_ingredient"))
-    return render_template("admin.html")
-
-
-# Admin - Edit Ingredient
-@app.route("/edit_ingredient/<ingredient_id>", methods=["GET", "POST"])
-def edit_ingredient(ingredient_id):
+# Admin - Edit Username
+@app.route("/edit_user/<user_id>", methods=["GET", "POST"])
+def edit_user(user_id):
     if request.method == "POST":
         submit = {
-            "ingredient_name": request.form.get("ingredient_name")
+            "username": request.form.get("username"),
+            "password": generate_password_hash(
+                request.form.get("upd_password"))
         }
-        mongo.db.ingredients.update({"_id": ObjectId(ingredient_id)}, submit)
-        return redirect(url_for("add_ingredient"))
+        mongo.db.users.update({"_id": ObjectId(user_id)}, submit)
+        flash("User information updated")
+        return redirect(url_for("get_users"))
 
-    ingredient = mongo.db.ingredients.find_one(
-        {"_id": ObjectId(ingredient_id)}
+    user = mongo.db.users.find_one(
+        {"_id": ObjectId(user_id)}
         )
-    return render_template("edit_ingredient.html", ingredient=ingredient)
+    users = mongo.db.users.find()
+    return render_template("edit_user.html", user=user, users=users)
 
 
-# Admin - Delete Ingredient
-@app.route("/delete_ingredient/<ingredient_id>")
-def delete_ingredient(ingredient_id):
-    mongo.db.ingredients.remove({"_id": ObjectId(ingredient_id)})
-    return redirect(url_for("add_ingredient"))
+# Admin - Delete User
+@app.route("/delete_user/<user_id>")
+def delete_user(user_id):
+    mongo.db.users.remove({"_id": ObjectId(user_id)})
+    return redirect(url_for("get_users"))
 
 
 if __name__ == "__main__":

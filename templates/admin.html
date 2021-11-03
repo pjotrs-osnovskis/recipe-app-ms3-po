@@ -1,48 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Admin Access</h1>
+<h3 class="title">Admin Access</h3>
 
-<h3>Add Ingredient</h3>
 
-<form method="POST" action="{{ url_for('add_ingredient') }}">
-    <label for="ingredient_name">Ingredient Name:</label>
-    <input id="ingredient_name" name="ingredient_name" minlength="3" maxlength="25" type="text" class="validate" required>
-    <button type="submit" class="">
-        Add Ingredient</i>
-    </button>
-</form>
+<p class="subtitle">Users List</p>
+<div class="auth-card">
 
-<h3>Search Ingredients</h3>
-<div>
-    <form action="{{ url_for('search') }}" method="post" class="">
-        <div>
-            <label for="query">Search Tasks</label>
-            <input type="text" name="query" id="query" minlength="3">
-            <a href="{{ url_for('get_ingredients') }}" class="">Reset</a>
-            <button type="submit" class="">Search</button>
-        </div>
-    </form>
-</div>
-
-<h3>Ingredients List</h3>
-
-{% if ingredients|length > 0 %}
-    <div class="">
-        {% for ingredient in ingredients %}
-                <div class="">
-                    <span>{{ ingredient.ingredient_name }}</span>
-                    <a href="{{ url_for('edit_ingredient', ingredient_id=ingredient._id) }}" >Edit</a>
-                    <a href="{{ url_for('delete_ingredient', ingredient_id=ingredient._id) }}" >Delete</a>
-                </div>
-        {% endfor %}
-    </div>
+{% if users|length > 0 %}
+    {% for user in users %}
+        <p>{{ user.username }}
+        <a href="{{ url_for('edit_user', user_id=user._id) }}" >Edit</a>
+        <a href="{{ url_for('delete_user', user_id=user._id) }}" >Delete</a>
+        </p>
+    {% endfor %}
 {% else %}
-    <h3 class="">
-        No Results Found
+    <h3 class="title">
+        No Users Found
     </h3>
 {% endif %}
-
+</div>
 
 
 {% endblock %}

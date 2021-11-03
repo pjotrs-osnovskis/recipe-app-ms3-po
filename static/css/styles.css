@@ -183,10 +183,10 @@ button:hover{
 }
 
 /* ================== CATEGORIES ================== */
-/* 
+/*
     Scrollable categories sideways, code snippet was taken from:
     https://codeburst.io/how-to-create-horizontal-scrolling-containers-d8069651e9c6
-    and amended to project needs 
+    and amended to project needs
 */
 /* Categories scrolling */
 .scrolling-wrapper-flexbox {
@@ -195,7 +195,7 @@ button:hover{
     overflow-x: auto;
 }
 
-/* 
+/*
     Code taken from:
     https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp
 */
@@ -445,7 +445,7 @@ button:hover{
     border-bottom: var(--border-color);
 }
 
-/* 
+/*
 Code idea was taken from here:
 https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-grid/
 */
@@ -524,7 +524,7 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     margin: 0 auto;
     width: 60%;
 }
-/* 
+/*
     https://www.w3schools.com/howto/howto_css_stacked_form.asp
     https://www.w3schools.com/howto/howto_css_responsive_form.asp
     combine stacked and responsive  */
@@ -698,6 +698,9 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     padding-left: .5rem;
 }
 
+.admin-btns{
+    margin-bottom: 1rem
+}
 
 
 /* ================== MOBILE VIEW ==================  MOBILE VIEW ================== */
@@ -768,7 +771,7 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
     .categories-section{
         margin: 1rem auto;
     }
-    
+
 
     /* ================== MAIN CONTAINER ================== */
     .main-container{
@@ -788,7 +791,7 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
         width: 90%;
         margin: 1.5rem auto;
     }
-    
+
     .cooking-time{
         text-align: start;
     }
@@ -823,7 +826,7 @@ https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-gri
         margin: 2rem auto;
 
     }
-    
+
 }
 
 @media screen and (max-width: 600px) {
