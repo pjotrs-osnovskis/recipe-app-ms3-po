@@ -4,6 +4,7 @@
 
 ### Deployed Project (Heroku): [https://recipe-app-ms3-po.herokuapp.com/](https://recipe-app-ms3-po.herokuapp.com)
 
+<br>
 
 ---
 ## **Idea/Description**
@@ -15,6 +16,7 @@ I took idea from the list that was offered by Code Institute. It's a recipe appl
 
 ![I am responsive image](static/img/readme-img/amiresponsive.png)
 
+<br>
 
 ---
 ## **Potential Website users**
@@ -22,12 +24,15 @@ I took idea from the list that was offered by Code Institute. It's a recipe appl
 
 This web application was created for users to find, create and share recipes, find new ideas to improve their cooking skills or surprise their loved ones with something new and exciting.
 
+<br>
 
 ---
 ## **Owners goals**
 <br>
 
 Application would be owned by the owner and used to attract new users with its simplicity. Potentially adding advertisement or product placement.
+
+<br>
 
 ---
 ## **User Stories**
@@ -46,12 +51,14 @@ Application would be owned by the owner and used to attract new users with its s
     * create or update own recipes using convenient forms;
     * find recipes I am interested in;
 
+<br>
 
 ---
 ## **5 UX Planes**
 <br>
 
-* ### **Strategy Plane**
+> ### 1. **Strategy Plane**
+
 Web application was created for users to be able to find, create and share recipes easily. In table below you can see what this web app should contain for users value, Some ideas might not be included due to time limits for this project.
 
 | Opportunity   | Importance    | Viability/Feasibility |
@@ -72,7 +79,8 @@ Web application was created for users to be able to find, create and share recip
 [^2]: Recipe rating, If I will have enough time I will add this to the project, it would be convenient to have reviews and rating for others to see how good it is.
 
 
-* ### **Scope Plane**
+> ### 2. **Scope Plane**
+
 Features that this project should include:
     * All pages must include navigation, search and footer;
     * Landing page with categories and random recipe
@@ -81,7 +89,8 @@ Features that this project should include:
     * Create/Edit recipe with relevant forms
 
 
-* ### **Structure Plane**
+> ### 3. **Structure Plane**
+
 All pages have navigation, search, main block and a footer.
 Main block content:
 - **Landing page** has categories vertical and scrollable list, and a random recipe to bring user an idea to cook something random;
@@ -91,11 +100,12 @@ Main block content:
 
 Some ideas still remain, but were not implemented due to time frame just yet.
 
-* ### **Skeleton Plane**
+> ### 4. **Skeleton Plane**
 
 Web application is responsive, so it is convenient to use across different devices.
 
 **Wireframes**:
+
  Page | Desktop | Mobile |
 | :--- | :--: | :--: |
 | Home | [View](static/img/readme-img/wireframes/wf-home-dsktp.png) | [View](static/img/readme-img/wireframes/wf-home-mob.png) |
@@ -107,14 +117,15 @@ Web application is responsive, so it is convenient to use across different devic
 | Recipe Card | [View](static/img/readme-img/wireframes/wf-recipe-card-dsktp.png) | [View](static/img/readme-img/wireframes/wf-recipe-card-mob.png) |
 
 
-* ### **Surface Plane**
-
+> ### 5. **Surface Plane**
 
 **Colors:**
 
 I decided to keep website simple and did not use any colours apart from CRUD buttons. Simple red, green and dark orange with a little transparency to make it less bright.
 
 **Fonts:**
+
+Used Google Fonts for this project. 
 
 * Lato - Used mainly across whole website
 * Josefin - Used for paragraphs
@@ -123,6 +134,7 @@ I decided to keep website simple and did not use any colours apart from CRUD but
 
 No CSS frameworks used, created everything my own with some code snippets and ideas credited in comments.
 
+<br>
 
 ---
  ## **Features**
@@ -149,6 +161,8 @@ No CSS frameworks used, created everything my own with some code snippets and id
 * Social media interactions, like "Share recipe on Facebook"
 * Add ingredients to shopping list
 
+<br>
+
 ---
 ## **Technologies Used**
 <br>
@@ -163,6 +177,7 @@ No CSS frameworks used, created everything my own with some code snippets and id
 | [Flask](https://palletsprojects.com/p/flask/) | Backend framework |
 | [EmailJS](https://www.emailjs.com/)  | Contact Us functionality |
 
+<br>
 
 ---
 ## **Resources**
@@ -192,12 +207,16 @@ No CSS frameworks used, created everything my own with some code snippets and id
 * [PowerMapper](https://www.powermapper.com/) - Browser compatibility checks
 * [removebg](https://www.remove.bg/) - Remove category image background
 
+<br>
+
 ---
 ## **Testing**
 <br>
 
 ### **Pre-testing**
 During the development of this project I used Chrome Dev Tools to test and check for responsiveness across various devices. To double check I used Heroku deployed project on Android Chrome on my phone, what helped a lot as discovered few positioning errors that were fixed.
+
+<br>
 
 ### **Main Testing**
 
@@ -250,14 +269,14 @@ E231:299:43:missing whitespace after ':'
 E501:302:80:line too long (80 > 79 characters)
 W292:317:24:no newline at end of file
 ```
+<br>
 
 ### **Lighthouse Reports**
 
 > Lighthouse testing done on [**deployed project**](https://recipe-app-ms3-po.herokuapp.com/).
 
-<br>
 
-* [Home Page](https://recipe-app-ms3-po.herokuapp.com)
+* [**Home Page**](https://recipe-app-ms3-po.herokuapp.com)
 
 | Test | Mobile | Desktop |
 | :-- | :--: | :--: |
@@ -266,7 +285,7 @@ W292:317:24:no newline at end of file
 | Best Practices  | 93 | 100 |
 | SEO             | 100 | 100 |
 
-* [Login](https://recipe-app-ms3-po.herokuapp.com/login)
+* [**Login**](https://recipe-app-ms3-po.herokuapp.com/login)
 
 | Test | Mobile | Desktop |
 | :-- | :--: | :--: |
@@ -275,7 +294,7 @@ W292:317:24:no newline at end of file
 | Best Practices  | 100 | 100 |
 | SEO             | 100 | 100 |
 
-* [Register](http://recipe-app-ms3-po.herokuapp.com/register)
+* [**Register**](http://recipe-app-ms3-po.herokuapp.com/register)
 
 | Test | Mobile | Desktop |
 | :-- | :--: | :--: |
@@ -284,7 +303,7 @@ W292:317:24:no newline at end of file
 | Best Practices  | 93 | 93 |
 | SEO             | 100 | 100 |
 
-**Accessibility** - Missed out label and input connection - fixed. 
+> **Accessibility** - Missed out label and input connection - fixed. 
 
 | Test | Mobile | Desktop |
 | :-- | :--: | :--: |
@@ -293,7 +312,7 @@ W292:317:24:no newline at end of file
 | Best Practices  | 93 | 93 |
 | SEO             | 100 | 100 |
 
-* [Profile (pete1)](http://recipe-app-ms3-po.herokuapp.com/profile/pete1)
+* [**Profile (pete1)**](http://recipe-app-ms3-po.herokuapp.com/profile/pete1) (Please login with creds: `Username: pete1` and `password: pete1` or register own account.)
 
 | Test | Mobile | Desktop |
 | :-- | :--: | :--: |
@@ -302,15 +321,135 @@ W292:317:24:no newline at end of file
 | Best Practices  | 93 | 93 |
 | SEO             | 100 | 100 |
 
-**Performance (Mobile)** - Category images too large, fixed.
+> **Performance (Mobile)** - Category images too large, fixed by resizing images to 100x100 pixels.
+
+| Test | Mobile | Desktop |
+| :-- | :--: | :--: |
+| Performance     | 95 | 99 |
+| Accessibility   | 97 | 97 |
+| Best Practices  | 93 | 93 |
+| SEO             | 100 | 100 |
+
+* [**Create Recipe**](http://recipe-app-ms3-po.herokuapp.com/add_recipe)
+
+| Test | Mobile | Desktop |
+| :-- | :--: | :--: |
+| Performance     | 96 | 99 |
+| Accessibility   | 100 | 100 |
+| Best Practices  | 93 | 93 |
+| SEO             | 100 | 100 |
+
+* **Admin Panel** (please see superuser credentials above)
+
+| Test | Mobile | Desktop |
+| :-- | :--: | :--: |
+| Performance     | 96 | 99 |
+| Accessibility   | 100 | 100 |
+| Best Practices  | 93 | 93 |
+| SEO             | 100 | 100 |
+
+<br>
+
+### **Web Browser Compatibility**
+
+During the development I mainly used Google Chrome on Windows 10 and Android Platforms. During final testing I used [PowerMapper](https://www.powermapper.com/products/sortsite/checks/browser-compatibility/) to check website compatibility across variety of browsers.
+
+![Browser Compatibility Image](static\img\readme-img\brwsr-cmptblty.png)
+
+<br>
+
+### **Functionality Test**
+
+Tested all links and buttons on the web application by clicking on all of them. Search is working great, tested on variety of requests, category list items are working great too, register, login working as needed, edit, delete recipes working as needed, back button on edit recipe works as needed, WITHOUT submitting the form. Admin panel users CRUD links work as needed, navigation links work as needed, footer links work as needed.
+
+<br>
+
+### **User Story Testing**
+
+As a new visitor, potential/interested client or a returning user, once open a web app, I can see:
+
+* that this is clearly a recipe website;
+* navigation at the top and understand what every link is for;
+* where to login or register a new account with an easy and simple form;
+* search field with an informative placeholder, so I understand what I am searching;
+* categories list, and understand that it is clickable and scrollable horizontally;
+* a random recipe with a message above to get another random recipe;
+* clear message and a link offering to create a message if I just registered or logged in as a new user.;
+* list of own recipes in separate cards with Edit and Delete options when I have created at least one recipe;
+* a simple and understandable form when I open Create or Edit Recipe;
+* an understandable messages in register and login pages if I try to submit the form with invalid data;
+* a clear message in login form when I logout from my account;
+* social media links and contact us page in the footer of the website;
+* a clear and understandable contact form, once i click on the link in the footer.
+
+<br>
+
+### **Other testing, fixes and solutions**
+
+During the production of this project I used Code Institutes Tutors to help me with Flask and Python, mainly to understand how it works with MongoDB and how to pass a Array of objects, like ingredients with name, quantity and units. But before contacting tutors, I 'googled' the issue first, most solutions I found myself, please see credits in comments by the code. While writing the code, I always tested new features in desktop and mobile view for positioning, connections between languages and templates, links, buttons, etc., before moving forward and if any issue was found - fixed it first. This you can see in the frequency and amount of commits in [my Github repository](https://github.com/pjotrs-osnovskis/recipe-app-ms3-po).
+
+<br>
+
+---
+## **Version Control**
+<br>
+
+I used [Git](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control) as a local repo and [GitHub](https://github.com/) as a remote one. 
+
+ I started my project locally on Windows 10 machine in **VSCode** IDE. Used **VSCode** terminal, changed directory to projects destination, used command `git init`, then `git add .` (to add all files I created to local repo) and made my **Initial commit** with command `git commit -m "Initial Commit"`. Then I created a remote repository on GitHub by pressing **New** on main page and followed these steps:
+
+ 1. Used HTTPS link and then entered `git remote add origin <REMOTE_HTTPS_URL>` in terminal,
+ 2. Then pushed my project to remote repository with `git push origin master`,
+ 3. Used `git add.`, `git commit -m "<COMMIT_MESSAGE>"`, `git push origin master` commands in the terminal to push further changes.
+
+<br>
+
+---
+## **Deployment**
+<br>
+
+This project was developed locally on a Windows 10 machine using the VSCode IDE, committed to [Git](https://git-scm.com/) and pushed to [GitHub](https://github.com/) using steps described above in Version Control section.
+
+Before deployment make sure some steps are taken for application to work properly:
+
+* create **virtual environment**:
+
+    1. In terminal ensure you are in your app's directory, if not use `cd <APP_PATH>` command to target it,
+    2. Then execute `python3 -m venv /path/to/new/virtual/environment` command to create a virtual environment. (In some cases need to use `"py"` or `"python"` instead of `"python3"` to execute command correctly),
+    3. Once virtual environment (`venv`) is created, we need to activate it,
+    4. To activate your apps virtual environment use `venv\Scripts\activate.bat` command, to indicate that you are working in virtual environment, in your CMD you will see a line like `(venv)<APPLICATION_PATH>`,
+    5. Next, install any necessary Python frameworks for your application.
+    6. In case you need to de-activate (exit) your virtual environment, use `deactivate` command in terminal.
+
+<br>
+
+* create **requirements.txt** file:
+
+    1. Create **requirements.txt** file using `pip3 freeze --local > requirements.txt` command.
+
+<br>
 
 
+* create a **Procfile**:
+    1. To create a Procfile use `echo web: python <PYTHON_FILE_NAME> > Procfile` command,
+    2. Now, open Procfile in IDE and sure that it has `UTF-8` encoding and `web: python <PYTHON_FILE_NAME>` is in one line with no trailing whitespace, otherwise it can create a failure in deployment.
 
+<br>
 
+Now project is ready to be deployed to [Heroku](https://www.heroku.com/). I followed these steps:
+
+1. Sign in to Heroku account and press **New** button, then select **Create New App**,
+2. Enter a unique app name, select Europe region and click **Create App**,
+3. Once application is created, in **Deploy** tab, **Deployment Method** section select **GitHub** to link GitHub repository with Heroku.
+4. Then in **Connect to GitHub** section, click **Connect to GitHub** button,
+5. Enter your GitHub repository name to **repo-name** input field and click **Search**,
+6. Then click **Connect** button to link your GitHub repository with Heroku,
+7. Next, in **Automatic deploys** section, make sure your master/main branch is selected and click **Enable Automatic Deploys**
+8. In **Manual deploy** section click **Deploy Branch** to do a first deployment,
+9. After use step 3 from **Version Control** to commit and push changes to GitHub and it will be automatically deployed to Heroku.
 
 
 
 deployment
-check icons
 admin can crud all recipes
 change to false

@@ -9,10 +9,10 @@
     <form class="contactForm" method="POST" action="{{ url_for('edit_user', user_id=user._id) }}">
         <!-- category name field -->
         <label for="username">New username:</label>
-        <input id="usertname" name="username" minlength="3" maxlength="25"
+        <input id="usertname" name="username" minlength="5" maxlength="25"
             type="text" value="{{ user.username }}" required>
         <label for="upd_password">New password:</label>
-        <input id="upd_password" name="upd_password" minlength="3" maxlength="25"
+        <input id="upd_password" name="upd_password" minlength="5" maxlength="15"
             type="password" pattern="^[a-zA-Z0-9]{5,15}$" required>
         <!-- submit button -->
         <div class="admin-btns">
